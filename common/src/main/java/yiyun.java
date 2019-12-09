@@ -23,7 +23,7 @@ import java.util.List;
  * @date 2019/7/16 0016 11:36
  **/
 public class yiyun {
-    /*
+    /**
     * SUCCESS 为成功的返回参数
     * FAILD 为失败的返回参数
     * encoding 编码方式
@@ -35,7 +35,7 @@ public class yiyun {
     public static String Separate="------";
     public static SnowflakeIdWorker idWorker;
 
-    /*
+    /**
      * @Author 翼云
      * @Description // Base64 编码
      * @Date  2019/7/16 0016 14:31
@@ -49,7 +49,7 @@ public class yiyun {
         }
            return encodeStr;
     }
-    /*
+    /**
      * @Author 翼云
      * @Description // Base64 解码
      * @Date  2019/7/16 0016 14:31
@@ -63,7 +63,7 @@ public class yiyun {
         }
         return decodeStr;
     }
-/*
+/**
  * @Author 翼云
  * @Description // 字符串切割方法
  * @Date  2019/7/17 0017 19:27
@@ -74,7 +74,7 @@ public class yiyun {
         String[] split = splitStr.split(split1);
         return split;
     }
-    /*
+    /**
      * @Author 翼云
      * @Description // json 解析方法类
      * @Date  2019/7/18 0018 16:03
@@ -87,7 +87,7 @@ public class yiyun {
         Object object=mapper.readValue(json1, Class1);
         return object;
     }
-    /*
+    /**
      * @Author 翼云
      * @Description // 组装json
      * @Date  2019/7/18 0018 16:08
@@ -102,7 +102,7 @@ public class yiyun {
     }
 
 
-    /*
+    /**
      * @Author 翼云
      * @Description // 输入时间字符串和时间格式获得毫秒数
      * @Date  2019/7/19 0019 9:37
@@ -122,7 +122,7 @@ public class yiyun {
         return time;
     }
 
-    /*
+    /**
      * @Author 翼云
      * @Description // 获得当前网络ip
      * @Date  2019/7/19 0019 9:43
@@ -132,14 +132,6 @@ public class yiyun {
     private static List<String> getIp() {
         List<String> result = new ArrayList<String>();
         try {
-/*
-            InetAddress ia = null;
-            ia = ia.getLocalHost();
-            String localname = ia.getHostName();
-            String localip = ia.getHostAddress();
-            System.out.println("本机名称是：" + localname);
-            System.out.println("本机的ip是 ：" + localip);
-*/
             Enumeration<NetworkInterface> netInterfaces;
             netInterfaces = NetworkInterface.getNetworkInterfaces();
             InetAddress ip;
@@ -158,7 +150,7 @@ public class yiyun {
         }
         return result;
     }
-    /*
+    /**
      * @Author 翼云
      * @Description // 获取事件id
      * @Date  2019/7/19 0019 10:33
@@ -168,7 +160,7 @@ public class yiyun {
     public static Long getId() throws IllegalArgumentException,Exception {
         if(idWorker==null) {
             List<String> result1 = getIp();
-            String ip="";
+            String ip;
             if (result1.size()>0){
                 ip =result1.get(0);
             } else {
@@ -185,7 +177,7 @@ public class yiyun {
         return idWorker.nextId();
     }
 
-    /*
+    /**
      * @Author 翼云
      * @Description // 依据输入的2个标识来获取事件id
      * @Date  2019/8/13 0013 19:20
@@ -199,7 +191,7 @@ public class yiyun {
         return idWorker.nextId();
     }
 
-    /*
+    /**
      * @Author 翼云
      * @Description //依据输入的字符串来进行encode编码
      * @Date  2019/8/13 0013 19:30
@@ -210,7 +202,7 @@ public class yiyun {
         String text = java.net.URLEncoder.encode(s,"utf-8");
         return text;
     }
-    /*
+    /**
      * @Author 翼云
      * @Description //依据输入的字符串来进行decode解码
      * @Date  2019/8/13 0013 19:30
@@ -226,7 +218,8 @@ public class yiyun {
         /**
          * base64 编码测试
          */
-/*        String encodeStr="huangYF";
+
+        /*        String encodeStr="huangYF";
         String decodeStr = encodeBase64(encodeStr);
         System.out.println(decodeStr);
         String encodeStr1 = decodeBase64(decodeStr);
