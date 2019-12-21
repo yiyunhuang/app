@@ -7,10 +7,21 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="common" />
+        <module name="manager-dao" />
+        <module name="manager-interface" />
+        <module name="manager-pojo" />
+        <module name="manager-service" />
+        <module name="manager-web" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="1.8">
       <module name="common" target="1.8" />
+      <module name="manager" target="1.8" />
+      <module name="manager-dao" target="1.8" />
+      <module name="manager-interface" target="1.8" />
+      <module name="manager-pojo" target="1.8" />
+      <module name="manager-service" target="1.8" />
+      <module name="manager-web" target="1.8" />
       <module name="parent" target="1.8" />
     </bytecodeTargetLevel>
   </component>
