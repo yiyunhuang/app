@@ -1,0 +1,22 @@
+CREATE TABLE `tab` (
+  `id` bigint(64) NOT NULL AUTO_INCREMENT,
+  `type` varchar(16) COLLATE utf8mb4_bin NOT NULL COMMENT '表类型',
+  `dataJson` varchar(2048) COLLATE utf8mb4_bin NOT NULL COMMENT 'json数据',
+  `date` date DEFAULT NULL COMMENT '操作时间',
+  `sign` int(3) DEFAULT NULL COMMENT '有效标识 1 有效 0 无效',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin
+
+
+CREATE TABLE `log` (
+  `id` bigint(64) NOT NULL AUTO_INCREMENT COMMENT 'id',
+  `type` varchar(16) COLLATE utf8mb4_bin DEFAULT NULL COMMENT '表类型',
+  `dataJsonOld` varchar(2048) COLLATE utf8mb4_bin DEFAULT NULL COMMENT '旧json数据',
+  `dataJsonNew` varchar(2048) COLLATE utf8mb4_bin DEFAULT NULL COMMENT '新json数据',
+  `date` date DEFAULT NULL COMMENT '操作时间',
+  `sign` int(3) DEFAULT NULL COMMENT '有效标识',
+  `tabId` int(11) DEFAULT NULL COMMENT 'tab表id',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin
+
+
