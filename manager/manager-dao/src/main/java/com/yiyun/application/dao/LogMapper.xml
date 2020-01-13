@@ -71,7 +71,7 @@
   <sql id="Base_Column_List" >
     id, type, dataJsonOld, dataJsonNew, date, sign, tabId
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.yiyun.data.pojo.po.LogExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.yiyun.application.pojo.po.LogExample" >
     select
     <if test="distinct" >
       distinct
@@ -95,13 +95,13 @@
     delete from log
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="com.yiyun.data.pojo.po.LogExample" >
+  <delete id="deleteByExample" parameterType="com.yiyun.application.pojo.po.LogExample" >
     delete from log
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.yiyun.data.pojo.po.Log" >
+  <insert id="insert" parameterType="com.yiyun.application.pojo.po.Log" >
     insert into log (id, type, dataJsonOld, 
       dataJsonNew, date, sign, 
       tabId)
@@ -109,7 +109,7 @@
       #{datajsonnew,jdbcType=VARCHAR}, #{date,jdbcType=DATE}, #{sign,jdbcType=INTEGER}, 
       #{tabid,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.yiyun.data.pojo.po.Log" >
+  <insert id="insertSelective" parameterType="com.yiyun.application.pojo.po.Log" >
     insert into log
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -158,7 +158,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.yiyun.data.pojo.po.LogExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.yiyun.application.pojo.po.LogExample" resultType="java.lang.Integer" >
     select count(*) from log
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -206,7 +206,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yiyun.data.pojo.po.Log" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.yiyun.application.pojo.po.Log" >
     update log
     <set >
       <if test="type != null" >
@@ -230,7 +230,7 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yiyun.data.pojo.po.Log" >
+  <update id="updateByPrimaryKey" parameterType="com.yiyun.application.pojo.po.Log" >
     update log
     set type = #{type,jdbcType=VARCHAR},
       dataJsonOld = #{datajsonold,jdbcType=VARCHAR},
