@@ -1,6 +1,5 @@
 package com.yiyun.application.dao;
 
-/*
 
 import com.yiyun.application.pojo.po.Tab;
 import org.junit.Test;
@@ -10,13 +9,12 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 
-*/
 /**
  * User: DHC
  * Date: 2017/11/3
  * Time: 17:57
  * Version:V1.0
- *//*
+ */
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -35,4 +33,4 @@ public class TbUserMapperTest {
 
 
 }
-*/
+
