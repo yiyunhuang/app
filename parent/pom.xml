@@ -55,7 +55,7 @@
         <activemq.version>5.11.3</activemq.version>
         <freemarker.version>2.3.23</freemarker.version>
         <quartz.version>2.2.2</quartz.version>
-        <lucene.version>4.10.3</lucene.version>
+        <lucene.version>8.3.1</lucene.version>
     </properties>
 
     <!--依赖的声明，但是不会在工程依赖中体现-->
