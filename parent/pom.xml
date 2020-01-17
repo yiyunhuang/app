@@ -12,7 +12,6 @@
         <module>../manager</module>
     </modules>
 
-
     <!--打包方式，默认为jar-->
     <packaging>pom</packaging>
     <!--相关jar的版本号属性-->
