@@ -35,8 +35,6 @@
         </property>
     </bean>
 
-    <!-- 配置控制器的访问 name:表示访问的URL路径 -->
-    <bean name="/test" class="com.yiyun.application.web.TestAction"></bean>
 
     <!--静态资源解析-->
     <mvc:resources mapping="/js/**" location="/js/"/>
