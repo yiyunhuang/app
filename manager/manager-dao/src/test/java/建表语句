@@ -19,4 +19,17 @@ CREATE TABLE `log` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin
 
+CREATE TABLE `yyUser` (
+`id`  bigint(64) NOT NULL ,
+`username`  varchar(64) NOT NULL COMMENT '用户登入名' ,
+`password`  varchar(64) NOT NULL COMMENT '密码' ,
+`name`  varchar(64) NULL DEFAULT '' COMMENT '昵称' ,
+`mess`  varchar(16) NULL COMMENT '联系信息' ,
+`created`  date NULL COMMENT '创建时间' ,
+`updated`  date NULL COMMENT '更新时间' ,
+`sign`  integer(1) NULL DEFAULT 1 COMMENT '有戏标识 1 有效 0 无效' ,
+PRIMARY KEY (`id`)
+)
+;
+
 
