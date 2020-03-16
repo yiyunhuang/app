@@ -80,7 +80,7 @@
             <groupId>org.apache.tomcat.maven</groupId>
             <artifactId>tomcat7-maven-plugin</artifactId>
             <configuration>
-                <port>8080</port>
+                <port>18080</port>
                 <path>/application</path>
             </configuration>
         </plugin>
