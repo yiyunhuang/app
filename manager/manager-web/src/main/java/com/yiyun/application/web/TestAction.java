@@ -34,7 +34,7 @@ public class TestAction {
     public void test(){
         logger.info("TestAction/test");
         HashMap map = new HashMap();
-        map.put("test","insert");
+        map.put("test","select");
         testService.test(map);
     }
 
