@@ -4,7 +4,7 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.10.2.js"></script>
 
 <body>
-<h2>Hello World! index1.jsp </h2>
+<h2>Hello WEB-INF/jsp/index.jsp </h2>
 </body>
 
 <a href="/test">超链接</a>
@@ -21,13 +21,9 @@
             type:"get",
 
             <%--url:"${pageContext.request.contextPath }/test",--%>
-
             url:"${pageContext.request.contextPath }/test",
-
             success:function(data) {
-
-
-                alert(data);
+                // alert(data);
 
             }
 

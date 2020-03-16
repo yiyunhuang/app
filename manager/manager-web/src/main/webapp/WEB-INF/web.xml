@@ -8,20 +8,25 @@
                       http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1"
          metadata-complete="true">
-<!--  修改初始目录 (无法目录加深)-->
+
+<!--  修改初始目录 -->
   <welcome-file-list>
-    <welcome-file>/index1.jsp</welcome-file>
+    <welcome-file>/WEB-INF/jsp/index.jsp</welcome-file>
   </welcome-file-list>
 
+  <!-- 加载spring的配置文件 -->
   <context-param>
   <param-name>contextConfigLocation</param-name>
   <param-value>classpath:spring/spring-*.xml</param-value>
 </context-param>
 
+<!--  容器创建<listener></listener>中的类实例,即创建监听. -->
 <listener>
   <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 </listener>
 
+
+<!--servlet配置-->
 <servlet>
   <servlet-name>applicationweb</servlet-name>
   <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -39,7 +44,7 @@
 </servlet-mapping>
 
 
-
+<!--过滤器-->
 <filter>
   <filter-name>characterEncoding</filter-name>
   <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
