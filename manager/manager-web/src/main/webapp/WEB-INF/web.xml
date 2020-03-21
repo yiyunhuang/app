@@ -26,6 +26,12 @@
 </listener>
 
 
+  <!-- 取消 拦截 html文件-->
+  <servlet-mapping>
+    <servlet-name>default</servlet-name>
+    <url-pattern>*.html</url-pattern>
+  </servlet-mapping>
+
 <!--servlet配置-->
 <servlet>
   <servlet-name>applicationweb</servlet-name>

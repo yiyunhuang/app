@@ -7,15 +7,19 @@
 <h2>Hello WEB-INF/jsp/index.jsp </h2>
 </body>
 
-<a href="/test">超链接</a>
+<a href="${pageContext.request.contextPath }/WEB-INF/jsp/layui.jsp">超链接1</a>
 <span id="msg1"></span>
 
-<a id="import" onclick="importItems()">超链接</a>
+<a id="import" onclick="importItems()">超链接2</a>
 <span id="msg"></span>
+
+<a href="${pageContext.request.contextPath }/html/index.html">超链接3</a>
+
 
 
 <script>
     function importItems() {
+
 
         $.ajax({
             type:"get",
