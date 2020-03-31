@@ -12,6 +12,7 @@
         <module name="manager-pojo" />
         <module name="manager-service" />
         <module name="manager-web" />
+        <module name="portal-web" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="1.8">
@@ -23,6 +24,7 @@
       <module name="manager-service" target="1.8" />
       <module name="manager-web" target="1.8" />
       <module name="parent" target="1.8" />
+      <module name="portal-web" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

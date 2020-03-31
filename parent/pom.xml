@@ -10,7 +10,15 @@
     <modules>
         <module>../common</module>
         <module>../manager</module>
+        <module>../portal-web</module>
     </modules>
+    <!--maven 远程地址修改-->
+     <repositories>
+       <repository>
+           <id>spring-snapshots</id>
+         <url>http://maven.aliyun.com/nexus/content/groups/public</url>
+       </repository>
+     </repositories>
 
     <!--打包方式，默认为jar-->
     <packaging>pom</packaging>
