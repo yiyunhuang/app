@@ -385,9 +385,10 @@ public class SVNUpload {
     }
 
     public static void main(String[] args) throws SVNException, InterruptedException {
-        Thread.sleep(2000);
         //弹窗
-        JOptionPane.showMessageDialog(null, "弹窗","弹窗标题",JOptionPane.ERROR_MESSAGE);
+//        JOptionPane.showMessageDialog(null, "弹窗","弹窗标题",JOptionPane.ERROR_MESSAGE);
+        System.out.println("开始");
+        
 
         String svnUrl = "https://svn路径";
         String username = "user";
@@ -395,7 +396,6 @@ public class SVNUpload {
         String workspace = "E:\\insigma\\insigma\\enpu\\wenzhou\\yiyun";
 //            String upfile = "/q/w/a.txt,b.txt";
         String upfile = "rizhi.txt";
-        SVNUpload SVNUpload = new SVNUpload(svnUrl,username, passwd);
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
         String s = sdf.format(new Date());
         AdditionalFile.appendMethodA(workspace+"\\"+upfile,s+"\r\n");
@@ -421,11 +421,15 @@ public class SVNUpload {
                 } else {
                     filename = filePath;
                 }
+                SVNUpload SVNUpload = new SVNUpload(svnUrl,username, passwd);
                 SVNUpload.upload(svnUrl, workspace, filePath, filename,isOverwrite);
             }
         } catch (Exception e) {
             e.printStackTrace();
+            System.out.println("报错");
+            Thread.sleep(5000);
         }
+        System.out.println("完成");
         Thread.sleep(5000);
 
     }
