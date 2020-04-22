@@ -1,5 +1,6 @@
 package com.yiyun.application.portal.web;
 
+
 import com.yiyun.application.common.util.PropKit;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,12 +21,14 @@ public class PortalIndexAction {
     @RequestMapping("/")
     public String portalIndex(Model model){
         //第一步：使用service去查，根据tb_content_category的ID去查
-        Long id = PropKit.use("ftp.properties").getLong("ftp.gallery");
+//        Long id = PropKit.use("ftp.properties").getLong("ftp.gallery");
 //        List<TbContent> list = contentService.listContentsByCid(id);
         //第二步：存放到model中
-        model.addAttribute("ad1List", "123");
+//        model.addAttribute("ad1List", "123");
         //第三步：返回首页
         return "index";
     }
+
+
 
 }

@@ -77,8 +77,9 @@
         © yiyun.com
     </div>
 </div>
-<script src="${pageContext.request.contextPath }/layui/layui.js"></script>
+
 <script src="${pageContext.request.contextPath }/js/jquery-1.10.2.js"></script>
+<script src="${pageContext.request.contextPath }/layui/layui.js"></script>
 <script>
     //JavaScript代码区域
     layui.use('element', function(){
@@ -89,19 +90,7 @@
         $('#padding').load(url);  //padding 为div的id名
     }
 
-    function getWindows(url) {
-        $.ajax({
-            type:"get",
-            <%--url:"${pageContext.request.contextPath }/test",--%>
-            url:"${pageContext.request.contextPath }/"+url,
-            success:function(data) {
-                $('#padding').load(data);  //padding 为div的id名
-            }
 
-        });
-
-
-    }
 
 
 </script>

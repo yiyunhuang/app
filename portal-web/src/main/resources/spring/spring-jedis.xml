@@ -48,7 +48,7 @@
     <!--</bean>-->
 
     <!--集群版本-->
-    <bean id="jedisCluster" class="redis.clients.jedis.JedisCluster">
+   <!-- <bean id="jedisCluster" class="redis.clients.jedis.JedisCluster">
         <constructor-arg name="nodes">
             <set>
                 <bean class="redis.clients.jedis.HostAndPort">
@@ -79,8 +79,8 @@
         </constructor-arg>
         <constructor-arg name="poolConfig" ref="jedisPoolConfig"/>
     </bean>
-    <bean id="jedisClientCluster" class="com.dhc.ddshop.common.jedis.JedisClientCluster">
+    <bean id="jedisClientCluster" class="com.yiyun.application.common.jedis.JedisClientCluster">
         <property name="jedisCluster" ref="jedisCluster"/>
     </bean>
-
+-->
 </beans>

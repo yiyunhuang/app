@@ -8,11 +8,11 @@
                       http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1"
          metadata-complete="true">
-
-<!--  修改初始目录 -->
+<!--
+  修改初始目录
   <welcome-file-list>
     <welcome-file>/WEB-INF/jsp/index.jsp</welcome-file>
-  </welcome-file-list>
+  </welcome-file-list>-->
 
   <!-- 加载spring的配置文件 -->
   <context-param>
@@ -26,12 +26,6 @@
 </listener>
 
 
-  <!-- 取消 拦截 html文件-->
-  <servlet-mapping>
-    <servlet-name>default</servlet-name>
-    <url-pattern>*.html</url-pattern>
-  </servlet-mapping>
-
 <!--servlet配置-->
 <servlet>
   <servlet-name>applicationweb</servlet-name>
@@ -42,6 +36,7 @@
   </init-param>
   <load-on-startup>1</load-on-startup>
 </servlet>
+
 
 <!--  请求后缀 最好为 / (符合restful风格) 以前为/*.do-->
 <servlet-mapping>
