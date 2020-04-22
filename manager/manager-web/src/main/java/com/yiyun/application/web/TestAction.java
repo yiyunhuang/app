@@ -7,10 +7,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * @author 翼云
@@ -36,6 +38,16 @@ public class TestAction {
         HashMap map = new HashMap();
         map.put("test","select");
         testService.test(map);
+    }
+
+    @ResponseBody
+    @RequestMapping("/testModel")
+    public String testModel(Model model){
+        logger.info("TestAction/testModel");
+        //第二步：存放到model中
+        model.addAttribute("user", "yiyun");
+        return "test.jsp";
+
     }
 
 

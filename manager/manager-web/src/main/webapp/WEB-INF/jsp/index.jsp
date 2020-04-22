@@ -55,9 +55,9 @@
                 <li class="layui-nav-item layui-nav-itemed">
                     <a class="" href="javascript:;">所有商品</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="javascript:;" onclick="openWindows('js/test.jsp')" >测试</a></dd>
-                        <dd><a href="javascript:;">列表二</a></dd>
-                        <dd><a href="javascript:;">列表三</a></dd>
+                        <dd><a href="javascript:;" onclick="openWindows('test.jsp')" >测试</a></dd>
+                        <dd><a href="javascript:;" onclick="getWindows('testModel')" >测试二</a></dd>
+                        <dd><a href="${pageContext.request.contextPath }/testModel">测试三</a></dd>
                         <dd><a href="">超链接</a></dd>
                     </dl>
                 </li>
@@ -85,9 +85,24 @@
         var element = layui.element;
 
     });
-    function openWindows(a){
-        $('#padding').load(a);  //padding 为div的id名
+    function openWindows(url){
+        $('#padding').load(url);  //padding 为div的id名
     }
+
+    function getWindows(url) {
+        $.ajax({
+            type:"get",
+            <%--url:"${pageContext.request.contextPath }/test",--%>
+            url:"${pageContext.request.contextPath }/"+url,
+            success:function(data) {
+                $('#padding').load(data);  //padding 为div的id名
+            }
+
+        });
+
+
+    }
+
 
 </script>
 </body>

@@ -1,5 +1,7 @@
 package com.yiyun.application.common;
 
+import com.yiyun.application.common.util.SCPClientImpl;
+
 /**
  * @author 翼云
  * @version 1.0

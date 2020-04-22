@@ -1,5 +1,6 @@
 package com.yiyun.application.common;
 
+import com.yiyun.application.common.util.yiyun;
 import org.junit.Test;
 
 import java.io.UnsupportedEncodingException;
