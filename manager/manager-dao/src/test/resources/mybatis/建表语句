@@ -1,0 +1,45 @@
+
+
+
+DROP TABLE IF EXISTS `application_user`;
+CREATE TABLE `application_user` (
+  `id` bigint(64) NOT NULL,
+  `login_name` varchar(64) NOT NULL COMMENT '用户登入名',
+  `password` varchar(64) NOT NULL COMMENT '密码',
+  `user_name` varchar(64) DEFAULT '' COMMENT '昵称',
+  `gmt_create` date DEFAULT NULL COMMENT '创建时间',
+  `gmt_modified` date DEFAULT NULL COMMENT '更新时间',
+  `is_sign` int(1) DEFAULT '1' COMMENT '有戏标识 1 有效 0 无效',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+
+DROP TABLE IF EXISTS `global_dictionary`;
+CREATE TABLE `global_dictionary` (
+  `id` bigint(64) NOT NULL AUTO_INCREMENT,
+  `code_type` varchar(16) NOT NULL COMMENT '代码类型',
+  `code_value` varchar(8) NOT NULL COMMENT '代码值',
+  `code_explain` varchar(64) NOT NULL COMMENT '代码说明',
+  `parameters_classified` varchar(8) NOT NULL COMMENT '参数归类',
+  `gmt_create` date NOT NULL COMMENT '创建时间',
+  `gmt_modified` date NOT NULL COMMENT '更新时间',
+  `is_sign` tinyint(8) unsigned NOT NULL COMMENT '有效标识 1 有效 0 无效',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+DROP TABLE IF EXISTS `financial_task`;
+CREATE TABLE `financial_task` (
+  `id` bigint(64) NOT NULL AUTO_INCREMENT,
+  `financial_type` varchar(8) NOT NULL COMMENT '理财类型',
+  `total_amount` decimal(16,2) NOT NULL COMMENT '总计金额',
+  `money_change` decimal(16,2) NOT NULL COMMENT '金额变动',
+  `user_id` bigint(64) NOT NULL COMMENT '用户id',
+  `gmt_create` date NOT NULL COMMENT '创建时间',
+  `gmt_modified` date NOT NULL COMMENT '更新时间',
+  `is_sign` tinyint(8) unsigned NOT NULL COMMENT '有效标识 1 有效 0 无效',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+
+
+
