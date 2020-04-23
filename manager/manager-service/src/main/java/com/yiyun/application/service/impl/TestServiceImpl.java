@@ -40,7 +40,7 @@ public class TestServiceImpl implements TestService {
         if ("insert".equals(test)){
             BranchTree branchTree=new BranchTree();
             branchTree.getId();
-            branchTreeMapper.insert(branchTree);
+//            branchTreeMapper.insert(branchTree);
              /*Tab tab1 = new Tab();
             tab1.setId(2L);
             tab1.setType("test");

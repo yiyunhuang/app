@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.yiyun.application.dao.ApplicationUserMapper" >
-  <resultMap id="BaseResultMap" type="com.yiyun.application.pojo.po.ApplicationUser" >
+<mapper namespace="com.yiyun.application.dao.FinancialTaskMapper" >
+  <resultMap id="BaseResultMap" type="com.yiyun.application.pojo.po.FinancialTask" >
     <id column="id" property="id" jdbcType="BIGINT" />
-    <result column="login_name" property="loginName" jdbcType="VARCHAR" />
-    <result column="password" property="password" jdbcType="VARCHAR" />
-    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="financial_type" property="financialType" jdbcType="VARCHAR" />
+    <result column="total_amount" property="totalAmount" jdbcType="DECIMAL" />
+    <result column="money_change" property="moneyChange" jdbcType="DECIMAL" />
+    <result column="user_id" property="userId" jdbcType="BIGINT" />
     <result column="gmt_create" property="gmtCreate" jdbcType="DATE" />
     <result column="gmt_modified" property="gmtModified" jdbcType="DATE" />
-    <result column="is_sign" property="isSign" jdbcType="INTEGER" />
+    <result column="is_sign" property="isSign" jdbcType="TINYINT" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -69,15 +70,16 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, login_name, password, user_name, gmt_create, gmt_modified, is_sign
+    id, financial_type, total_amount, money_change, user_id, gmt_create, gmt_modified, 
+    is_sign
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.yiyun.application.pojo.po.ApplicationUserExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.yiyun.application.pojo.po.FinancialTaskExample" >
     select
     <if test="distinct" >
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from application_user
+    from financial_task
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -86,43 +88,46 @@
     </if>
   </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
-    select
+    select 
     <include refid="Base_Column_List" />
-    from application_user
+    from financial_task
     where id = #{id,jdbcType=BIGINT}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
-    delete from application_user
+    delete from financial_task
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="com.yiyun.application.pojo.po.ApplicationUserExample" >
-    delete from application_user
+  <delete id="deleteByExample" parameterType="com.yiyun.application.pojo.po.FinancialTaskExample" >
+    delete from financial_task
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.yiyun.application.pojo.po.ApplicationUser" >
-    insert into application_user (id, login_name, password,
-      user_name, gmt_create, gmt_modified,
-      is_sign)
-    values (#{id,jdbcType=BIGINT}, #{loginName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},
-      #{userName,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=DATE}, #{gmtModified,jdbcType=DATE},
-      #{isSign,jdbcType=INTEGER})
+  <insert id="insert" parameterType="com.yiyun.application.pojo.po.FinancialTask" >
+    insert into financial_task (id, financial_type, total_amount, 
+      money_change, user_id, gmt_create, 
+      gmt_modified, is_sign)
+    values (#{id,jdbcType=BIGINT}, #{financialType,jdbcType=VARCHAR}, #{totalAmount,jdbcType=DECIMAL}, 
+      #{moneyChange,jdbcType=DECIMAL}, #{userId,jdbcType=BIGINT}, #{gmtCreate,jdbcType=DATE}, 
+      #{gmtModified,jdbcType=DATE}, #{isSign,jdbcType=TINYINT})
   </insert>
-  <insert id="insertSelective" parameterType="com.yiyun.application.pojo.po.ApplicationUser" >
-    insert into application_user
+  <insert id="insertSelective" parameterType="com.yiyun.application.pojo.po.FinancialTask" >
+    insert into financial_task
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
       </if>
-      <if test="loginName != null" >
-        login_name,
+      <if test="financialType != null" >
+        financial_type,
       </if>
-      <if test="password != null" >
-        password,
+      <if test="totalAmount != null" >
+        total_amount,
       </if>
-      <if test="userName != null" >
-        user_name,
+      <if test="moneyChange != null" >
+        money_change,
+      </if>
+      <if test="userId != null" >
+        user_id,
       </if>
       <if test="gmtCreate != null" >
         gmt_create,
@@ -138,14 +143,17 @@
       <if test="id != null" >
         #{id,jdbcType=BIGINT},
       </if>
-      <if test="loginName != null" >
-        #{loginName,jdbcType=VARCHAR},
+      <if test="financialType != null" >
+        #{financialType,jdbcType=VARCHAR},
       </if>
-      <if test="password != null" >
-        #{password,jdbcType=VARCHAR},
+      <if test="totalAmount != null" >
+        #{totalAmount,jdbcType=DECIMAL},
       </if>
-      <if test="userName != null" >
-        #{userName,jdbcType=VARCHAR},
+      <if test="moneyChange != null" >
+        #{moneyChange,jdbcType=DECIMAL},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=BIGINT},
       </if>
       <if test="gmtCreate != null" >
         #{gmtCreate,jdbcType=DATE},
@@ -154,30 +162,33 @@
         #{gmtModified,jdbcType=DATE},
       </if>
       <if test="isSign != null" >
-        #{isSign,jdbcType=INTEGER},
+        #{isSign,jdbcType=TINYINT},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.yiyun.application.pojo.po.ApplicationUserExample" resultType="java.lang.Integer" >
-    select count(*) from application_user
+  <select id="countByExample" parameterType="com.yiyun.application.pojo.po.FinancialTaskExample" resultType="java.lang.Integer" >
+    select count(*) from financial_task
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map" >
-    update application_user
+    update financial_task
     <set >
       <if test="record.id != null" >
         id = #{record.id,jdbcType=BIGINT},
       </if>
-      <if test="record.loginName != null" >
-        login_name = #{record.loginName,jdbcType=VARCHAR},
+      <if test="record.financialType != null" >
+        financial_type = #{record.financialType,jdbcType=VARCHAR},
       </if>
-      <if test="record.password != null" >
-        password = #{record.password,jdbcType=VARCHAR},
+      <if test="record.totalAmount != null" >
+        total_amount = #{record.totalAmount,jdbcType=DECIMAL},
       </if>
-      <if test="record.userName != null" >
-        user_name = #{record.userName,jdbcType=VARCHAR},
+      <if test="record.moneyChange != null" >
+        money_change = #{record.moneyChange,jdbcType=DECIMAL},
+      </if>
+      <if test="record.userId != null" >
+        user_id = #{record.userId,jdbcType=BIGINT},
       </if>
       <if test="record.gmtCreate != null" >
         gmt_create = #{record.gmtCreate,jdbcType=DATE},
@@ -186,7 +197,7 @@
         gmt_modified = #{record.gmtModified,jdbcType=DATE},
       </if>
       <if test="record.isSign != null" >
-        is_sign = #{record.isSign,jdbcType=INTEGER},
+        is_sign = #{record.isSign,jdbcType=TINYINT},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -194,29 +205,33 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map" >
-    update application_user
+    update financial_task
     set id = #{record.id,jdbcType=BIGINT},
-    login_name = #{record.loginName,jdbcType=VARCHAR},
-    password = #{record.password,jdbcType=VARCHAR},
-    user_name = #{record.userName,jdbcType=VARCHAR},
-    gmt_create = #{record.gmtCreate,jdbcType=DATE},
-    gmt_modified = #{record.gmtModified,jdbcType=DATE},
-    is_sign = #{record.isSign,jdbcType=INTEGER}
+      financial_type = #{record.financialType,jdbcType=VARCHAR},
+      total_amount = #{record.totalAmount,jdbcType=DECIMAL},
+      money_change = #{record.moneyChange,jdbcType=DECIMAL},
+      user_id = #{record.userId,jdbcType=BIGINT},
+      gmt_create = #{record.gmtCreate,jdbcType=DATE},
+      gmt_modified = #{record.gmtModified,jdbcType=DATE},
+      is_sign = #{record.isSign,jdbcType=TINYINT}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yiyun.application.pojo.po.ApplicationUser" >
-    update application_user
+  <update id="updateByPrimaryKeySelective" parameterType="com.yiyun.application.pojo.po.FinancialTask" >
+    update financial_task
     <set >
-      <if test="loginName != null" >
-        login_name = #{loginName,jdbcType=VARCHAR},
+      <if test="financialType != null" >
+        financial_type = #{financialType,jdbcType=VARCHAR},
       </if>
-      <if test="password != null" >
-        password = #{password,jdbcType=VARCHAR},
+      <if test="totalAmount != null" >
+        total_amount = #{totalAmount,jdbcType=DECIMAL},
       </if>
-      <if test="userName != null" >
-        user_name = #{userName,jdbcType=VARCHAR},
+      <if test="moneyChange != null" >
+        money_change = #{moneyChange,jdbcType=DECIMAL},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=BIGINT},
       </if>
       <if test="gmtCreate != null" >
         gmt_create = #{gmtCreate,jdbcType=DATE},
@@ -225,19 +240,20 @@
         gmt_modified = #{gmtModified,jdbcType=DATE},
       </if>
       <if test="isSign != null" >
-        is_sign = #{isSign,jdbcType=INTEGER},
+        is_sign = #{isSign,jdbcType=TINYINT},
       </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yiyun.application.pojo.po.ApplicationUser" >
-    update application_user
-    set login_name = #{loginName,jdbcType=VARCHAR},
-      password = #{password,jdbcType=VARCHAR},
-      user_name = #{userName,jdbcType=VARCHAR},
+  <update id="updateByPrimaryKey" parameterType="com.yiyun.application.pojo.po.FinancialTask" >
+    update financial_task
+    set financial_type = #{financialType,jdbcType=VARCHAR},
+      total_amount = #{totalAmount,jdbcType=DECIMAL},
+      money_change = #{moneyChange,jdbcType=DECIMAL},
+      user_id = #{userId,jdbcType=BIGINT},
       gmt_create = #{gmtCreate,jdbcType=DATE},
       gmt_modified = #{gmtModified,jdbcType=DATE},
-      is_sign = #{isSign,jdbcType=INTEGER}
+      is_sign = #{isSign,jdbcType=TINYINT}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>
