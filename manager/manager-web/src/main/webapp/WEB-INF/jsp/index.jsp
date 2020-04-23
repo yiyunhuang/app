@@ -55,9 +55,9 @@
                 <li class="layui-nav-item layui-nav-itemed">
                     <a class="" href="javascript:;">所有商品</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="javascript:;" onclick="openWindows('test.jsp')" >测试</a></dd>
-                        <dd><a href="javascript:;" onclick="getWindows('testModel')" >测试二</a></dd>
-                        <dd><a href="${pageContext.request.contextPath }/testModel">测试三</a></dd>
+                        <dd><a href="javascript:;" onclick="openWindows('test.jsp')" >参数录入</a></dd>
+                        <dd><a href="javascript:;" onclick="getWindows('testModel')" >树录入</a></dd>
+                        <dd><a href="${pageContext.request.contextPath }/testModel">理财汇总</a></dd>
                         <dd><a href="">超链接</a></dd>
                     </dl>
                 </li>

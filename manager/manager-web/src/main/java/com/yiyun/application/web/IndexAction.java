@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * @author 翼云
  * @version 1.0
  * @ClassName IndexAction
- * @Description TODO  主页跳转类
+ * @Description  主页跳转类
  * @program: application
  * @date 2020/4/22 21:31
  **/
