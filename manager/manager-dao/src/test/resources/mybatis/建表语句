@@ -42,4 +42,22 @@ CREATE TABLE `financial_task` (
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 
 
+DROP TABLE IF EXISTS `branch_tree`;
+CREATE TABLE `branch_tree` (
+`id`  bigint(64) NOT NULL AUTO_INCREMENT ,
+`parents_id`  bigint(64) NULL DEFAULT NULL COMMENT '父ID' ,
+`tree_location`  varchar(256) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '地址' ,
+`tree_title`  varchar(256) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '标题' ,
+`tree_description`  varchar(256) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '功能描述' ,
+`tree_type`  int(4) NOT NULL COMMENT '类型' ,
+`tree_remark`  varchar(256) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '备注' ,
+`gmt_create`  date NOT NULL COMMENT '创建时间' ,
+`gmt_modified`  date NOT NULL COMMENT '更新时间' ,
+`is_sign`  tinyint(8) UNSIGNED NOT NULL COMMENT '有效标识 1 有效 0 无效' ,
+PRIMARY KEY (`id`)
+)ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+
+
+
+
 
