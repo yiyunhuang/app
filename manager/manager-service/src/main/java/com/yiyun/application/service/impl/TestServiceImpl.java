@@ -1,15 +1,15 @@
 package com.yiyun.application.service.impl;
 
-import com.yiyun.application.dao.LogMapper;
-import com.yiyun.application.dao.TabMapper;
-import com.yiyun.application.pojo.po.Tab;
+import com.yiyun.application.dao.ApplicationUserMapper;
+import com.yiyun.application.dao.BranchTreeMapper;
+import com.yiyun.application.dao.FinancialTaskMapper;
+import com.yiyun.application.dao.GlobalDictionaryMapper;
+import com.yiyun.application.pojo.po.BranchTree;
 import com.yiyun.application.service.TestService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.Date;
 import java.util.HashMap;
 
 /**
@@ -25,42 +25,42 @@ import java.util.HashMap;
 public class TestServiceImpl implements TestService {
     private Logger logger = LoggerFactory.getLogger(this.getClass());
     @Autowired
-    private LogMapper logMapper;
+    private BranchTreeMapper branchTreeMapper;
     @Autowired
-    private TabMapper tabMapper;
+    private GlobalDictionaryMapper globalDictionaryMapper;
+    @Autowired
+    private ApplicationUserMapper applicationUserMapper;
+    @Autowired
+    private FinancialTaskMapper financialTaskMapper;
 
     @Override
     public HashMap test(HashMap map ) {
         logger.info("TestServiceImpl/test");
         String test = (String) map.get("test");
         if ("insert".equals(test)){
-            Tab tab = new Tab();
-            tab.setId(1L);
-            tab.setType("test");
-            tab.setDatajson("123");
-            tab.setDate(new Date());
-            tab.setSign(1);
-            tabMapper.insert(tab);
-            Tab tab1 = new Tab();
+            BranchTree branchTree=new BranchTree();
+            branchTree.getId();
+            branchTreeMapper.insert(branchTree);
+             /*Tab tab1 = new Tab();
             tab1.setId(2L);
             tab1.setType("test");
             tab1.setDatajson("123");
             tab1.setDate(new Date());
             tab1.setSign(1);
-            tabMapper.insert(tab1);
+            tabMapper.insert(tab1);*/
         }else if ("delete".equals(test)){
-            tabMapper.deleteByPrimaryKey(1L);
+//            tabMapper.deleteByPrimaryKey(1L);
         }else if ("select".equals(test)){
-            Tab tab = tabMapper.selectByPrimaryKey(1L);
+          /*  Tab tab = tabMapper.selectByPrimaryKey(1L);
             logger.info(String.valueOf(tab.getId()+tab.getDatajson()));
-        }else if ("update".equals(test)){
-            Tab tab = new Tab();
+*/        }else if ("update".equals(test)){
+           /* Tab tab = new Tab();
             tab.setId(1L);
             tab.setType("test");
             tab.setDatajson("123");
             tab.setDate(new Date());
             tab.setSign(1);
-            tabMapper.updateByPrimaryKey(tab);
+            tabMapper.updateByPrimaryKey(tab);*/
         }
         return null;
     }

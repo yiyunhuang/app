@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yiyun.application.dao.BranchTreeMapper" >
+  <resultMap id="BaseResultMap" type="com.yiyun.application.pojo.po.BranchTree" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="parents_id" property="parentsId" jdbcType="BIGINT" />
+    <result column="tree_location" property="treeLocation" jdbcType="VARCHAR" />
+    <result column="tree_title" property="treeTitle" jdbcType="VARCHAR" />
+    <result column="tree_description" property="treeDescription" jdbcType="VARCHAR" />
+    <result column="tree_type" property="treeType" jdbcType="INTEGER" />
+    <result column="tree_remark" property="treeRemark" jdbcType="VARCHAR" />
+    <result column="gmt_create" property="gmtCreate" jdbcType="DATE" />
+    <result column="gmt_modified" property="gmtModified" jdbcType="DATE" />
+    <result column="is_sign" property="isSign" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, parents_id, tree_location, tree_title, tree_description, tree_type, tree_remark, 
+    gmt_create, gmt_modified, is_sign
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.yiyun.application.pojo.po.BranchTreeExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from branch_tree
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from branch_tree
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from branch_tree
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.yiyun.application.pojo.po.BranchTreeExample" >
+    delete from branch_tree
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.yiyun.application.pojo.po.BranchTree" >
+    insert into branch_tree (id, parents_id, tree_location, 
+      tree_title, tree_description, tree_type, 
+      tree_remark, gmt_create, gmt_modified, 
+      is_sign)
+    values (#{id,jdbcType=BIGINT}, #{parentsId,jdbcType=BIGINT}, #{treeLocation,jdbcType=VARCHAR}, 
+      #{treeTitle,jdbcType=VARCHAR}, #{treeDescription,jdbcType=VARCHAR}, #{treeType,jdbcType=INTEGER}, 
+      #{treeRemark,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=DATE}, #{gmtModified,jdbcType=DATE}, 
+      #{isSign,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yiyun.application.pojo.po.BranchTree" >
+    insert into branch_tree
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="parentsId != null" >
+        parents_id,
+      </if>
+      <if test="treeLocation != null" >
+        tree_location,
+      </if>
+      <if test="treeTitle != null" >
+        tree_title,
+      </if>
+      <if test="treeDescription != null" >
+        tree_description,
+      </if>
+      <if test="treeType != null" >
+        tree_type,
+      </if>
+      <if test="treeRemark != null" >
+        tree_remark,
+      </if>
+      <if test="gmtCreate != null" >
+        gmt_create,
+      </if>
+      <if test="gmtModified != null" >
+        gmt_modified,
+      </if>
+      <if test="isSign != null" >
+        is_sign,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="parentsId != null" >
+        #{parentsId,jdbcType=BIGINT},
+      </if>
+      <if test="treeLocation != null" >
+        #{treeLocation,jdbcType=VARCHAR},
+      </if>
+      <if test="treeTitle != null" >
+        #{treeTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="treeDescription != null" >
+        #{treeDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="treeType != null" >
+        #{treeType,jdbcType=INTEGER},
+      </if>
+      <if test="treeRemark != null" >
+        #{treeRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtCreate != null" >
+        #{gmtCreate,jdbcType=DATE},
+      </if>
+      <if test="gmtModified != null" >
+        #{gmtModified,jdbcType=DATE},
+      </if>
+      <if test="isSign != null" >
+        #{isSign,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.yiyun.application.pojo.po.BranchTreeExample" resultType="java.lang.Integer" >
+    select count(*) from branch_tree
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update branch_tree
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.parentsId != null" >
+        parents_id = #{record.parentsId,jdbcType=BIGINT},
+      </if>
+      <if test="record.treeLocation != null" >
+        tree_location = #{record.treeLocation,jdbcType=VARCHAR},
+      </if>
+      <if test="record.treeTitle != null" >
+        tree_title = #{record.treeTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="record.treeDescription != null" >
+        tree_description = #{record.treeDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="record.treeType != null" >
+        tree_type = #{record.treeType,jdbcType=INTEGER},
+      </if>
+      <if test="record.treeRemark != null" >
+        tree_remark = #{record.treeRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.gmtCreate != null" >
+        gmt_create = #{record.gmtCreate,jdbcType=DATE},
+      </if>
+      <if test="record.gmtModified != null" >
+        gmt_modified = #{record.gmtModified,jdbcType=DATE},
+      </if>
+      <if test="record.isSign != null" >
+        is_sign = #{record.isSign,jdbcType=TINYINT},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update branch_tree
+    set id = #{record.id,jdbcType=BIGINT},
+      parents_id = #{record.parentsId,jdbcType=BIGINT},
+      tree_location = #{record.treeLocation,jdbcType=VARCHAR},
+      tree_title = #{record.treeTitle,jdbcType=VARCHAR},
+      tree_description = #{record.treeDescription,jdbcType=VARCHAR},
+      tree_type = #{record.treeType,jdbcType=INTEGER},
+      tree_remark = #{record.treeRemark,jdbcType=VARCHAR},
+      gmt_create = #{record.gmtCreate,jdbcType=DATE},
+      gmt_modified = #{record.gmtModified,jdbcType=DATE},
+      is_sign = #{record.isSign,jdbcType=TINYINT}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yiyun.application.pojo.po.BranchTree" >
+    update branch_tree
+    <set >
+      <if test="parentsId != null" >
+        parents_id = #{parentsId,jdbcType=BIGINT},
+      </if>
+      <if test="treeLocation != null" >
+        tree_location = #{treeLocation,jdbcType=VARCHAR},
+      </if>
+      <if test="treeTitle != null" >
+        tree_title = #{treeTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="treeDescription != null" >
+        tree_description = #{treeDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="treeType != null" >
+        tree_type = #{treeType,jdbcType=INTEGER},
+      </if>
+      <if test="treeRemark != null" >
+        tree_remark = #{treeRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtCreate != null" >
+        gmt_create = #{gmtCreate,jdbcType=DATE},
+      </if>
+      <if test="gmtModified != null" >
+        gmt_modified = #{gmtModified,jdbcType=DATE},
+      </if>
+      <if test="isSign != null" >
+        is_sign = #{isSign,jdbcType=TINYINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yiyun.application.pojo.po.BranchTree" >
+    update branch_tree
+    set parents_id = #{parentsId,jdbcType=BIGINT},
+      tree_location = #{treeLocation,jdbcType=VARCHAR},
+      tree_title = #{treeTitle,jdbcType=VARCHAR},
+      tree_description = #{treeDescription,jdbcType=VARCHAR},
+      tree_type = #{treeType,jdbcType=INTEGER},
+      tree_remark = #{treeRemark,jdbcType=VARCHAR},
+      gmt_create = #{gmtCreate,jdbcType=DATE},
+      gmt_modified = #{gmtModified,jdbcType=DATE},
+      is_sign = #{isSign,jdbcType=TINYINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
