@@ -1,5 +1,7 @@
 package com.yiyun.application.web;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,8 +19,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Scope("prototype")
 public class TreeAction {
 
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
+
     @RequestMapping("/treeAction")
     public String  index(){
+
+        logger.info("TreeAction.index");
+
         return "branchTree";
     }
 

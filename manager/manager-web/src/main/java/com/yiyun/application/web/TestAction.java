@@ -34,7 +34,7 @@ public class TestAction {
     @ResponseBody
     @RequestMapping("/test")
     public void test(){
-        logger.info("TestAction/test");
+        logger.info("TestAction.test");
         HashMap map = new HashMap();
         map.put("test","select");
         testService.test(map);
@@ -43,7 +43,7 @@ public class TestAction {
     @ResponseBody
     @RequestMapping("/testModel")
     public String testModel(Model model){
-        logger.info("TestAction/testModel");
+        logger.info("TestAction.testModel");
         //第二步：存放到model中
         model.addAttribute("user", "yiyun");
         return "test.jsp";
