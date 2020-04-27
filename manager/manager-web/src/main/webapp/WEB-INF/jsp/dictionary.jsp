@@ -11,6 +11,54 @@
     <title>dictionary</title>
 </head>
 <body>
-dictionary123
+
+<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+    <legend>参数录入</legend>
+</fieldset>
+
+<div class="layui-form">
+    <table class="layui-table">
+        <colgroup>
+            <col width="150" aria-hidden="true" >
+            <col width="150">
+            <col width="200">
+            <col width="200">
+            <col width="200">
+            <col width="200">
+            <col width="200">
+            <col width="200">
+            <col width="200">
+            <col>
+        </colgroup>
+        <thead>
+        <tr>
+            <th>id</th>
+            <th>代码类型</th>
+            <th>代码值</th>
+            <th>代码说明</th>
+            <th>参数归类</th>
+            <th>创建时间</th>
+            <th>更新时间</th>
+            <th>有效标识</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th>id</th>
+            <th>代码类型</th>
+            <th>代码值</th>
+            <th>代码说明</th>
+            <th>参数归类</th>
+            <th>创建时间</th>
+            <th>更新时间</th>
+            <th>有效标识</th>
+            <th>操作</th>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
 </body>
 </html>

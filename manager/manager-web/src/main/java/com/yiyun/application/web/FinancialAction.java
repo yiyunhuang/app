@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class FinancialAction {
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    @RequestMapping("/dictionaryAction")
+    @RequestMapping("/financialAction")
     public String  index(){
         logger.info("FinancialAction.index");
         return "dictionary";

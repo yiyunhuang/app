@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * @author 翼云
  * @version 1.0
  * @ClassName DictionaryAction
- * @Description TODO
+ * @Description
  * @program: application
  * @date 2020/4/23 22:33
  **/
@@ -26,6 +26,7 @@ public class DictionaryAction {
     @RequestMapping("/dictionaryAction")
     public String  index(){
         logger.info("DictionaryAction.index");
+
         return "dictionary";
     }
 
