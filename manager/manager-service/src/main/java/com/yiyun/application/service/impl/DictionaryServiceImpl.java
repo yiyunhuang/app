@@ -9,7 +9,7 @@ import com.yiyun.application.service.DictionaryService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.annotation.Order;
+import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.List;
@@ -23,6 +23,7 @@ import java.util.Map;
  * @program: application
  * @date 2020/4/27 0027 11:01
  **/
+@Service
 public class DictionaryServiceImpl implements DictionaryService{
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
@@ -30,10 +31,14 @@ public class DictionaryServiceImpl implements DictionaryService{
     private GlobalDictionaryMapper DictionaryDao;
     @Autowired
     private GlobalDictionaryCustomMapper DictionaryCustomDao;
-
-
+    /**
+     * 分页获得字典表的所有数据
+     * @param page
+     * @return
+     */
     @Override
     public Result<GlobalDictionary> listDictionaryByPage(Page page) {
+        logger.info("DictionaryServiceImpl.listDictionaryByPage");
         GlobalDictionary gd = new GlobalDictionary();
         Result<GlobalDictionary> result = null;
         try {

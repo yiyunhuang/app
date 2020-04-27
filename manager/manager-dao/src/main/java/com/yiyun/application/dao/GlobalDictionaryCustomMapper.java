@@ -1,8 +1,6 @@
 package com.yiyun.application.dao;
 
 import com.yiyun.application.pojo.po.GlobalDictionary;
-import com.yiyun.application.pojo.po.GlobalDictionaryExample;
-import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 import java.util.Map;
@@ -17,7 +15,7 @@ import java.util.Map;
 public interface GlobalDictionaryCustomMapper {
 
     /**
-     * 查询商品表中所有记录的数量
+     * 查询字典表中所有记录的数量
      * @return
      */
     int countDictionaries(Map<String,Object> map);

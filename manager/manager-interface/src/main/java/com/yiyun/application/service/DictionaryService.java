@@ -5,8 +5,6 @@ import com.yiyun.application.common.dto.Page;
 import com.yiyun.application.common.dto.Result;
 import com.yiyun.application.pojo.po.GlobalDictionary;
 
-import java.util.HashMap;
-
 /**
  * @Author 翼云
  * @Description // 字典服务类
@@ -16,6 +14,11 @@ import java.util.HashMap;
  **/
 public interface DictionaryService {
 
+    /**
+     * 分页获得字典表的所有数据
+     * @param page
+     * @return
+     */
     public Result<GlobalDictionary> listDictionaryByPage(Page page);
 
 }

@@ -15,7 +15,9 @@
 <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
     <legend>参数录入</legend>
 </fieldset>
-
+<div>
+    <button type="button" class="layui-btn layui-btn-normal" href="${pageContext.request.contextPath }/dictionaries">查询所有</button>
+</div>
 <div class="layui-form">
     <table class="layui-table">
         <colgroup>
