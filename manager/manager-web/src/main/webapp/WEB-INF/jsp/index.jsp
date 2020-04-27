@@ -97,6 +97,16 @@
             });
     }
 
+    function initQuery(url){
+        $.ajax({
+            type:"get",
+            url:"${pageContext.request.contextPath }/"+url,
+            success:function(data) {
+                alert(data);
+            }
+
+        });
+    }
 
 
 
