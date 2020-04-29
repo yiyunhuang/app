@@ -5,7 +5,7 @@ import com.yiyun.application.pojo.po.GlobalDictionary;
 import java.util.List;
 import java.util.Map;
 
-/*
+/**
  * @Author 翼云
  * @Description // 自定义的字典实体类数据访问层接口
  * @Date  2020/4/27 0027 11:15
@@ -16,6 +16,7 @@ public interface GlobalDictionaryCustomMapper {
 
     /**
      * 查询字典表中所有记录的数量
+     * @param map
      * @return
      */
     int countDictionaries(Map<String,Object> map);

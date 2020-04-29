@@ -19,7 +19,6 @@ public class Page {
     /**
      * 偏移量（当前页的第一条记录的索引号）
      */
-    //private int offset;
 
     public int getPage() {
         return page;

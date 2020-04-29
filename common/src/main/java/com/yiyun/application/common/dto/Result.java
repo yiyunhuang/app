@@ -13,7 +13,7 @@ public class Result<T> {
     /**
      * 符合条件的总记录数
      */
-    private  int total;
+    private  int count;
     /**
      * 指定页码显示记录集合
      */
@@ -31,12 +31,12 @@ public class Result<T> {
         this.code = code;
     }
 
-    public int getTotal() {
-        return total;
+    public int getCount() {
+        return count;
     }
 
-    public void setTotal(int total) {
-        this.total = total;
+    public void setCount(int total) {
+        this.count = total;
     }
 
     public List<T> getData() {

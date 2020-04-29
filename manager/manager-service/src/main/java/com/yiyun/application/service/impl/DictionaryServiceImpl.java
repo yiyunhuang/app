@@ -48,8 +48,8 @@ public class DictionaryServiceImpl implements DictionaryService{
             //1 创建一个响应参数实体类
             result = new Result<GlobalDictionary>();
             //2 对total进行设值(符合条件的总记录数)
-            int total = DictionaryCustomDao.countDictionaries(map);
-            result.setTotal(total);
+            int count = DictionaryCustomDao.countDictionaries(map);
+            result.setCount(count);
             //3 对 data 进行设值(指定页码显示记录集合)
             List<GlobalDictionary> list = DictionaryCustomDao.lisDictionariesByPage(map);
             result.setData(list);
