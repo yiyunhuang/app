@@ -15,7 +15,7 @@ public class Page {
     /**
      * 每页显示的条数
      */
-    private int rows;
+    private int limit;
     /**
      * 偏移量（当前页的第一条记录的索引号）
      */
@@ -29,12 +29,12 @@ public class Page {
         this.page = page;
     }
 
-    public int getRows() {
-        return rows;
+    public int getlimit() {
+        return limit;
     }
 
-    public void setRows(int rows) {
-        this.rows = rows;
+    public void setlimit(int limit) {
+        this.limit = limit;
     }
 
     /**
@@ -42,7 +42,7 @@ public class Page {
      * @return
      */
     public int getOffset() {
-        return (page-1)*rows;
+        return (page-1)*limit;
     }
 
 }

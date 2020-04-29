@@ -5,7 +5,6 @@ import com.yiyun.application.common.dto.Query;
 import com.yiyun.application.common.dto.Result;
 import com.yiyun.application.pojo.po.GlobalDictionary;
 import com.yiyun.application.service.DictionaryService;
-import com.yiyun.application.service.impl.DictionaryServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,8 +46,10 @@ public class DictionaryAction {
             list = DictionaryService.listDictionaryByPage(page);
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
+            list.setCode("1");
             e.printStackTrace();
         }
+        list.setCode("0");
         return list;
     }
 

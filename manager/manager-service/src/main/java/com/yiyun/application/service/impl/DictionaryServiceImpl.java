@@ -50,9 +50,9 @@ public class DictionaryServiceImpl implements DictionaryService{
             //2 对total进行设值(符合条件的总记录数)
             int total = DictionaryCustomDao.countDictionaries(map);
             result.setTotal(total);
-            //3 对rows进行设值(指定页码显示记录集合)
+            //3 对 data 进行设值(指定页码显示记录集合)
             List<GlobalDictionary> list = DictionaryCustomDao.lisDictionariesByPage(map);
-            result.setRows(list);
+            result.setData(list);
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
             e.printStackTrace();

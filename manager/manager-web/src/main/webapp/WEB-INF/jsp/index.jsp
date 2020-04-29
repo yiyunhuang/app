@@ -84,16 +84,14 @@
     //JavaScript代码区域
     layui.use('element', function(){
         var element = layui.element;
-
     });
     function openWindows(url){
             $.ajax({
                 type:"get",
                 url:"${pageContext.request.contextPath }/"+url,
                 success:function(data) {
-                    document.getElementById("padding").innerHTML = data;
+                    $("#padding").html(data);
                 }
-
             });
     }
 

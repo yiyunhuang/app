@@ -17,8 +17,19 @@ public class Result<T> {
     /**
      * 指定页码显示记录集合
      */
-    private List<T> rows;
+    private List<T> data;
 
+
+
+    private String code;
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
 
     public int getTotal() {
         return total;
@@ -28,11 +39,11 @@ public class Result<T> {
         this.total = total;
     }
 
-    public List<T> getRows() {
-        return rows;
+    public List<T> getData() {
+        return data;
     }
 
-    public void setRows(List<T> rows) {
-        this.rows = rows;
+    public void setData(List<T> data) {
+        this.data = data;
     }
 }

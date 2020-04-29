@@ -3,7 +3,7 @@
 <mapper namespace="com.yiyun.application.dao.GlobalDictionaryCustomMapper" >
 
   <sql id="Base_Column_List">
-    t.id as id,t.code_type as codeType ,t.code_value as codeValue ,t.code_explain as code_explain ,t.parameters_classified as parametersClassified ,
+    t.id as id,t.code_type as codeType ,t.code_value as codeValue ,t.code_explain as codeExplain ,t.parameters_classified as parametersClassified ,
     t.gmt_create as gmtCreate ,t.gmt_modified as gmtModified ,t.is_sign as isSign
   </sql>
 
@@ -18,7 +18,7 @@
     <include refid="Base_Column_List"/>
     FROM global_dictionary t
     order by id DESC
-    LIMIT #{page.offset},#{page.rows}
+    LIMIT #{page.offset},#{page.limit}
   </select>
 
 
