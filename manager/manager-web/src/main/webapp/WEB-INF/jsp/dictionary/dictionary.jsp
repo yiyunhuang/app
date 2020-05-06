@@ -20,6 +20,12 @@
      <table class="layui-hide" id="dictionary" lay-filter="test"></table>
 </div>
 
+<script type="text/html" id="barDemo">
+    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
+    <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+</script>
+
 <script>
     layui.use('table', function(){
         var table = layui.table;
@@ -57,6 +63,7 @@
                 ,{field: 'gmtCreate', title: '创建时间', align:'center',width:200 ,templet : "<div>{{layui.util.toDateString(d.sbj_start, 'yyyy-MM-dd HH:mm:ss')}}</div>" }
                 ,{field: 'gmtModified', title: '更新时间', align:'center', width: 200 ,templet : "<div>{{layui.util.toDateString(d.sbj_start, 'yyyy-MM-dd HH:mm:ss')}}</div>"}
                 ,{field: 'isSign', title: '有效标识', align:'center',width: 135,  totalRow: true}
+                ,{fixed: 'right', width: 165, align:'center', toolbar: '#barDemo'}
             ]]
             ,parseData: function(res){ //res 即为原始返回的数据
                 return {
@@ -68,6 +75,54 @@
             }
 
         });
+
+
+        //监听行工具事件
+        table.on('tool(test)', function(obj){ //注：tool 是工具条事件名，test 是 table 原始容器的属性 lay-filter="对应的值"
+            var data = obj.data //获得当前行数据
+                ,layEvent = obj.event; //获得 lay-event 对应的值
+            if(layEvent === 'detail'){
+                layer.msg('查看操作');
+            } else if(layEvent === 'del'){
+                layer.confirm('真的删除行么', function(index){
+                    obj.del(); //删除对应行（tr）的DOM结构
+                    layer.close(index);
+                    //向服务端发送删除指令
+                    // alert(obj.data.id);
+                });
+            } else if(layEvent === 'edit'){
+                layer.msg('编辑操作');
+            }
+        });
+
+
+        //监听头工具栏事件
+        table.on('toolbar(test)', function(obj){
+            var checkStatus = table.checkStatus(obj.config.id)
+                ,data = checkStatus.data; //获取选中的数据
+            switch(obj.event){
+                case 'add':
+                    openWindows('dictionaryEditor');
+                    break;
+                case 'update':
+                    if(data.length === 0){
+                        layer.msg('请选择一行');
+                    } else if(data.length > 1){
+                        layer.msg('只能同时编辑一个');
+                    } else {
+                        layer.alert('编辑 [id]：'+ checkStatus.data[0].id);
+                    }
+                    break;
+                case 'delete':
+                    if(data.length === 0){
+                        layer.msg('请选择一行');
+                    } else {
+                        layer.msg('删除');
+                    }
+                    break;
+            };
+        });
+
     });
 
 </script>

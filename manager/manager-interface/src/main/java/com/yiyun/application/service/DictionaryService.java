@@ -21,4 +21,11 @@ public interface DictionaryService {
      */
     public Result<GlobalDictionary> listDictionaryByPage(Page page);
 
+    /**
+     * 新增
+     * @param gd 实体类
+     * @return 受到影响的行数
+     */
+    public Long saveDictionary(GlobalDictionary gd);
+
 }

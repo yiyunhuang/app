@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashMap;
 import java.util.List;
@@ -31,11 +32,8 @@ public class DictionaryServiceImpl implements DictionaryService{
     private GlobalDictionaryMapper DictionaryDao;
     @Autowired
     private GlobalDictionaryCustomMapper DictionaryCustomDao;
-    /**
-     * 分页获得字典表的所有数据
-     * @param page
-     * @return
-     */
+
+
     @Override
     public Result<GlobalDictionary> listDictionaryByPage(Page page) {
         logger.info("DictionaryServiceImpl.listDictionaryByPage");
@@ -58,6 +56,15 @@ public class DictionaryServiceImpl implements DictionaryService{
             e.printStackTrace();
         }
         return result;
+    }
+
+    //加上注解@Transactional之后，这个方法就变成了事务方法
+    //并不是事务方法越多越好，查询方法不需要添加为事务方法
+    @Transactional
+    @Override
+    public Long saveDictionary(GlobalDictionary gd) {
+        Integer insert = DictionaryDao.insert(gd);
+        return Long.valueOf(insert);
     }
 
 }
