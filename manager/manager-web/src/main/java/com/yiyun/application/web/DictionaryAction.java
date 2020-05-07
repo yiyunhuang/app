@@ -1,20 +1,24 @@
 package com.yiyun.application.web;
 
+import com.alibaba.fastjson.JSON;
 import com.yiyun.application.common.dto.MessageResult;
 import com.yiyun.application.common.dto.Page;
 import com.yiyun.application.common.dto.Query;
 import com.yiyun.application.common.dto.Result;
 import com.yiyun.application.pojo.po.GlobalDictionary;
 import com.yiyun.application.service.DictionaryService;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author 翼云
@@ -69,22 +73,29 @@ public class DictionaryAction {
  * @return com.yiyun.application.common.dto.MessageResult
 **/
     @ResponseBody
-    @RequestMapping(value="/dictionary", method= RequestMethod.PUT)
-    public MessageResult dictionariesEditor(GlobalDictionary gd) {
-        logger.info("DictionaryAction.dictionariesEditor");
+    @RequestMapping(value="/dictionary", method= RequestMethod.POST)
+    public MessageResult dictionariesEditor(String gd,String code ,String mess) {
+        logger.info("DictionaryAction.dictionary");
         MessageResult mr = new MessageResult();
+        GlobalDictionary globalDictionary = new GlobalDictionary();
+        List< GlobalDictionary > gdList = new ArrayList< GlobalDictionary >();
+        if (StringUtils.isNotBlank(gd)) {
+            gdList = JSON.parseArray(gd, GlobalDictionary.class);
+        }
+        if(gdList.size()>0){
+            globalDictionary=gdList.get(0);
+        }
         Result<GlobalDictionary> list = null;
         try {
-            final Long dicLong = DictionaryService.saveDictionary(gd);
+            final Long dicLong = DictionaryService.saveDictionary(globalDictionary);
             mr.setSuccess(true);
             mr.setMessage("添加"+dicLong+"个字典成功");
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
             mr.setSuccess(false);
-            list.setCode("1");
             e.printStackTrace();
         }
-        list.setCode("0");
+        System.out.println(mr.getMessage());
         return mr;
     }
 

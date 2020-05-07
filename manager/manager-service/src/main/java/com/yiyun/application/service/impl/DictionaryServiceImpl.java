@@ -2,6 +2,7 @@ package com.yiyun.application.service.impl;
 
 import com.yiyun.application.common.dto.Page;
 import com.yiyun.application.common.dto.Result;
+import com.yiyun.application.common.util.yiyun;
 import com.yiyun.application.dao.GlobalDictionaryCustomMapper;
 import com.yiyun.application.dao.GlobalDictionaryMapper;
 import com.yiyun.application.pojo.po.GlobalDictionary;
@@ -12,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -62,7 +64,11 @@ public class DictionaryServiceImpl implements DictionaryService{
     //并不是事务方法越多越好，查询方法不需要添加为事务方法
     @Transactional
     @Override
-    public Long saveDictionary(GlobalDictionary gd) {
+    public Long saveDictionary(GlobalDictionary gd) throws IllegalArgumentException{
+        gd.setId(yiyun.getId(1L,1L));
+        gd.setIsSign((byte) 1);
+        gd.setGmtCreate(new Date());
+        gd.setGmtModified(new Date());
         Integer insert = DictionaryDao.insert(gd);
         return Long.valueOf(insert);
     }
