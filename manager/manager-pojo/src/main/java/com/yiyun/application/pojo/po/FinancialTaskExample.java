@@ -3,7 +3,6 @@ package com.yiyun.application.pojo.po;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 
 public class FinancialTaskExample {
@@ -105,32 +104,6 @@ public class FinancialTaskExample {
                 throw new RuntimeException("Between values for " + property + " cannot be null");
             }
             criteria.add(new Criterion(condition, value1, value2));
-        }
-
-        protected void addCriterionForJDBCDate(String condition, Date value, String property) {
-            if (value == null) {
-                throw new RuntimeException("Value for " + property + " cannot be null");
-            }
-            addCriterion(condition, new java.sql.Date(value.getTime()), property);
-        }
-
-        protected void addCriterionForJDBCDate(String condition, List<Date> values, String property) {
-            if (values == null || values.size() == 0) {
-                throw new RuntimeException("Value list for " + property + " cannot be null or empty");
-            }
-            List<java.sql.Date> dateList = new ArrayList<java.sql.Date>();
-            Iterator<Date> iter = values.iterator();
-            while (iter.hasNext()) {
-                dateList.add(new java.sql.Date(iter.next().getTime()));
-            }
-            addCriterion(condition, dateList, property);
-        }
-
-        protected void addCriterionForJDBCDate(String condition, Date value1, Date value2, String property) {
-            if (value1 == null || value2 == null) {
-                throw new RuntimeException("Between values for " + property + " cannot be null");
-            }
-            addCriterion(condition, new java.sql.Date(value1.getTime()), new java.sql.Date(value2.getTime()), property);
         }
 
         public Criteria andIdIsNull() {
@@ -454,52 +427,52 @@ public class FinancialTaskExample {
         }
 
         public Criteria andGmtCreateEqualTo(Date value) {
-            addCriterionForJDBCDate("gmt_create =", value, "gmtCreate");
+            addCriterion("gmt_create =", value, "gmtCreate");
             return (Criteria) this;
         }
 
         public Criteria andGmtCreateNotEqualTo(Date value) {
-            addCriterionForJDBCDate("gmt_create <>", value, "gmtCreate");
+            addCriterion("gmt_create <>", value, "gmtCreate");
             return (Criteria) this;
         }
 
         public Criteria andGmtCreateGreaterThan(Date value) {
-            addCriterionForJDBCDate("gmt_create >", value, "gmtCreate");
+            addCriterion("gmt_create >", value, "gmtCreate");
             return (Criteria) this;
         }
 
         public Criteria andGmtCreateGreaterThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("gmt_create >=", value, "gmtCreate");
+            addCriterion("gmt_create >=", value, "gmtCreate");
             return (Criteria) this;
         }
 
         public Criteria andGmtCreateLessThan(Date value) {
-            addCriterionForJDBCDate("gmt_create <", value, "gmtCreate");
+            addCriterion("gmt_create <", value, "gmtCreate");
             return (Criteria) this;
         }
 
         public Criteria andGmtCreateLessThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("gmt_create <=", value, "gmtCreate");
+            addCriterion("gmt_create <=", value, "gmtCreate");
             return (Criteria) this;
         }
 
         public Criteria andGmtCreateIn(List<Date> values) {
-            addCriterionForJDBCDate("gmt_create in", values, "gmtCreate");
+            addCriterion("gmt_create in", values, "gmtCreate");
             return (Criteria) this;
         }
 
         public Criteria andGmtCreateNotIn(List<Date> values) {
-            addCriterionForJDBCDate("gmt_create not in", values, "gmtCreate");
+            addCriterion("gmt_create not in", values, "gmtCreate");
             return (Criteria) this;
         }
 
         public Criteria andGmtCreateBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("gmt_create between", value1, value2, "gmtCreate");
+            addCriterion("gmt_create between", value1, value2, "gmtCreate");
             return (Criteria) this;
         }
 
         public Criteria andGmtCreateNotBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("gmt_create not between", value1, value2, "gmtCreate");
+            addCriterion("gmt_create not between", value1, value2, "gmtCreate");
             return (Criteria) this;
         }
 
@@ -514,52 +487,52 @@ public class FinancialTaskExample {
         }
 
         public Criteria andGmtModifiedEqualTo(Date value) {
-            addCriterionForJDBCDate("gmt_modified =", value, "gmtModified");
+            addCriterion("gmt_modified =", value, "gmtModified");
             return (Criteria) this;
         }
 
         public Criteria andGmtModifiedNotEqualTo(Date value) {
-            addCriterionForJDBCDate("gmt_modified <>", value, "gmtModified");
+            addCriterion("gmt_modified <>", value, "gmtModified");
             return (Criteria) this;
         }
 
         public Criteria andGmtModifiedGreaterThan(Date value) {
-            addCriterionForJDBCDate("gmt_modified >", value, "gmtModified");
+            addCriterion("gmt_modified >", value, "gmtModified");
             return (Criteria) this;
         }
 
         public Criteria andGmtModifiedGreaterThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("gmt_modified >=", value, "gmtModified");
+            addCriterion("gmt_modified >=", value, "gmtModified");
             return (Criteria) this;
         }
 
         public Criteria andGmtModifiedLessThan(Date value) {
-            addCriterionForJDBCDate("gmt_modified <", value, "gmtModified");
+            addCriterion("gmt_modified <", value, "gmtModified");
             return (Criteria) this;
         }
 
         public Criteria andGmtModifiedLessThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("gmt_modified <=", value, "gmtModified");
+            addCriterion("gmt_modified <=", value, "gmtModified");
             return (Criteria) this;
         }
 
         public Criteria andGmtModifiedIn(List<Date> values) {
-            addCriterionForJDBCDate("gmt_modified in", values, "gmtModified");
+            addCriterion("gmt_modified in", values, "gmtModified");
             return (Criteria) this;
         }
 
         public Criteria andGmtModifiedNotIn(List<Date> values) {
-            addCriterionForJDBCDate("gmt_modified not in", values, "gmtModified");
+            addCriterion("gmt_modified not in", values, "gmtModified");
             return (Criteria) this;
         }
 
         public Criteria andGmtModifiedBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("gmt_modified between", value1, value2, "gmtModified");
+            addCriterion("gmt_modified between", value1, value2, "gmtModified");
             return (Criteria) this;
         }
 
         public Criteria andGmtModifiedNotBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("gmt_modified not between", value1, value2, "gmtModified");
+            addCriterion("gmt_modified not between", value1, value2, "gmtModified");
             return (Criteria) this;
         }
 

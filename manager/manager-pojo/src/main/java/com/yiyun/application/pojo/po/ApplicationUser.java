@@ -15,7 +15,7 @@ public class ApplicationUser {
 
     private Date gmtModified;
 
-    private Integer isSign;
+    private Byte isSign;
 
     public Long getId() {
         return id;
@@ -65,11 +65,11 @@ public class ApplicationUser {
         this.gmtModified = gmtModified;
     }
 
-    public Integer getIsSign() {
+    public Byte getIsSign() {
         return isSign;
     }
 
-    public void setIsSign(Integer isSign) {
+    public void setIsSign(Byte isSign) {
         this.isSign = isSign;
     }
 }

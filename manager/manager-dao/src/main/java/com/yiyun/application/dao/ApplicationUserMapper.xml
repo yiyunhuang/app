@@ -6,9 +6,9 @@
     <result column="login_name" property="loginName" jdbcType="VARCHAR" />
     <result column="password" property="password" jdbcType="VARCHAR" />
     <result column="user_name" property="userName" jdbcType="VARCHAR" />
-    <result column="gmt_create" property="gmtCreate" jdbcType="DATE" />
-    <result column="gmt_modified" property="gmtModified" jdbcType="DATE" />
-    <result column="is_sign" property="isSign" jdbcType="INTEGER" />
+    <result column="gmt_create" property="gmtCreate" jdbcType="TIMESTAMP" />
+    <result column="gmt_modified" property="gmtModified" jdbcType="TIMESTAMP" />
+    <result column="is_sign" property="isSign" jdbcType="TINYINT" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -106,8 +106,8 @@
       user_name, gmt_create, gmt_modified, 
       is_sign)
     values (#{id,jdbcType=BIGINT}, #{loginName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
-      #{userName,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=DATE}, #{gmtModified,jdbcType=DATE}, 
-      #{isSign,jdbcType=INTEGER})
+      #{userName,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP}, 
+      #{isSign,jdbcType=TINYINT})
   </insert>
   <insert id="insertSelective" parameterType="com.yiyun.application.pojo.po.ApplicationUser" >
     insert into application_user
@@ -148,13 +148,13 @@
         #{userName,jdbcType=VARCHAR},
       </if>
       <if test="gmtCreate != null" >
-        #{gmtCreate,jdbcType=DATE},
+        #{gmtCreate,jdbcType=TIMESTAMP},
       </if>
       <if test="gmtModified != null" >
-        #{gmtModified,jdbcType=DATE},
+        #{gmtModified,jdbcType=TIMESTAMP},
       </if>
       <if test="isSign != null" >
-        #{isSign,jdbcType=INTEGER},
+        #{isSign,jdbcType=TINYINT},
       </if>
     </trim>
   </insert>
@@ -180,13 +180,13 @@
         user_name = #{record.userName,jdbcType=VARCHAR},
       </if>
       <if test="record.gmtCreate != null" >
-        gmt_create = #{record.gmtCreate,jdbcType=DATE},
+        gmt_create = #{record.gmtCreate,jdbcType=TIMESTAMP},
       </if>
       <if test="record.gmtModified != null" >
-        gmt_modified = #{record.gmtModified,jdbcType=DATE},
+        gmt_modified = #{record.gmtModified,jdbcType=TIMESTAMP},
       </if>
       <if test="record.isSign != null" >
-        is_sign = #{record.isSign,jdbcType=INTEGER},
+        is_sign = #{record.isSign,jdbcType=TINYINT},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -199,9 +199,9 @@
       login_name = #{record.loginName,jdbcType=VARCHAR},
       password = #{record.password,jdbcType=VARCHAR},
       user_name = #{record.userName,jdbcType=VARCHAR},
-      gmt_create = #{record.gmtCreate,jdbcType=DATE},
-      gmt_modified = #{record.gmtModified,jdbcType=DATE},
-      is_sign = #{record.isSign,jdbcType=INTEGER}
+      gmt_create = #{record.gmtCreate,jdbcType=TIMESTAMP},
+      gmt_modified = #{record.gmtModified,jdbcType=TIMESTAMP},
+      is_sign = #{record.isSign,jdbcType=TINYINT}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -219,13 +219,13 @@
         user_name = #{userName,jdbcType=VARCHAR},
       </if>
       <if test="gmtCreate != null" >
-        gmt_create = #{gmtCreate,jdbcType=DATE},
+        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
       </if>
       <if test="gmtModified != null" >
-        gmt_modified = #{gmtModified,jdbcType=DATE},
+        gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
       </if>
       <if test="isSign != null" >
-        is_sign = #{isSign,jdbcType=INTEGER},
+        is_sign = #{isSign,jdbcType=TINYINT},
       </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
@@ -235,9 +235,9 @@
     set login_name = #{loginName,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
       user_name = #{userName,jdbcType=VARCHAR},
-      gmt_create = #{gmtCreate,jdbcType=DATE},
-      gmt_modified = #{gmtModified,jdbcType=DATE},
-      is_sign = #{isSign,jdbcType=INTEGER}
+      gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      is_sign = #{isSign,jdbcType=TINYINT}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

@@ -55,14 +55,14 @@
             }
             ,cols: [[ //表头
                 {type: 'checkbox' ,align:'center' ,fixed: 'left'}
-                ,{field: 'id', title: 'ID', width:80, sort: true,align:'center' ,fixed: 'left'}
-                ,{field: 'codeType', title: '代码类型', align:'center',width:80 }
-                ,{field: 'codeValue', title: '代码值', align:'center', width: 90}
-                ,{field: 'codeExplain', title: '代码说明',align:'center', width:80}
-                ,{field: 'parametersClassified', title: '参数归类',align:'center', width: 80  }
-                ,{field: 'gmtCreate', title: '创建时间', align:'center',width:200 ,templet : "<div>{{layui.util.toDateString(d.sbj_start, 'yyyy-MM-dd HH:mm:ss')}}</div>" }
-                ,{field: 'gmtModified', title: '更新时间', align:'center', width: 200 ,templet : "<div>{{layui.util.toDateString(d.sbj_start, 'yyyy-MM-dd HH:mm:ss')}}</div>"}
-                ,{field: 'isSign', title: '有效标识', align:'center',width: 135,  totalRow: true}
+                ,{field: 'id', title: 'ID', width:200, sort: true,align:'center' ,fixed: 'left'}
+                ,{field: 'codeType', title: '代码类型', align:'center',width:100 }
+                ,{field: 'codeValue', title: '代码值', align:'center', width: 100}
+                ,{field: 'codeExplain', title: '代码说明',align:'center', width:100}
+                ,{field: 'parametersClassified', title: '参数归类',align:'center', width: 100  }
+                ,{field: 'gmtCreate', title: '创建时间', align:'center',width:200 ,templet : "<div>{{layui.util.toDateString(d.gmtCreate, 'yyyy-MM-dd HH:mm:ss')}}</div>"}
+                ,{field: 'gmtModified', title: '更新时间', align:'center', width: 200 ,templet : "<div>{{layui.util.toDateString(d.gmtModified, 'yyyy-MM-dd HH:mm:ss')}}</div>"}
+                ,{field: 'isSign', title: '有效标识', align:'center',width: 100,  totalRow: true}
                 ,{fixed: 'right', width: 165, align:'center', toolbar: '#barDemo'}
             ]]
             ,parseData: function(res){ //res 即为原始返回的数据

@@ -13,7 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -67,8 +66,6 @@ public class DictionaryServiceImpl implements DictionaryService{
     public Long saveDictionary(GlobalDictionary gd) throws IllegalArgumentException{
         gd.setId(yiyun.getId(1L,1L));
         gd.setIsSign((byte) 1);
-        gd.setGmtCreate(new Date());
-        gd.setGmtModified(new Date());
         Integer insert = DictionaryDao.insert(gd);
         return Long.valueOf(insert);
     }

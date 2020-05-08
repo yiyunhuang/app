@@ -17,29 +17,29 @@
     <legend>表单集合演示--dictionaryEditor</legend>
 </fieldset>
 
-<form class="layui-form" action="" method="post" id ="AddForm" lay-filter="AddForm1">
+<div class="layui-form"  method="post" lay-filter="AddForm">
     <div class="layui-form-item">
         <label class="layui-form-label">代码类型</label>
         <div class="layui-input-block">
-            <input type="text" name="codeType" lay-verify="required" value="1" lay-reqtext="代码类型是必填项，不能为空。" placeholder="请输入" autocomplete="off" class="layui-input">
+            <input type="text" name="codeType" lay-verify="required" lay-reqtext="代码类型是必填项，不能为空。" placeholder="请输入" autocomplete="off" class="layui-input">
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">代码值</label>
         <div class="layui-input-block">
-            <input type="text" name="codeValue" lay-verify="required" value="2" lay-reqtext="代码值是必填项，不能为空。" placeholder="请输入" autocomplete="off" class="layui-input">
+            <input type="text" name="codeValue" lay-verify="required" lay-reqtext="代码值是必填项，不能为空。" placeholder="请输入" autocomplete="off" class="layui-input">
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">代码说明</label>
         <div class="layui-input-block">
-            <input type="text" name="codeExplain" lay-verify="required" value="3" lay-reqtext="代码说明是必填项，不能为空。" placeholder="请输入" autocomplete="off" class="layui-input">
+            <input type="text" name="codeExplain" lay-verify="required" lay-reqtext="代码说明是必填项，不能为空。" placeholder="请输入" autocomplete="off" class="layui-input">
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">参数归类</label>
         <div class="layui-input-block">
-            <input type="text" name="parametersClassified" lay-verify="required" value="4" lay-reqtext="参数归类是必填项，不能为空。" placeholder="请输入" autocomplete="off" class="layui-input">
+            <input type="text" name="parametersClassified" lay-verify="required" lay-reqtext="参数归类是必填项，不能为空。" placeholder="请输入" autocomplete="off" class="layui-input">
         </div>
     </div>
 
@@ -50,7 +50,7 @@
         </div>
     </div>
 
-</form>
+</div>
 
 </body>
 
@@ -79,11 +79,11 @@
             var paramsJson = [];
             var params = {
                 gd: '',
-                code: '1',
-                mess: '2'
+                code: '',
+                mess: ''
             }
             var gd = {};
-            gd = form.val("AddForm1");
+            gd = form.val("AddForm");
             paramsJson.push(gd);
             params.gd = JSON.stringify(paramsJson);
             $.ajax({
@@ -91,7 +91,8 @@
                 url: '${pageContext.request.contextPath }/dictionary',
                 data :params,
                 success:function(data) {
-                    alert(data);
+                    alert(data.message);
+                    openWindows('dictionaryAction');
                 }
 
             });
@@ -100,33 +101,6 @@
 
     });
 
-    //提交表单
-    function submitForm() {
-
-        $('#AddForm').form('submit', {
-            //提交表单到item进行处理
-             method:'post',
-            //在表单提交之前触发
-            onSubmit: function () {
-                alert('submitForm.onSubmit');
-                // 定义传入后台的参数
-                var paramsJson = [];
-                var o = {};
-                o.codeType =  $codeType.val();
-                o.codeValue =  $codeValue.val();
-                o.codeExplain =  $codeExplain.val();
-                o.parametersClassified =  $parametersClassified.val();
-                paramsJson.push(o);
-                paramsJson = JSON.stringify(paramsJson);
-            },
-            //在表单提交成功以后触发
-            success: function (data) {
-                if (data > 0) {
-                    $.messager.alert('温馨提示', '恭喜！添加商品成功！');
-                }
-            }
-        });
-    }
 
 </script>
 </html>

@@ -7,8 +7,8 @@
     <result column="code_value" property="codeValue" jdbcType="VARCHAR" />
     <result column="code_explain" property="codeExplain" jdbcType="VARCHAR" />
     <result column="parameters_classified" property="parametersClassified" jdbcType="VARCHAR" />
-    <result column="gmt_create" property="gmtCreate" jdbcType="DATE" />
-    <result column="gmt_modified" property="gmtModified" jdbcType="DATE" />
+    <result column="gmt_create" property="gmtCreate" jdbcType="TIMESTAMP" />
+    <result column="gmt_modified" property="gmtModified" jdbcType="TIMESTAMP" />
     <result column="is_sign" property="isSign" jdbcType="TINYINT" />
   </resultMap>
   <sql id="Example_Where_Clause" >
@@ -108,8 +108,8 @@
       code_explain, parameters_classified, gmt_create, 
       gmt_modified, is_sign)
     values (#{id,jdbcType=BIGINT}, #{codeType,jdbcType=VARCHAR}, #{codeValue,jdbcType=VARCHAR}, 
-      #{codeExplain,jdbcType=VARCHAR}, #{parametersClassified,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=DATE}, 
-      #{gmtModified,jdbcType=DATE}, #{isSign,jdbcType=TINYINT})
+      #{codeExplain,jdbcType=VARCHAR}, #{parametersClassified,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=TIMESTAMP}, 
+      #{gmtModified,jdbcType=TIMESTAMP}, #{isSign,jdbcType=TINYINT})
   </insert>
   <insert id="insertSelective" parameterType="com.yiyun.application.pojo.po.GlobalDictionary" >
     insert into global_dictionary
@@ -156,10 +156,10 @@
         #{parametersClassified,jdbcType=VARCHAR},
       </if>
       <if test="gmtCreate != null" >
-        #{gmtCreate,jdbcType=DATE},
+        #{gmtCreate,jdbcType=TIMESTAMP},
       </if>
       <if test="gmtModified != null" >
-        #{gmtModified,jdbcType=DATE},
+        #{gmtModified,jdbcType=TIMESTAMP},
       </if>
       <if test="isSign != null" >
         #{isSign,jdbcType=TINYINT},
@@ -191,10 +191,10 @@
         parameters_classified = #{record.parametersClassified,jdbcType=VARCHAR},
       </if>
       <if test="record.gmtCreate != null" >
-        gmt_create = #{record.gmtCreate,jdbcType=DATE},
+        gmt_create = #{record.gmtCreate,jdbcType=TIMESTAMP},
       </if>
       <if test="record.gmtModified != null" >
-        gmt_modified = #{record.gmtModified,jdbcType=DATE},
+        gmt_modified = #{record.gmtModified,jdbcType=TIMESTAMP},
       </if>
       <if test="record.isSign != null" >
         is_sign = #{record.isSign,jdbcType=TINYINT},
@@ -211,8 +211,8 @@
       code_value = #{record.codeValue,jdbcType=VARCHAR},
       code_explain = #{record.codeExplain,jdbcType=VARCHAR},
       parameters_classified = #{record.parametersClassified,jdbcType=VARCHAR},
-      gmt_create = #{record.gmtCreate,jdbcType=DATE},
-      gmt_modified = #{record.gmtModified,jdbcType=DATE},
+      gmt_create = #{record.gmtCreate,jdbcType=TIMESTAMP},
+      gmt_modified = #{record.gmtModified,jdbcType=TIMESTAMP},
       is_sign = #{record.isSign,jdbcType=TINYINT}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -234,10 +234,10 @@
         parameters_classified = #{parametersClassified,jdbcType=VARCHAR},
       </if>
       <if test="gmtCreate != null" >
-        gmt_create = #{gmtCreate,jdbcType=DATE},
+        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
       </if>
       <if test="gmtModified != null" >
-        gmt_modified = #{gmtModified,jdbcType=DATE},
+        gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
       </if>
       <if test="isSign != null" >
         is_sign = #{isSign,jdbcType=TINYINT},
@@ -251,8 +251,8 @@
       code_value = #{codeValue,jdbcType=VARCHAR},
       code_explain = #{codeExplain,jdbcType=VARCHAR},
       parameters_classified = #{parametersClassified,jdbcType=VARCHAR},
-      gmt_create = #{gmtCreate,jdbcType=DATE},
-      gmt_modified = #{gmtModified,jdbcType=DATE},
+      gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
       is_sign = #{isSign,jdbcType=TINYINT}
     where id = #{id,jdbcType=BIGINT}
   </update>

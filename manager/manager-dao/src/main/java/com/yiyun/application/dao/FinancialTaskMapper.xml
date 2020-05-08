@@ -7,8 +7,8 @@
     <result column="total_amount" property="totalAmount" jdbcType="DECIMAL" />
     <result column="money_change" property="moneyChange" jdbcType="DECIMAL" />
     <result column="user_id" property="userId" jdbcType="BIGINT" />
-    <result column="gmt_create" property="gmtCreate" jdbcType="DATE" />
-    <result column="gmt_modified" property="gmtModified" jdbcType="DATE" />
+    <result column="gmt_create" property="gmtCreate" jdbcType="TIMESTAMP" />
+    <result column="gmt_modified" property="gmtModified" jdbcType="TIMESTAMP" />
     <result column="is_sign" property="isSign" jdbcType="TINYINT" />
   </resultMap>
   <sql id="Example_Where_Clause" >
@@ -108,8 +108,8 @@
       money_change, user_id, gmt_create, 
       gmt_modified, is_sign)
     values (#{id,jdbcType=BIGINT}, #{financialType,jdbcType=VARCHAR}, #{totalAmount,jdbcType=DECIMAL}, 
-      #{moneyChange,jdbcType=DECIMAL}, #{userId,jdbcType=BIGINT}, #{gmtCreate,jdbcType=DATE}, 
-      #{gmtModified,jdbcType=DATE}, #{isSign,jdbcType=TINYINT})
+      #{moneyChange,jdbcType=DECIMAL}, #{userId,jdbcType=BIGINT}, #{gmtCreate,jdbcType=TIMESTAMP}, 
+      #{gmtModified,jdbcType=TIMESTAMP}, #{isSign,jdbcType=TINYINT})
   </insert>
   <insert id="insertSelective" parameterType="com.yiyun.application.pojo.po.FinancialTask" >
     insert into financial_task
@@ -156,10 +156,10 @@
         #{userId,jdbcType=BIGINT},
       </if>
       <if test="gmtCreate != null" >
-        #{gmtCreate,jdbcType=DATE},
+        #{gmtCreate,jdbcType=TIMESTAMP},
       </if>
       <if test="gmtModified != null" >
-        #{gmtModified,jdbcType=DATE},
+        #{gmtModified,jdbcType=TIMESTAMP},
       </if>
       <if test="isSign != null" >
         #{isSign,jdbcType=TINYINT},
@@ -191,10 +191,10 @@
         user_id = #{record.userId,jdbcType=BIGINT},
       </if>
       <if test="record.gmtCreate != null" >
-        gmt_create = #{record.gmtCreate,jdbcType=DATE},
+        gmt_create = #{record.gmtCreate,jdbcType=TIMESTAMP},
       </if>
       <if test="record.gmtModified != null" >
-        gmt_modified = #{record.gmtModified,jdbcType=DATE},
+        gmt_modified = #{record.gmtModified,jdbcType=TIMESTAMP},
       </if>
       <if test="record.isSign != null" >
         is_sign = #{record.isSign,jdbcType=TINYINT},
@@ -211,8 +211,8 @@
       total_amount = #{record.totalAmount,jdbcType=DECIMAL},
       money_change = #{record.moneyChange,jdbcType=DECIMAL},
       user_id = #{record.userId,jdbcType=BIGINT},
-      gmt_create = #{record.gmtCreate,jdbcType=DATE},
-      gmt_modified = #{record.gmtModified,jdbcType=DATE},
+      gmt_create = #{record.gmtCreate,jdbcType=TIMESTAMP},
+      gmt_modified = #{record.gmtModified,jdbcType=TIMESTAMP},
       is_sign = #{record.isSign,jdbcType=TINYINT}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -234,10 +234,10 @@
         user_id = #{userId,jdbcType=BIGINT},
       </if>
       <if test="gmtCreate != null" >
-        gmt_create = #{gmtCreate,jdbcType=DATE},
+        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
       </if>
       <if test="gmtModified != null" >
-        gmt_modified = #{gmtModified,jdbcType=DATE},
+        gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
       </if>
       <if test="isSign != null" >
         is_sign = #{isSign,jdbcType=TINYINT},
@@ -251,8 +251,8 @@
       total_amount = #{totalAmount,jdbcType=DECIMAL},
       money_change = #{moneyChange,jdbcType=DECIMAL},
       user_id = #{userId,jdbcType=BIGINT},
-      gmt_create = #{gmtCreate,jdbcType=DATE},
-      gmt_modified = #{gmtModified,jdbcType=DATE},
+      gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
       is_sign = #{isSign,jdbcType=TINYINT}
     where id = #{id,jdbcType=BIGINT}
   </update>

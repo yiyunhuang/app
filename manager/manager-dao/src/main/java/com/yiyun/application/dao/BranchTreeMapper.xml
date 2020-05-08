@@ -9,8 +9,8 @@
     <result column="tree_description" property="treeDescription" jdbcType="VARCHAR" />
     <result column="tree_type" property="treeType" jdbcType="INTEGER" />
     <result column="tree_remark" property="treeRemark" jdbcType="VARCHAR" />
-    <result column="gmt_create" property="gmtCreate" jdbcType="DATE" />
-    <result column="gmt_modified" property="gmtModified" jdbcType="DATE" />
+    <result column="gmt_create" property="gmtCreate" jdbcType="TIMESTAMP" />
+    <result column="gmt_modified" property="gmtModified" jdbcType="TIMESTAMP" />
     <result column="is_sign" property="isSign" jdbcType="TINYINT" />
   </resultMap>
   <sql id="Example_Where_Clause" >
@@ -112,7 +112,7 @@
       is_sign)
     values (#{id,jdbcType=BIGINT}, #{parentsId,jdbcType=BIGINT}, #{treeLocation,jdbcType=VARCHAR}, 
       #{treeTitle,jdbcType=VARCHAR}, #{treeDescription,jdbcType=VARCHAR}, #{treeType,jdbcType=INTEGER}, 
-      #{treeRemark,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=DATE}, #{gmtModified,jdbcType=DATE}, 
+      #{treeRemark,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP}, 
       #{isSign,jdbcType=TINYINT})
   </insert>
   <insert id="insertSelective" parameterType="com.yiyun.application.pojo.po.BranchTree" >
@@ -172,10 +172,10 @@
         #{treeRemark,jdbcType=VARCHAR},
       </if>
       <if test="gmtCreate != null" >
-        #{gmtCreate,jdbcType=DATE},
+        #{gmtCreate,jdbcType=TIMESTAMP},
       </if>
       <if test="gmtModified != null" >
-        #{gmtModified,jdbcType=DATE},
+        #{gmtModified,jdbcType=TIMESTAMP},
       </if>
       <if test="isSign != null" >
         #{isSign,jdbcType=TINYINT},
@@ -213,10 +213,10 @@
         tree_remark = #{record.treeRemark,jdbcType=VARCHAR},
       </if>
       <if test="record.gmtCreate != null" >
-        gmt_create = #{record.gmtCreate,jdbcType=DATE},
+        gmt_create = #{record.gmtCreate,jdbcType=TIMESTAMP},
       </if>
       <if test="record.gmtModified != null" >
-        gmt_modified = #{record.gmtModified,jdbcType=DATE},
+        gmt_modified = #{record.gmtModified,jdbcType=TIMESTAMP},
       </if>
       <if test="record.isSign != null" >
         is_sign = #{record.isSign,jdbcType=TINYINT},
@@ -235,8 +235,8 @@
       tree_description = #{record.treeDescription,jdbcType=VARCHAR},
       tree_type = #{record.treeType,jdbcType=INTEGER},
       tree_remark = #{record.treeRemark,jdbcType=VARCHAR},
-      gmt_create = #{record.gmtCreate,jdbcType=DATE},
-      gmt_modified = #{record.gmtModified,jdbcType=DATE},
+      gmt_create = #{record.gmtCreate,jdbcType=TIMESTAMP},
+      gmt_modified = #{record.gmtModified,jdbcType=TIMESTAMP},
       is_sign = #{record.isSign,jdbcType=TINYINT}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -264,10 +264,10 @@
         tree_remark = #{treeRemark,jdbcType=VARCHAR},
       </if>
       <if test="gmtCreate != null" >
-        gmt_create = #{gmtCreate,jdbcType=DATE},
+        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
       </if>
       <if test="gmtModified != null" >
-        gmt_modified = #{gmtModified,jdbcType=DATE},
+        gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
       </if>
       <if test="isSign != null" >
         is_sign = #{isSign,jdbcType=TINYINT},
@@ -283,8 +283,8 @@
       tree_description = #{treeDescription,jdbcType=VARCHAR},
       tree_type = #{treeType,jdbcType=INTEGER},
       tree_remark = #{treeRemark,jdbcType=VARCHAR},
-      gmt_create = #{gmtCreate,jdbcType=DATE},
-      gmt_modified = #{gmtModified,jdbcType=DATE},
+      gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
       is_sign = #{isSign,jdbcType=TINYINT}
     where id = #{id,jdbcType=BIGINT}
   </update>
