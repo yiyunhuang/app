@@ -13,6 +13,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -49,7 +50,12 @@ public class DictionaryAction {
         return "dictionary/dictionaryEditor";
     }
 
-
+    /**
+     * get dictionaries list
+     * @param page
+     * @param query
+     * @return com.yiyun.application.common.dto.MessageResult
+     */
     @ResponseBody
     @RequestMapping("/dictionaries")
     public Result<GlobalDictionary> listDictionariesByPage(Page page, Query query) {
@@ -65,17 +71,17 @@ public class DictionaryAction {
         list.setCode("0");
         return list;
     }
-/*
+/**
  * @Author 翼云
  * @Description // add dictionary
  * @Date  2020/5/6 0006 16:04
- * @Param [id, page, query]
+ * @Param [gd, code, mess]
  * @return com.yiyun.application.common.dto.MessageResult
 **/
     @ResponseBody
-    @RequestMapping(value="/dictionary", method= RequestMethod.POST)
-    public MessageResult dictionariesEditor(String gd,String code ,String mess) {
-        logger.info("DictionaryAction.dictionary");
+    @RequestMapping(value="/dictionaries", method= RequestMethod.POST)
+    public MessageResult postDictionaries(String gd) {
+        logger.info("DictionaryAction.postDictionaries");
         MessageResult mr = new MessageResult();
         GlobalDictionary globalDictionary = new GlobalDictionary();
         List< GlobalDictionary > gdList = new ArrayList< GlobalDictionary >();
@@ -95,9 +101,31 @@ public class DictionaryAction {
             mr.setSuccess(false);
             e.printStackTrace();
         }
-        System.out.println(mr.getMessage());
         return mr;
     }
-
+/**
+ * @Author yiyun
+ * @Description //TODO delete dictionary
+ * @Date  2020/5/9 0009 11:12
+ * @Param [id]
+ * @return com.yiyun.application.common.dto.MessageResult
+**/
+    @ResponseBody
+    @RequestMapping(value="/dictionaries/{id}", method= RequestMethod.DELETE)
+    public MessageResult deleteDictionary(@PathVariable Long  id) {
+        logger.info("DictionaryAction.deleteDictionary");
+        MessageResult mr = new MessageResult();
+        try {
+//            final Long dicLong = DictionaryService.saveDictionary(globalDictionary);
+            mr.setSuccess(true);
+            mr.setMessage("删除成功");
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+            mr.setSuccess(false);
+            mr.setMessage("删除失败");
+            e.printStackTrace();
+        }
+        return mr;
+    }
 
 }

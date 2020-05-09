@@ -79,8 +79,7 @@
             var paramsJson = [];
             var params = {
                 gd: '',
-                code: '',
-                mess: ''
+                message: ''
             }
             var gd = {};
             gd = form.val("AddForm");

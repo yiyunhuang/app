@@ -88,7 +88,16 @@
                     obj.del(); //删除对应行（tr）的DOM结构
                     layer.close(index);
                     //向服务端发送删除指令
-                    // alert(obj.data.id);
+                    $.ajax({
+                        type:'delete',
+                        url: '${pageContext.request.contextPath }/dictionaries/'+obj.data.id,
+                        success:function(data) {
+                            alert(data.message);
+                            openWindows('dictionaryAction');
+                        }
+
+                    });
+
                 });
             } else if(layEvent === 'edit'){
                 layer.msg('编辑操作');
