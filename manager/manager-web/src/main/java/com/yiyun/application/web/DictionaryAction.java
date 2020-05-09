@@ -3,7 +3,6 @@ package com.yiyun.application.web;
 import com.alibaba.fastjson.JSON;
 import com.yiyun.application.common.dto.MessageResult;
 import com.yiyun.application.common.dto.Page;
-import com.yiyun.application.common.dto.Query;
 import com.yiyun.application.common.dto.Result;
 import com.yiyun.application.pojo.po.GlobalDictionary;
 import com.yiyun.application.service.DictionaryService;
@@ -37,7 +36,7 @@ public class DictionaryAction {
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
-    private DictionaryService DictionaryService;
+    private DictionaryService dictionaryService;
 
     @RequestMapping("/dictionaryAction")
     public String  index(){
@@ -53,16 +52,24 @@ public class DictionaryAction {
     /**
      * get dictionaries list
      * @param page
-     * @param query
+     * @param gd GlobalDictionary 实体类
      * @return com.yiyun.application.common.dto.MessageResult
      */
     @ResponseBody
     @RequestMapping("/dictionaries")
-    public Result<GlobalDictionary> listDictionariesByPage(Page page, Query query) {
+    public Result<GlobalDictionary> listDictionariesByPage(Page page, String gd) {
         logger.info("DictionaryAction.listDictionariesByPage");
         Result<GlobalDictionary> list = null;
         try {
-            list = DictionaryService.listDictionaryByPage(page);
+            GlobalDictionary globalDictionary = new GlobalDictionary();
+            List< GlobalDictionary > gdList = new ArrayList< GlobalDictionary >();
+            if (StringUtils.isNotBlank(gd)) {
+                gdList = JSON.parseArray(gd, GlobalDictionary.class);
+            }
+            if(gdList.size()>0){
+                globalDictionary=gdList.get(0);
+            }
+            list = dictionaryService.listDictionaryByPage(page,globalDictionary);
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
             list.setCode("1");
@@ -119,7 +126,7 @@ public class DictionaryAction {
         }
         Result<GlobalDictionary> list = null;
         try {
-            final Long dicLong = DictionaryService.saveDictionary(globalDictionary);
+            final Long dicLong = dictionaryService.saveDictionary(globalDictionary);
             mr.setSuccess(true);
             mr.setMessage("添加"+dicLong+"个字典成功");
         } catch (Exception e) {
@@ -142,10 +149,9 @@ public class DictionaryAction {
         logger.info("DictionaryAction.deleteDictionary");
         MessageResult mr = new MessageResult();
         try {
-//            final Long dicLong = DictionaryService.saveDictionary(globalDictionary);
-            System.out.println(id);
+            Long count = dictionaryService.deleteDictionary(id);
             mr.setSuccess(true);
-            mr.setMessage("删除成功");
+            mr.setMessage("删除"+count+"个成功");
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
             mr.setSuccess(false);
@@ -164,12 +170,21 @@ public class DictionaryAction {
     **/
     @ResponseBody
     @RequestMapping(value="/dictionaries/{id}", method= RequestMethod.PUT)
-    public MessageResult putDictionary(@PathVariable Long  id) {
+    public MessageResult putDictionary(@PathVariable Long  id,String gd) {
         logger.info("DictionaryAction.putDictionary");
         MessageResult mr = new MessageResult();
         try {
             System.out.println(id);
-//            final Long dicLong = DictionaryService.saveDictionary(globalDictionary);
+            GlobalDictionary globalDictionary = new GlobalDictionary();
+            List< GlobalDictionary > gdList = new ArrayList< GlobalDictionary >();
+            if (StringUtils.isNotBlank(gd)) {
+                gdList = JSON.parseArray(gd, GlobalDictionary.class);
+            }
+            if(gdList.size()>0){
+                globalDictionary=gdList.get(0);
+            }
+            Result<GlobalDictionary> list = null;
+            final Long dicLong = dictionaryService.updateDictionary(id,globalDictionary);
             mr.setSuccess(true);
             mr.setMessage("更新成功");
         } catch (Exception e) {

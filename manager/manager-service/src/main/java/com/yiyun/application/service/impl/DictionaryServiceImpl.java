@@ -36,7 +36,7 @@ public class DictionaryServiceImpl implements DictionaryService{
 
 
     @Override
-    public Result<GlobalDictionary> listDictionaryByPage(Page page) {
+    public Result<GlobalDictionary> listDictionaryByPage(Page page, GlobalDictionary record) {
         logger.info("DictionaryServiceImpl.listDictionaryByPage");
         GlobalDictionary gd = new GlobalDictionary();
         Result<GlobalDictionary> result = null;
@@ -44,6 +44,7 @@ public class DictionaryServiceImpl implements DictionaryService{
             //0 创建一个Map封装前台传递过来的参数
             Map<String, Object> map = new HashMap<String, Object>();
             map.put("page", page);
+            map.put("record", record);
             //1 创建一个响应参数实体类
             result = new Result<GlobalDictionary>();
             //2 对total进行设值(符合条件的总记录数)
@@ -69,5 +70,22 @@ public class DictionaryServiceImpl implements DictionaryService{
         Integer insert = DictionaryDao.insert(gd);
         return Long.valueOf(insert);
     }
+
+    @Transactional
+    @Override
+    public Long updateDictionary(Long id, GlobalDictionary gd) {
+        Integer update = DictionaryDao.updateByPrimaryKeySelective(gd);
+        return Long.valueOf(update);
+    }
+
+
+    @Transactional
+    @Override
+    public Long deleteDictionary(Long id) {
+        Integer update = DictionaryDao.deleteByPrimaryKey(id);
+        return Long.valueOf(update);
+    }
+
+
 
 }

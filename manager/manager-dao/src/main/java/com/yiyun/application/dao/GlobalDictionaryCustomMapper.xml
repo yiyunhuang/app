@@ -7,16 +7,48 @@
     t.gmt_create as gmtCreate ,t.gmt_modified as gmtModified ,t.is_sign as isSign
   </sql>
 
+  <sql id="Where_Clause" >
+    <where>
+        1=1
+      <if test="record.id != null" >
+        and id like '%${record.id}%'
+      </if>
+      <if test="record.codeType != null" >
+        and code_type like '%${record.codeType}%'
+      </if>
+      <if test="record.codeValue != null" >
+        and code_value like '%${record.codeValue}%'
+      </if>
+      <if test="record.codeExplain != null" >
+        and code_explain like '%${record.codeExplain}%'
+      </if>
+      <if test="record.parametersClassified != null" >
+        and parameters_classified like '%${record.parametersClassified}%'
+      </if>
+      <if test="record.gmtCreate != null" >
+        and gmt_create = '${record.gmtCreate}'
+      </if>
+      <if test="record.gmtModified != null" >
+        and gmt_modified = '${record.gmtModified}'
+      </if>
+      <if test="record.isSign != null" >
+        and is_sign = '${record.isSign}'
+      </if>
+
+    </where>
+  </sql>
 
   <select id="countDictionaries" resultType="_int">
     select count(1)
     from global_dictionary t
+    <include refid="Where_Clause"/>
   </select>
 
   <select id="lisDictionariesByPage" resultType="com.yiyun.application.pojo.vo.GlobalDictionaryCustom">
     SELECT
     <include refid="Base_Column_List"/>
     FROM global_dictionary t
+    <include refid="Where_Clause"/>
     order by id DESC
     LIMIT #{page.offset},#{page.limit}
   </select>

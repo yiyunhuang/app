@@ -19,7 +19,7 @@ public interface DictionaryService {
      * @param page
      * @return
      */
-    public Result<GlobalDictionary> listDictionaryByPage(Page page);
+    public Result<GlobalDictionary> listDictionaryByPage(Page page, GlobalDictionary record);
 
     /**
      * 新增
@@ -27,5 +27,24 @@ public interface DictionaryService {
      * @return 受到影响的行数
      */
     public Long saveDictionary(GlobalDictionary gd);
+
+    /**
+     * @Author yiyun
+     * @Description // update dictionary
+     * @Date  2020/5/9 0009 14:22
+     * @Param [id, gd]
+     * @return java.lang.Long
+    **/
+    public Long updateDictionary(Long id ,GlobalDictionary gd);
+
+    /**
+     * @Author yiyun
+     * @Description //delete dictionary
+     * @Date  2020/5/9 0009 14:51
+     * @Param [id]
+     * @return java.lang.Long
+    **/
+    public Long deleteDictionary(Long id);
+
 
 }

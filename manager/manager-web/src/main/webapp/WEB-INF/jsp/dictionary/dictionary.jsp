@@ -35,6 +35,7 @@
             ,height: 420
             ,url: '${pageContext.request.contextPath }/dictionaries' //数据接口
             ,title: '字典表'
+            ,even: true //开启隔行背景
             ,toolbar: 'default' //开启工具栏，此处显示默认图标，可以自定义模板，详见文档
             ,totalRow: false //开启合计行
             ,request: {
@@ -101,6 +102,16 @@
                 });
             } else if(layEvent === 'edit'){
                 layer.msg('编辑操作');
+                $.ajax({
+                    type:'PUT',
+                    url: '${pageContext.request.contextPath }/dictionaries/'+obj.data.id,
+                    success:function(data) {
+                        alert(data.message);
+                        openWindows('dictionaryAction');
+                    }
+
+                });
+
             }
         });
 

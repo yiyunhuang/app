@@ -87,7 +87,7 @@
             params.gd = JSON.stringify(paramsJson);
             $.ajax({
                 type:'post',
-                url: '${pageContext.request.contextPath }/dictionary',
+                url: '${pageContext.request.contextPath }/dictionaries',
                 data :params,
                 success:function(data) {
                     alert(data.message);
