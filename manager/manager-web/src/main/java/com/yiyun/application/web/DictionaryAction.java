@@ -72,6 +72,32 @@ public class DictionaryAction {
         return list;
     }
 /**
+ * @Author yiyun
+ * @Description //TODO query dictionary
+ * @Date  2020/5/9 0009 11:26
+ * @Param [id]
+ * @return com.yiyun.application.common.dto.MessageResult
+**/
+    @ResponseBody
+    @RequestMapping(value="/dictionaries/{id}", method= RequestMethod.GET)
+    public MessageResult getDictionary(@PathVariable Long  id) {
+        logger.info("DictionaryAction.getDictionary");
+        MessageResult mr = new MessageResult();
+        try {
+            System.out.println(id);
+//            final Long dicLong = DictionaryService.saveDictionary(globalDictionary);
+            mr.setSuccess(true);
+            mr.setMessage("查询成功");
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+            mr.setSuccess(false);
+            mr.setMessage("查询失败");
+            e.printStackTrace();
+        }
+        return mr;
+    }
+
+/**
  * @Author 翼云
  * @Description // add dictionary
  * @Date  2020/5/6 0006 16:04
@@ -80,8 +106,8 @@ public class DictionaryAction {
 **/
     @ResponseBody
     @RequestMapping(value="/dictionaries", method= RequestMethod.POST)
-    public MessageResult postDictionaries(String gd) {
-        logger.info("DictionaryAction.postDictionaries");
+    public MessageResult postDictionary(String gd) {
+        logger.info("DictionaryAction.postDictionary");
         MessageResult mr = new MessageResult();
         GlobalDictionary globalDictionary = new GlobalDictionary();
         List< GlobalDictionary > gdList = new ArrayList< GlobalDictionary >();
@@ -117,6 +143,7 @@ public class DictionaryAction {
         MessageResult mr = new MessageResult();
         try {
 //            final Long dicLong = DictionaryService.saveDictionary(globalDictionary);
+            System.out.println(id);
             mr.setSuccess(true);
             mr.setMessage("删除成功");
         } catch (Exception e) {
@@ -127,5 +154,33 @@ public class DictionaryAction {
         }
         return mr;
     }
+
+    /**
+     * @Author yiyun
+     * @Description //TODO update dictionary
+     * @Date  2020/5/9 0009 11:23
+     * @Param [id]
+     * @return com.yiyun.application.common.dto.MessageResult
+    **/
+    @ResponseBody
+    @RequestMapping(value="/dictionaries/{id}", method= RequestMethod.PUT)
+    public MessageResult putDictionary(@PathVariable Long  id) {
+        logger.info("DictionaryAction.putDictionary");
+        MessageResult mr = new MessageResult();
+        try {
+            System.out.println(id);
+//            final Long dicLong = DictionaryService.saveDictionary(globalDictionary);
+            mr.setSuccess(true);
+            mr.setMessage("更新成功");
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+            mr.setSuccess(false);
+            mr.setMessage("更新失败");
+            e.printStackTrace();
+        }
+        return mr;
+    }
+
+
 
 }
