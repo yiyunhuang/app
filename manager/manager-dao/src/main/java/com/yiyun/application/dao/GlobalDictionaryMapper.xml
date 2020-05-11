@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.yiyun.application.dao.GlobalDictionaryMapper" >
   <resultMap id="BaseResultMap" type="com.yiyun.application.pojo.po.GlobalDictionary" >
-    <id column="id" property="id" jdbcType="BIGINT" />
+    <id column="id" property="id" jdbcType="VARCHAR" />
     <result column="code_type" property="codeType" jdbcType="VARCHAR" />
     <result column="code_value" property="codeValue" jdbcType="VARCHAR" />
     <result column="code_explain" property="codeExplain" jdbcType="VARCHAR" />
@@ -87,15 +87,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
     from global_dictionary
-    where id = #{id,jdbcType=BIGINT}
+    where id = #{id,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from global_dictionary
-    where id = #{id,jdbcType=BIGINT}
+    where id = #{id,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="com.yiyun.application.pojo.po.GlobalDictionaryExample" >
     delete from global_dictionary
@@ -107,7 +107,7 @@
     insert into global_dictionary (id, code_type, code_value, 
       code_explain, parameters_classified, gmt_create, 
       gmt_modified, is_sign)
-    values (#{id,jdbcType=BIGINT}, #{codeType,jdbcType=VARCHAR}, #{codeValue,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=VARCHAR}, #{codeType,jdbcType=VARCHAR}, #{codeValue,jdbcType=VARCHAR}, 
       #{codeExplain,jdbcType=VARCHAR}, #{parametersClassified,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=TIMESTAMP}, 
       #{gmtModified,jdbcType=TIMESTAMP}, #{isSign,jdbcType=TINYINT})
   </insert>
@@ -141,7 +141,7 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
-        #{id,jdbcType=BIGINT},
+        #{id,jdbcType=VARCHAR},
       </if>
       <if test="codeType != null" >
         #{codeType,jdbcType=VARCHAR},
@@ -176,7 +176,7 @@
     update global_dictionary
     <set >
       <if test="record.id != null" >
-        id = #{record.id,jdbcType=BIGINT},
+        id = #{record.id,jdbcType=VARCHAR},
       </if>
       <if test="record.codeType != null" >
         code_type = #{record.codeType,jdbcType=VARCHAR},
@@ -206,7 +206,7 @@
   </update>
   <update id="updateByExample" parameterType="map" >
     update global_dictionary
-    set id = #{record.id,jdbcType=BIGINT},
+    set id = #{record.id,jdbcType=VARCHAR},
       code_type = #{record.codeType,jdbcType=VARCHAR},
       code_value = #{record.codeValue,jdbcType=VARCHAR},
       code_explain = #{record.codeExplain,jdbcType=VARCHAR},
@@ -243,7 +243,7 @@
         is_sign = #{isSign,jdbcType=TINYINT},
       </if>
     </set>
-    where id = #{id,jdbcType=BIGINT}
+    where id = #{id,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.yiyun.application.pojo.po.GlobalDictionary" >
     update global_dictionary
@@ -254,6 +254,6 @@
       gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
       gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
       is_sign = #{isSign,jdbcType=TINYINT}
-    where id = #{id,jdbcType=BIGINT}
+    where id = #{id,jdbcType=VARCHAR}
   </update>
 </mapper>

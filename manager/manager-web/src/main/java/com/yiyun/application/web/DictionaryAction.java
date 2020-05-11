@@ -145,7 +145,7 @@ public class DictionaryAction {
 **/
     @ResponseBody
     @RequestMapping(value="/dictionaries/{id}", method= RequestMethod.DELETE)
-    public MessageResult deleteDictionary(@PathVariable Long  id) {
+    public MessageResult deleteDictionary(@PathVariable String  id) {
         logger.info("DictionaryAction.deleteDictionary");
         MessageResult mr = new MessageResult();
         try {
@@ -170,7 +170,7 @@ public class DictionaryAction {
     **/
     @ResponseBody
     @RequestMapping(value="/dictionaries/{id}", method= RequestMethod.PUT)
-    public MessageResult putDictionary(@PathVariable Long  id,String gd) {
+    public MessageResult putDictionary(@PathVariable String  id,String gd) {
         logger.info("DictionaryAction.putDictionary");
         MessageResult mr = new MessageResult();
         try {

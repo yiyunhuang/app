@@ -11,7 +11,7 @@ public interface GlobalDictionaryMapper {
 
     int deleteByExample(GlobalDictionaryExample example);
 
-    int deleteByPrimaryKey(Long id);
+    int deleteByPrimaryKey(String id);
 
     int insert(GlobalDictionary record);
 
@@ -19,7 +19,7 @@ public interface GlobalDictionaryMapper {
 
     List<GlobalDictionary> selectByExample(GlobalDictionaryExample example);
 
-    GlobalDictionary selectByPrimaryKey(Long id);
+    GlobalDictionary selectByPrimaryKey(String id);
 
     int updateByExampleSelective(@Param("record") GlobalDictionary record, @Param("example") GlobalDictionaryExample example);
 

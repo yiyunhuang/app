@@ -73,7 +73,7 @@ public class DictionaryServiceImpl implements DictionaryService{
 
     @Transactional
     @Override
-    public Long updateDictionary(Long id, GlobalDictionary gd) {
+    public Long updateDictionary(String id, GlobalDictionary gd) {
         Integer update = DictionaryDao.updateByPrimaryKeySelective(gd);
         return Long.valueOf(update);
     }
@@ -81,7 +81,7 @@ public class DictionaryServiceImpl implements DictionaryService{
 
     @Transactional
     @Override
-    public Long deleteDictionary(Long id) {
+    public Long deleteDictionary(String id) {
         Integer update = DictionaryDao.deleteByPrimaryKey(id);
         return Long.valueOf(update);
     }

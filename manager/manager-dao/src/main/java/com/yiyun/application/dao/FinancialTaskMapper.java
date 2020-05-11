@@ -11,7 +11,7 @@ public interface FinancialTaskMapper {
 
     int deleteByExample(FinancialTaskExample example);
 
-    int deleteByPrimaryKey(Long id);
+    int deleteByPrimaryKey(String id);
 
     int insert(FinancialTask record);
 
@@ -19,7 +19,7 @@ public interface FinancialTaskMapper {
 
     List<FinancialTask> selectByExample(FinancialTaskExample example);
 
-    FinancialTask selectByPrimaryKey(Long id);
+    FinancialTask selectByPrimaryKey(String id);
 
     int updateByExampleSelective(@Param("record") FinancialTask record, @Param("example") FinancialTaskExample example);
 

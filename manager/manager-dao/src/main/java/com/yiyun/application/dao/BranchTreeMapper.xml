@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.yiyun.application.dao.BranchTreeMapper" >
   <resultMap id="BaseResultMap" type="com.yiyun.application.pojo.po.BranchTree" >
-    <id column="id" property="id" jdbcType="BIGINT" />
+    <id column="id" property="id" jdbcType="VARCHAR" />
     <result column="parents_id" property="parentsId" jdbcType="BIGINT" />
     <result column="tree_location" property="treeLocation" jdbcType="VARCHAR" />
     <result column="tree_title" property="treeTitle" jdbcType="VARCHAR" />
@@ -89,15 +89,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
     from branch_tree
-    where id = #{id,jdbcType=BIGINT}
+    where id = #{id,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from branch_tree
-    where id = #{id,jdbcType=BIGINT}
+    where id = #{id,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="com.yiyun.application.pojo.po.BranchTreeExample" >
     delete from branch_tree
@@ -110,7 +110,7 @@
       tree_title, tree_description, tree_type, 
       tree_remark, gmt_create, gmt_modified, 
       is_sign)
-    values (#{id,jdbcType=BIGINT}, #{parentsId,jdbcType=BIGINT}, #{treeLocation,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=VARCHAR}, #{parentsId,jdbcType=BIGINT}, #{treeLocation,jdbcType=VARCHAR}, 
       #{treeTitle,jdbcType=VARCHAR}, #{treeDescription,jdbcType=VARCHAR}, #{treeType,jdbcType=INTEGER}, 
       #{treeRemark,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP}, 
       #{isSign,jdbcType=TINYINT})
@@ -151,7 +151,7 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
-        #{id,jdbcType=BIGINT},
+        #{id,jdbcType=VARCHAR},
       </if>
       <if test="parentsId != null" >
         #{parentsId,jdbcType=BIGINT},
@@ -192,7 +192,7 @@
     update branch_tree
     <set >
       <if test="record.id != null" >
-        id = #{record.id,jdbcType=BIGINT},
+        id = #{record.id,jdbcType=VARCHAR},
       </if>
       <if test="record.parentsId != null" >
         parents_id = #{record.parentsId,jdbcType=BIGINT},
@@ -228,7 +228,7 @@
   </update>
   <update id="updateByExample" parameterType="map" >
     update branch_tree
-    set id = #{record.id,jdbcType=BIGINT},
+    set id = #{record.id,jdbcType=VARCHAR},
       parents_id = #{record.parentsId,jdbcType=BIGINT},
       tree_location = #{record.treeLocation,jdbcType=VARCHAR},
       tree_title = #{record.treeTitle,jdbcType=VARCHAR},
@@ -273,7 +273,7 @@
         is_sign = #{isSign,jdbcType=TINYINT},
       </if>
     </set>
-    where id = #{id,jdbcType=BIGINT}
+    where id = #{id,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.yiyun.application.pojo.po.BranchTree" >
     update branch_tree
@@ -286,6 +286,6 @@
       gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
       gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
       is_sign = #{isSign,jdbcType=TINYINT}
-    where id = #{id,jdbcType=BIGINT}
+    where id = #{id,jdbcType=VARCHAR}
   </update>
 </mapper>

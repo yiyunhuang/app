@@ -186,11 +186,11 @@ public class yiyun {
      * @Param [long1 标识id1 , long2 标识id2 ]
      * @return java.lang.Long 事件id
     **/
-    public static Long getId(Long long1, Long long2) throws IllegalArgumentException {
+    public static String getId(Long long1, Long long2) throws IllegalArgumentException {
         if (idWorker == null) {
             idWorker = new SnowflakeIdWorker(long1, long2);
         }
-        return idWorker.nextId();
+        return String.valueOf(idWorker.nextId());
     }
 
     /**

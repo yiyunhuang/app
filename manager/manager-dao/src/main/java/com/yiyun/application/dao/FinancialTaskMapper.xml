@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.yiyun.application.dao.FinancialTaskMapper" >
   <resultMap id="BaseResultMap" type="com.yiyun.application.pojo.po.FinancialTask" >
-    <id column="id" property="id" jdbcType="BIGINT" />
+    <id column="id" property="id" jdbcType="VARCHAR" />
     <result column="financial_type" property="financialType" jdbcType="VARCHAR" />
     <result column="total_amount" property="totalAmount" jdbcType="DECIMAL" />
     <result column="money_change" property="moneyChange" jdbcType="DECIMAL" />
@@ -87,15 +87,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
     from financial_task
-    where id = #{id,jdbcType=BIGINT}
+    where id = #{id,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from financial_task
-    where id = #{id,jdbcType=BIGINT}
+    where id = #{id,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="com.yiyun.application.pojo.po.FinancialTaskExample" >
     delete from financial_task
@@ -107,7 +107,7 @@
     insert into financial_task (id, financial_type, total_amount, 
       money_change, user_id, gmt_create, 
       gmt_modified, is_sign)
-    values (#{id,jdbcType=BIGINT}, #{financialType,jdbcType=VARCHAR}, #{totalAmount,jdbcType=DECIMAL}, 
+    values (#{id,jdbcType=VARCHAR}, #{financialType,jdbcType=VARCHAR}, #{totalAmount,jdbcType=DECIMAL}, 
       #{moneyChange,jdbcType=DECIMAL}, #{userId,jdbcType=BIGINT}, #{gmtCreate,jdbcType=TIMESTAMP}, 
       #{gmtModified,jdbcType=TIMESTAMP}, #{isSign,jdbcType=TINYINT})
   </insert>
@@ -141,7 +141,7 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
-        #{id,jdbcType=BIGINT},
+        #{id,jdbcType=VARCHAR},
       </if>
       <if test="financialType != null" >
         #{financialType,jdbcType=VARCHAR},
@@ -176,7 +176,7 @@
     update financial_task
     <set >
       <if test="record.id != null" >
-        id = #{record.id,jdbcType=BIGINT},
+        id = #{record.id,jdbcType=VARCHAR},
       </if>
       <if test="record.financialType != null" >
         financial_type = #{record.financialType,jdbcType=VARCHAR},
@@ -206,7 +206,7 @@
   </update>
   <update id="updateByExample" parameterType="map" >
     update financial_task
-    set id = #{record.id,jdbcType=BIGINT},
+    set id = #{record.id,jdbcType=VARCHAR},
       financial_type = #{record.financialType,jdbcType=VARCHAR},
       total_amount = #{record.totalAmount,jdbcType=DECIMAL},
       money_change = #{record.moneyChange,jdbcType=DECIMAL},
@@ -243,7 +243,7 @@
         is_sign = #{isSign,jdbcType=TINYINT},
       </if>
     </set>
-    where id = #{id,jdbcType=BIGINT}
+    where id = #{id,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.yiyun.application.pojo.po.FinancialTask" >
     update financial_task
@@ -254,6 +254,6 @@
       gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
       gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
       is_sign = #{isSign,jdbcType=TINYINT}
-    where id = #{id,jdbcType=BIGINT}
+    where id = #{id,jdbcType=VARCHAR}
   </update>
 </mapper>

@@ -11,7 +11,7 @@ public interface BranchTreeMapper {
 
     int deleteByExample(BranchTreeExample example);
 
-    int deleteByPrimaryKey(Long id);
+    int deleteByPrimaryKey(String id);
 
     int insert(BranchTree record);
 
@@ -19,7 +19,7 @@ public interface BranchTreeMapper {
 
     List<BranchTree> selectByExample(BranchTreeExample example);
 
-    BranchTree selectByPrimaryKey(Long id);
+    BranchTree selectByPrimaryKey(String id);
 
     int updateByExampleSelective(@Param("record") BranchTree record, @Param("example") BranchTreeExample example);
 

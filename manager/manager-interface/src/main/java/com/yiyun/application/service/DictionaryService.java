@@ -35,7 +35,7 @@ public interface DictionaryService {
      * @Param [id, gd]
      * @return java.lang.Long
     **/
-    public Long updateDictionary(Long id ,GlobalDictionary gd);
+    public Long updateDictionary(String id ,GlobalDictionary gd);
 
     /**
      * @Author yiyun
@@ -44,7 +44,7 @@ public interface DictionaryService {
      * @Param [id]
      * @return java.lang.Long
     **/
-    public Long deleteDictionary(Long id);
+    public Long deleteDictionary(String id);
 
 
 }
