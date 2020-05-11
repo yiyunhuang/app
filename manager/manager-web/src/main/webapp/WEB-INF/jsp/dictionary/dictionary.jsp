@@ -20,6 +20,9 @@
      <table class="layui-hide" id="dictionary" lay-filter="test"></table>
 </div>
 
+<script src="${pageContext.request.contextPath }/js/jquery-1.10.2.js"></script>
+<script src="${pageContext.request.contextPath }/layui/layui.js"></script>
+
 <script type="text/html" id="barDemo">
     <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
     <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
@@ -56,7 +59,7 @@
             }
             ,cols: [[ //表头
                 {type: 'checkbox' ,align:'center' ,fixed: 'left'}
-                ,{field: 'id', title: 'ID', width:200, sort: true,align:'center' ,fixed: 'left'}
+                ,{field: 'id', title: 'ID', width:200, sort: true,align:'center',fixed: 'left'}
                 ,{field: 'codeType', title: '代码类型', align:'center',width:100 }
                 ,{field: 'codeValue', title: '代码值', align:'center', width: 100}
                 ,{field: 'codeExplain', title: '代码说明',align:'center', width:100}

@@ -3,13 +3,13 @@
 
 DROP TABLE IF EXISTS `application_user`;
 CREATE TABLE `application_user` (
-  `id` bigint(64) NOT NULL,
+	`id` varchar(32) NOT NULL,
   `login_name` varchar(64) NOT NULL COMMENT '用户登入名',
   `password` varchar(64) NOT NULL COMMENT '密码',
   `user_name` varchar(64) DEFAULT '' COMMENT '昵称',
   `gmt_create`  timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间' ,
   `gmt_modified`  timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间' ,
-  `is_sign` tinyint(8) unsigned NOT NULL  DEFAULT 1 COMMENT '有效标识 1 有效 0 无效',
+  `is_sign` tinyint(2) unsigned NOT NULL  DEFAULT 1 COMMENT '有效标识 1 有效 0 无效',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -17,34 +17,34 @@ CREATE TABLE `application_user` (
 
 DROP TABLE IF EXISTS `global_dictionary`;
 CREATE TABLE `global_dictionary` (
-  `id` bigint(64) NOT NULL AUTO_INCREMENT,
+	`id` varchar(32) NOT NULL,
   `code_type` varchar(16) NOT NULL COMMENT '代码类型',
   `code_value` varchar(8) NOT NULL COMMENT '代码值',
   `code_explain` varchar(64) NOT NULL COMMENT '代码说明',
   `parameters_classified` varchar(8) NOT NULL COMMENT '参数归类',
   `gmt_create`  timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间' ,
   `gmt_modified`  timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间' ,
-  `is_sign` tinyint(8) unsigned NOT NULL  DEFAULT 1 COMMENT '有效标识 1 有效 0 无效',
+  `is_sign` tinyint(2) unsigned NOT NULL  DEFAULT 1 COMMENT '有效标识 1 有效 0 无效',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 DROP TABLE IF EXISTS `financial_task`;
 CREATE TABLE `financial_task` (
-  `id` bigint(64) NOT NULL AUTO_INCREMENT,
+	`id` varchar(32) NOT NULL,
   `financial_type` varchar(8) NOT NULL COMMENT '理财类型',
   `total_amount` decimal(16,2) NOT NULL COMMENT '总计金额',
   `money_change` decimal(16,2) NOT NULL COMMENT '金额变动',
   `user_id` bigint(64) NOT NULL COMMENT '用户id',
   `gmt_create`  timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间' ,
   `gmt_modified`  timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间' ,
-  `is_sign` tinyint(8) unsigned NOT NULL  DEFAULT 1 COMMENT '有效标识 1 有效 0 无效',
+  `is_sign` tinyint(2) unsigned NOT NULL  DEFAULT 1 COMMENT '有效标识 1 有效 0 无效',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 
 
 DROP TABLE IF EXISTS `branch_tree`;
 CREATE TABLE `branch_tree` (
-`id`  bigint(64) NOT NULL AUTO_INCREMENT ,
+	`id` varchar(32) NOT NULL,
 `parents_id`  bigint(64) NULL DEFAULT NULL COMMENT '父ID' ,
 `tree_location`  varchar(256) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '地址' ,
 `tree_title`  varchar(256) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '标题' ,
@@ -53,7 +53,7 @@ CREATE TABLE `branch_tree` (
 `tree_remark`  varchar(256) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '备注' ,
 `gmt_create`  timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间' ,
 `gmt_modified`  timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间' ,
-`is_sign`  tinyint(8) UNSIGNED NOT NULL  DEFAULT 1 COMMENT '有效标识 1 有效 0 无效' ,
+`is_sign`  tinyint(2) UNSIGNED NOT NULL  DEFAULT 1 COMMENT '有效标识 1 有效 0 无效' ,
 PRIMARY KEY (`id`)
 )ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 
