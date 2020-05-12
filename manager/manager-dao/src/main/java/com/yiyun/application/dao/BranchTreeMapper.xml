@@ -3,7 +3,7 @@
 <mapper namespace="com.yiyun.application.dao.BranchTreeMapper" >
   <resultMap id="BaseResultMap" type="com.yiyun.application.pojo.po.BranchTree" >
     <id column="id" property="id" jdbcType="VARCHAR" />
-    <result column="parents_id" property="parentsId" jdbcType="BIGINT" />
+    <result column="parents_id" property="parentsId" jdbcType="VARCHAR" />
     <result column="tree_location" property="treeLocation" jdbcType="VARCHAR" />
     <result column="tree_title" property="treeTitle" jdbcType="VARCHAR" />
     <result column="tree_description" property="treeDescription" jdbcType="VARCHAR" />
@@ -110,7 +110,7 @@
       tree_title, tree_description, tree_type, 
       tree_remark, gmt_create, gmt_modified, 
       is_sign)
-    values (#{id,jdbcType=VARCHAR}, #{parentsId,jdbcType=BIGINT}, #{treeLocation,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=VARCHAR}, #{parentsId,jdbcType=VARCHAR}, #{treeLocation,jdbcType=VARCHAR}, 
       #{treeTitle,jdbcType=VARCHAR}, #{treeDescription,jdbcType=VARCHAR}, #{treeType,jdbcType=INTEGER}, 
       #{treeRemark,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP}, 
       #{isSign,jdbcType=TINYINT})
@@ -154,7 +154,7 @@
         #{id,jdbcType=VARCHAR},
       </if>
       <if test="parentsId != null" >
-        #{parentsId,jdbcType=BIGINT},
+        #{parentsId,jdbcType=VARCHAR},
       </if>
       <if test="treeLocation != null" >
         #{treeLocation,jdbcType=VARCHAR},
@@ -195,7 +195,7 @@
         id = #{record.id,jdbcType=VARCHAR},
       </if>
       <if test="record.parentsId != null" >
-        parents_id = #{record.parentsId,jdbcType=BIGINT},
+        parents_id = #{record.parentsId,jdbcType=VARCHAR},
       </if>
       <if test="record.treeLocation != null" >
         tree_location = #{record.treeLocation,jdbcType=VARCHAR},
@@ -229,7 +229,7 @@
   <update id="updateByExample" parameterType="map" >
     update branch_tree
     set id = #{record.id,jdbcType=VARCHAR},
-      parents_id = #{record.parentsId,jdbcType=BIGINT},
+      parents_id = #{record.parentsId,jdbcType=VARCHAR},
       tree_location = #{record.treeLocation,jdbcType=VARCHAR},
       tree_title = #{record.treeTitle,jdbcType=VARCHAR},
       tree_description = #{record.treeDescription,jdbcType=VARCHAR},
@@ -246,7 +246,7 @@
     update branch_tree
     <set >
       <if test="parentsId != null" >
-        parents_id = #{parentsId,jdbcType=BIGINT},
+        parents_id = #{parentsId,jdbcType=VARCHAR},
       </if>
       <if test="treeLocation != null" >
         tree_location = #{treeLocation,jdbcType=VARCHAR},
@@ -277,7 +277,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.yiyun.application.pojo.po.BranchTree" >
     update branch_tree
-    set parents_id = #{parentsId,jdbcType=BIGINT},
+    set parents_id = #{parentsId,jdbcType=VARCHAR},
       tree_location = #{treeLocation,jdbcType=VARCHAR},
       tree_title = #{treeTitle,jdbcType=VARCHAR},
       tree_description = #{treeDescription,jdbcType=VARCHAR},

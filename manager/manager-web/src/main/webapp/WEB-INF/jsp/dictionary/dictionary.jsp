@@ -20,8 +20,6 @@
      <table class="layui-hide" id="dictionary" lay-filter="test"></table>
 </div>
 
-<script src="${pageContext.request.contextPath }/js/jquery-1.10.2.js"></script>
-<script src="${pageContext.request.contextPath }/layui/layui.js"></script>
 
 <script type="text/html" id="barDemo">
     <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>

@@ -185,52 +185,62 @@ public class BranchTreeExample {
             return (Criteria) this;
         }
 
-        public Criteria andParentsIdEqualTo(Long value) {
+        public Criteria andParentsIdEqualTo(String value) {
             addCriterion("parents_id =", value, "parentsId");
             return (Criteria) this;
         }
 
-        public Criteria andParentsIdNotEqualTo(Long value) {
+        public Criteria andParentsIdNotEqualTo(String value) {
             addCriterion("parents_id <>", value, "parentsId");
             return (Criteria) this;
         }
 
-        public Criteria andParentsIdGreaterThan(Long value) {
+        public Criteria andParentsIdGreaterThan(String value) {
             addCriterion("parents_id >", value, "parentsId");
             return (Criteria) this;
         }
 
-        public Criteria andParentsIdGreaterThanOrEqualTo(Long value) {
+        public Criteria andParentsIdGreaterThanOrEqualTo(String value) {
             addCriterion("parents_id >=", value, "parentsId");
             return (Criteria) this;
         }
 
-        public Criteria andParentsIdLessThan(Long value) {
+        public Criteria andParentsIdLessThan(String value) {
             addCriterion("parents_id <", value, "parentsId");
             return (Criteria) this;
         }
 
-        public Criteria andParentsIdLessThanOrEqualTo(Long value) {
+        public Criteria andParentsIdLessThanOrEqualTo(String value) {
             addCriterion("parents_id <=", value, "parentsId");
             return (Criteria) this;
         }
 
-        public Criteria andParentsIdIn(List<Long> values) {
+        public Criteria andParentsIdLike(String value) {
+            addCriterion("parents_id like", value, "parentsId");
+            return (Criteria) this;
+        }
+
+        public Criteria andParentsIdNotLike(String value) {
+            addCriterion("parents_id not like", value, "parentsId");
+            return (Criteria) this;
+        }
+
+        public Criteria andParentsIdIn(List<String> values) {
             addCriterion("parents_id in", values, "parentsId");
             return (Criteria) this;
         }
 
-        public Criteria andParentsIdNotIn(List<Long> values) {
+        public Criteria andParentsIdNotIn(List<String> values) {
             addCriterion("parents_id not in", values, "parentsId");
             return (Criteria) this;
         }
 
-        public Criteria andParentsIdBetween(Long value1, Long value2) {
+        public Criteria andParentsIdBetween(String value1, String value2) {
             addCriterion("parents_id between", value1, value2, "parentsId");
             return (Criteria) this;
         }
 
-        public Criteria andParentsIdNotBetween(Long value1, Long value2) {
+        public Criteria andParentsIdNotBetween(String value1, String value2) {
             addCriterion("parents_id not between", value1, value2, "parentsId");
             return (Criteria) this;
         }

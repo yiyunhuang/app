@@ -6,7 +6,8 @@
     <result column="financial_type" property="financialType" jdbcType="VARCHAR" />
     <result column="total_amount" property="totalAmount" jdbcType="DECIMAL" />
     <result column="money_change" property="moneyChange" jdbcType="DECIMAL" />
-    <result column="user_id" property="userId" jdbcType="BIGINT" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="financial_remark" property="financialRemark" jdbcType="VARCHAR" />
     <result column="gmt_create" property="gmtCreate" jdbcType="TIMESTAMP" />
     <result column="gmt_modified" property="gmtModified" jdbcType="TIMESTAMP" />
     <result column="is_sign" property="isSign" jdbcType="TINYINT" />
@@ -70,8 +71,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, financial_type, total_amount, money_change, user_id, gmt_create, gmt_modified, 
-    is_sign
+    id, financial_type, total_amount, money_change, user_id, financial_remark, gmt_create, 
+    gmt_modified, is_sign
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.yiyun.application.pojo.po.FinancialTaskExample" >
     select
@@ -105,11 +106,13 @@
   </delete>
   <insert id="insert" parameterType="com.yiyun.application.pojo.po.FinancialTask" >
     insert into financial_task (id, financial_type, total_amount, 
-      money_change, user_id, gmt_create, 
-      gmt_modified, is_sign)
+      money_change, user_id, financial_remark, 
+      gmt_create, gmt_modified, is_sign
+      )
     values (#{id,jdbcType=VARCHAR}, #{financialType,jdbcType=VARCHAR}, #{totalAmount,jdbcType=DECIMAL}, 
-      #{moneyChange,jdbcType=DECIMAL}, #{userId,jdbcType=BIGINT}, #{gmtCreate,jdbcType=TIMESTAMP}, 
-      #{gmtModified,jdbcType=TIMESTAMP}, #{isSign,jdbcType=TINYINT})
+      #{moneyChange,jdbcType=DECIMAL}, #{userId,jdbcType=VARCHAR}, #{financialRemark,jdbcType=VARCHAR}, 
+      #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP}, #{isSign,jdbcType=TINYINT}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.yiyun.application.pojo.po.FinancialTask" >
     insert into financial_task
@@ -128,6 +131,9 @@
       </if>
       <if test="userId != null" >
         user_id,
+      </if>
+      <if test="financialRemark != null" >
+        financial_remark,
       </if>
       <if test="gmtCreate != null" >
         gmt_create,
@@ -153,7 +159,10 @@
         #{moneyChange,jdbcType=DECIMAL},
       </if>
       <if test="userId != null" >
-        #{userId,jdbcType=BIGINT},
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="financialRemark != null" >
+        #{financialRemark,jdbcType=VARCHAR},
       </if>
       <if test="gmtCreate != null" >
         #{gmtCreate,jdbcType=TIMESTAMP},
@@ -188,7 +197,10 @@
         money_change = #{record.moneyChange,jdbcType=DECIMAL},
       </if>
       <if test="record.userId != null" >
-        user_id = #{record.userId,jdbcType=BIGINT},
+        user_id = #{record.userId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.financialRemark != null" >
+        financial_remark = #{record.financialRemark,jdbcType=VARCHAR},
       </if>
       <if test="record.gmtCreate != null" >
         gmt_create = #{record.gmtCreate,jdbcType=TIMESTAMP},
@@ -210,7 +222,8 @@
       financial_type = #{record.financialType,jdbcType=VARCHAR},
       total_amount = #{record.totalAmount,jdbcType=DECIMAL},
       money_change = #{record.moneyChange,jdbcType=DECIMAL},
-      user_id = #{record.userId,jdbcType=BIGINT},
+      user_id = #{record.userId,jdbcType=VARCHAR},
+      financial_remark = #{record.financialRemark,jdbcType=VARCHAR},
       gmt_create = #{record.gmtCreate,jdbcType=TIMESTAMP},
       gmt_modified = #{record.gmtModified,jdbcType=TIMESTAMP},
       is_sign = #{record.isSign,jdbcType=TINYINT}
@@ -231,7 +244,10 @@
         money_change = #{moneyChange,jdbcType=DECIMAL},
       </if>
       <if test="userId != null" >
-        user_id = #{userId,jdbcType=BIGINT},
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="financialRemark != null" >
+        financial_remark = #{financialRemark,jdbcType=VARCHAR},
       </if>
       <if test="gmtCreate != null" >
         gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
@@ -250,7 +266,8 @@
     set financial_type = #{financialType,jdbcType=VARCHAR},
       total_amount = #{totalAmount,jdbcType=DECIMAL},
       money_change = #{moneyChange,jdbcType=DECIMAL},
-      user_id = #{userId,jdbcType=BIGINT},
+      user_id = #{userId,jdbcType=VARCHAR},
+      financial_remark = #{financialRemark,jdbcType=VARCHAR},
       gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
       gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
       is_sign = #{isSign,jdbcType=TINYINT}

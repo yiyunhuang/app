@@ -12,7 +12,9 @@ public class FinancialTask {
 
     private BigDecimal moneyChange;
 
-    private Long userId;
+    private String userId;
+
+    private String financialRemark;
 
     private Date gmtCreate;
 
@@ -52,12 +54,20 @@ public class FinancialTask {
         this.moneyChange = moneyChange;
     }
 
-    public Long getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setUserId(String userId) {
+        this.userId = userId == null ? null : userId.trim();
+    }
+
+    public String getFinancialRemark() {
+        return financialRemark;
+    }
+
+    public void setFinancialRemark(String financialRemark) {
+        this.financialRemark = financialRemark == null ? null : financialRemark.trim();
     }
 
     public Date getGmtCreate() {

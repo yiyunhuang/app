@@ -13,6 +13,8 @@ public class GlobalDictionary {
 
     private String parametersClassified;
 
+    private String dictionaryRemark;
+
     private Date gmtCreate;
 
     private Date gmtModified;
@@ -57,6 +59,14 @@ public class GlobalDictionary {
 
     public void setParametersClassified(String parametersClassified) {
         this.parametersClassified = parametersClassified == null ? null : parametersClassified.trim();
+    }
+
+    public String getDictionaryRemark() {
+        return dictionaryRemark;
+    }
+
+    public void setDictionaryRemark(String dictionaryRemark) {
+        this.dictionaryRemark = dictionaryRemark == null ? null : dictionaryRemark.trim();
     }
 
     public Date getGmtCreate() {

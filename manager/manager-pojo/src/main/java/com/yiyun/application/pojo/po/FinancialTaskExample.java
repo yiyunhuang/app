@@ -376,53 +376,133 @@ public class FinancialTaskExample {
             return (Criteria) this;
         }
 
-        public Criteria andUserIdEqualTo(Long value) {
+        public Criteria andUserIdEqualTo(String value) {
             addCriterion("user_id =", value, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdNotEqualTo(Long value) {
+        public Criteria andUserIdNotEqualTo(String value) {
             addCriterion("user_id <>", value, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdGreaterThan(Long value) {
+        public Criteria andUserIdGreaterThan(String value) {
             addCriterion("user_id >", value, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdGreaterThanOrEqualTo(Long value) {
+        public Criteria andUserIdGreaterThanOrEqualTo(String value) {
             addCriterion("user_id >=", value, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdLessThan(Long value) {
+        public Criteria andUserIdLessThan(String value) {
             addCriterion("user_id <", value, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdLessThanOrEqualTo(Long value) {
+        public Criteria andUserIdLessThanOrEqualTo(String value) {
             addCriterion("user_id <=", value, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdIn(List<Long> values) {
+        public Criteria andUserIdLike(String value) {
+            addCriterion("user_id like", value, "userId");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserIdNotLike(String value) {
+            addCriterion("user_id not like", value, "userId");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserIdIn(List<String> values) {
             addCriterion("user_id in", values, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdNotIn(List<Long> values) {
+        public Criteria andUserIdNotIn(List<String> values) {
             addCriterion("user_id not in", values, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdBetween(Long value1, Long value2) {
+        public Criteria andUserIdBetween(String value1, String value2) {
             addCriterion("user_id between", value1, value2, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdNotBetween(Long value1, Long value2) {
+        public Criteria andUserIdNotBetween(String value1, String value2) {
             addCriterion("user_id not between", value1, value2, "userId");
+            return (Criteria) this;
+        }
+
+        public Criteria andFinancialRemarkIsNull() {
+            addCriterion("financial_remark is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andFinancialRemarkIsNotNull() {
+            addCriterion("financial_remark is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andFinancialRemarkEqualTo(String value) {
+            addCriterion("financial_remark =", value, "financialRemark");
+            return (Criteria) this;
+        }
+
+        public Criteria andFinancialRemarkNotEqualTo(String value) {
+            addCriterion("financial_remark <>", value, "financialRemark");
+            return (Criteria) this;
+        }
+
+        public Criteria andFinancialRemarkGreaterThan(String value) {
+            addCriterion("financial_remark >", value, "financialRemark");
+            return (Criteria) this;
+        }
+
+        public Criteria andFinancialRemarkGreaterThanOrEqualTo(String value) {
+            addCriterion("financial_remark >=", value, "financialRemark");
+            return (Criteria) this;
+        }
+
+        public Criteria andFinancialRemarkLessThan(String value) {
+            addCriterion("financial_remark <", value, "financialRemark");
+            return (Criteria) this;
+        }
+
+        public Criteria andFinancialRemarkLessThanOrEqualTo(String value) {
+            addCriterion("financial_remark <=", value, "financialRemark");
+            return (Criteria) this;
+        }
+
+        public Criteria andFinancialRemarkLike(String value) {
+            addCriterion("financial_remark like", value, "financialRemark");
+            return (Criteria) this;
+        }
+
+        public Criteria andFinancialRemarkNotLike(String value) {
+            addCriterion("financial_remark not like", value, "financialRemark");
+            return (Criteria) this;
+        }
+
+        public Criteria andFinancialRemarkIn(List<String> values) {
+            addCriterion("financial_remark in", values, "financialRemark");
+            return (Criteria) this;
+        }
+
+        public Criteria andFinancialRemarkNotIn(List<String> values) {
+            addCriterion("financial_remark not in", values, "financialRemark");
+            return (Criteria) this;
+        }
+
+        public Criteria andFinancialRemarkBetween(String value1, String value2) {
+            addCriterion("financial_remark between", value1, value2, "financialRemark");
+            return (Criteria) this;
+        }
+
+        public Criteria andFinancialRemarkNotBetween(String value1, String value2) {
+            addCriterion("financial_remark not between", value1, value2, "financialRemark");
             return (Criteria) this;
         }
 

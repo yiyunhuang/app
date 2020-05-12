@@ -11,6 +11,8 @@ public class ApplicationUser {
 
     private String userName;
 
+    private String userRemark;
+
     private Date gmtCreate;
 
     private Date gmtModified;
@@ -47,6 +49,14 @@ public class ApplicationUser {
 
     public void setUserName(String userName) {
         this.userName = userName == null ? null : userName.trim();
+    }
+
+    public String getUserRemark() {
+        return userRemark;
+    }
+
+    public void setUserRemark(String userRemark) {
+        this.userRemark = userRemark == null ? null : userRemark.trim();
     }
 
     public Date getGmtCreate() {

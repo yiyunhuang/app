@@ -6,6 +6,7 @@
     <result column="login_name" property="loginName" jdbcType="VARCHAR" />
     <result column="password" property="password" jdbcType="VARCHAR" />
     <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="user_remark" property="userRemark" jdbcType="VARCHAR" />
     <result column="gmt_create" property="gmtCreate" jdbcType="TIMESTAMP" />
     <result column="gmt_modified" property="gmtModified" jdbcType="TIMESTAMP" />
     <result column="is_sign" property="isSign" jdbcType="TINYINT" />
@@ -69,7 +70,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, login_name, password, user_name, gmt_create, gmt_modified, is_sign
+    id, login_name, password, user_name, user_remark, gmt_create, gmt_modified, is_sign
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.yiyun.application.pojo.po.ApplicationUserExample" >
     select
@@ -103,11 +104,11 @@
   </delete>
   <insert id="insert" parameterType="com.yiyun.application.pojo.po.ApplicationUser" >
     insert into application_user (id, login_name, password, 
-      user_name, gmt_create, gmt_modified, 
-      is_sign)
+      user_name, user_remark, gmt_create, 
+      gmt_modified, is_sign)
     values (#{id,jdbcType=VARCHAR}, #{loginName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
-      #{userName,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP}, 
-      #{isSign,jdbcType=TINYINT})
+      #{userName,jdbcType=VARCHAR}, #{userRemark,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=TIMESTAMP}, 
+      #{gmtModified,jdbcType=TIMESTAMP}, #{isSign,jdbcType=TINYINT})
   </insert>
   <insert id="insertSelective" parameterType="com.yiyun.application.pojo.po.ApplicationUser" >
     insert into application_user
@@ -123,6 +124,9 @@
       </if>
       <if test="userName != null" >
         user_name,
+      </if>
+      <if test="userRemark != null" >
+        user_remark,
       </if>
       <if test="gmtCreate != null" >
         gmt_create,
@@ -146,6 +150,9 @@
       </if>
       <if test="userName != null" >
         #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userRemark != null" >
+        #{userRemark,jdbcType=VARCHAR},
       </if>
       <if test="gmtCreate != null" >
         #{gmtCreate,jdbcType=TIMESTAMP},
@@ -179,6 +186,9 @@
       <if test="record.userName != null" >
         user_name = #{record.userName,jdbcType=VARCHAR},
       </if>
+      <if test="record.userRemark != null" >
+        user_remark = #{record.userRemark,jdbcType=VARCHAR},
+      </if>
       <if test="record.gmtCreate != null" >
         gmt_create = #{record.gmtCreate,jdbcType=TIMESTAMP},
       </if>
@@ -199,6 +209,7 @@
       login_name = #{record.loginName,jdbcType=VARCHAR},
       password = #{record.password,jdbcType=VARCHAR},
       user_name = #{record.userName,jdbcType=VARCHAR},
+      user_remark = #{record.userRemark,jdbcType=VARCHAR},
       gmt_create = #{record.gmtCreate,jdbcType=TIMESTAMP},
       gmt_modified = #{record.gmtModified,jdbcType=TIMESTAMP},
       is_sign = #{record.isSign,jdbcType=TINYINT}
@@ -218,6 +229,9 @@
       <if test="userName != null" >
         user_name = #{userName,jdbcType=VARCHAR},
       </if>
+      <if test="userRemark != null" >
+        user_remark = #{userRemark,jdbcType=VARCHAR},
+      </if>
       <if test="gmtCreate != null" >
         gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
       </if>
@@ -235,6 +249,7 @@
     set login_name = #{loginName,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
       user_name = #{userName,jdbcType=VARCHAR},
+      user_remark = #{userRemark,jdbcType=VARCHAR},
       gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
       gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
       is_sign = #{isSign,jdbcType=TINYINT}

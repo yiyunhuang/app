@@ -7,6 +7,7 @@
     <result column="code_value" property="codeValue" jdbcType="VARCHAR" />
     <result column="code_explain" property="codeExplain" jdbcType="VARCHAR" />
     <result column="parameters_classified" property="parametersClassified" jdbcType="VARCHAR" />
+    <result column="dictionary_remark" property="dictionaryRemark" jdbcType="VARCHAR" />
     <result column="gmt_create" property="gmtCreate" jdbcType="TIMESTAMP" />
     <result column="gmt_modified" property="gmtModified" jdbcType="TIMESTAMP" />
     <result column="is_sign" property="isSign" jdbcType="TINYINT" />
@@ -70,8 +71,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, code_type, code_value, code_explain, parameters_classified, gmt_create, gmt_modified, 
-    is_sign
+    id, code_type, code_value, code_explain, parameters_classified, dictionary_remark, 
+    gmt_create, gmt_modified, is_sign
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.yiyun.application.pojo.po.GlobalDictionaryExample" >
     select
@@ -105,11 +106,13 @@
   </delete>
   <insert id="insert" parameterType="com.yiyun.application.pojo.po.GlobalDictionary" >
     insert into global_dictionary (id, code_type, code_value, 
-      code_explain, parameters_classified, gmt_create, 
-      gmt_modified, is_sign)
+      code_explain, parameters_classified, dictionary_remark, 
+      gmt_create, gmt_modified, is_sign
+      )
     values (#{id,jdbcType=VARCHAR}, #{codeType,jdbcType=VARCHAR}, #{codeValue,jdbcType=VARCHAR}, 
-      #{codeExplain,jdbcType=VARCHAR}, #{parametersClassified,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=TIMESTAMP}, 
-      #{gmtModified,jdbcType=TIMESTAMP}, #{isSign,jdbcType=TINYINT})
+      #{codeExplain,jdbcType=VARCHAR}, #{parametersClassified,jdbcType=VARCHAR}, #{dictionaryRemark,jdbcType=VARCHAR}, 
+      #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP}, #{isSign,jdbcType=TINYINT}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.yiyun.application.pojo.po.GlobalDictionary" >
     insert into global_dictionary
@@ -128,6 +131,9 @@
       </if>
       <if test="parametersClassified != null" >
         parameters_classified,
+      </if>
+      <if test="dictionaryRemark != null" >
+        dictionary_remark,
       </if>
       <if test="gmtCreate != null" >
         gmt_create,
@@ -154,6 +160,9 @@
       </if>
       <if test="parametersClassified != null" >
         #{parametersClassified,jdbcType=VARCHAR},
+      </if>
+      <if test="dictionaryRemark != null" >
+        #{dictionaryRemark,jdbcType=VARCHAR},
       </if>
       <if test="gmtCreate != null" >
         #{gmtCreate,jdbcType=TIMESTAMP},
@@ -190,6 +199,9 @@
       <if test="record.parametersClassified != null" >
         parameters_classified = #{record.parametersClassified,jdbcType=VARCHAR},
       </if>
+      <if test="record.dictionaryRemark != null" >
+        dictionary_remark = #{record.dictionaryRemark,jdbcType=VARCHAR},
+      </if>
       <if test="record.gmtCreate != null" >
         gmt_create = #{record.gmtCreate,jdbcType=TIMESTAMP},
       </if>
@@ -211,6 +223,7 @@
       code_value = #{record.codeValue,jdbcType=VARCHAR},
       code_explain = #{record.codeExplain,jdbcType=VARCHAR},
       parameters_classified = #{record.parametersClassified,jdbcType=VARCHAR},
+      dictionary_remark = #{record.dictionaryRemark,jdbcType=VARCHAR},
       gmt_create = #{record.gmtCreate,jdbcType=TIMESTAMP},
       gmt_modified = #{record.gmtModified,jdbcType=TIMESTAMP},
       is_sign = #{record.isSign,jdbcType=TINYINT}
@@ -233,6 +246,9 @@
       <if test="parametersClassified != null" >
         parameters_classified = #{parametersClassified,jdbcType=VARCHAR},
       </if>
+      <if test="dictionaryRemark != null" >
+        dictionary_remark = #{dictionaryRemark,jdbcType=VARCHAR},
+      </if>
       <if test="gmtCreate != null" >
         gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
       </if>
@@ -251,6 +267,7 @@
       code_value = #{codeValue,jdbcType=VARCHAR},
       code_explain = #{codeExplain,jdbcType=VARCHAR},
       parameters_classified = #{parametersClassified,jdbcType=VARCHAR},
+      dictionary_remark = #{dictionaryRemark,jdbcType=VARCHAR},
       gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
       gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
       is_sign = #{isSign,jdbcType=TINYINT}

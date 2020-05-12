@@ -5,7 +5,7 @@ import java.util.Date;
 public class BranchTree {
     private String id;
 
-    private Long parentsId;
+    private String parentsId;
 
     private String treeLocation;
 
@@ -31,12 +31,12 @@ public class BranchTree {
         this.id = id == null ? null : id.trim();
     }
 
-    public Long getParentsId() {
+    public String getParentsId() {
         return parentsId;
     }
 
-    public void setParentsId(Long parentsId) {
-        this.parentsId = parentsId;
+    public void setParentsId(String parentsId) {
+        this.parentsId = parentsId == null ? null : parentsId.trim();
     }
 
     public String getTreeLocation() {

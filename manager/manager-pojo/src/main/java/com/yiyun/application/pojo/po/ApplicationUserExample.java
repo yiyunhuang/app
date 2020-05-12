@@ -385,6 +385,76 @@ public class ApplicationUserExample {
             return (Criteria) this;
         }
 
+        public Criteria andUserRemarkIsNull() {
+            addCriterion("user_remark is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserRemarkIsNotNull() {
+            addCriterion("user_remark is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserRemarkEqualTo(String value) {
+            addCriterion("user_remark =", value, "userRemark");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserRemarkNotEqualTo(String value) {
+            addCriterion("user_remark <>", value, "userRemark");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserRemarkGreaterThan(String value) {
+            addCriterion("user_remark >", value, "userRemark");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserRemarkGreaterThanOrEqualTo(String value) {
+            addCriterion("user_remark >=", value, "userRemark");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserRemarkLessThan(String value) {
+            addCriterion("user_remark <", value, "userRemark");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserRemarkLessThanOrEqualTo(String value) {
+            addCriterion("user_remark <=", value, "userRemark");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserRemarkLike(String value) {
+            addCriterion("user_remark like", value, "userRemark");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserRemarkNotLike(String value) {
+            addCriterion("user_remark not like", value, "userRemark");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserRemarkIn(List<String> values) {
+            addCriterion("user_remark in", values, "userRemark");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserRemarkNotIn(List<String> values) {
+            addCriterion("user_remark not in", values, "userRemark");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserRemarkBetween(String value1, String value2) {
+            addCriterion("user_remark between", value1, value2, "userRemark");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserRemarkNotBetween(String value1, String value2) {
+            addCriterion("user_remark not between", value1, value2, "userRemark");
+            return (Criteria) this;
+        }
+
         public Criteria andGmtCreateIsNull() {
             addCriterion("gmt_create is null");
             return (Criteria) this;

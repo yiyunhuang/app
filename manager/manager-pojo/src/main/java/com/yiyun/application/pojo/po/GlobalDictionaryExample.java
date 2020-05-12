@@ -455,6 +455,76 @@ public class GlobalDictionaryExample {
             return (Criteria) this;
         }
 
+        public Criteria andDictionaryRemarkIsNull() {
+            addCriterion("dictionary_remark is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDictionaryRemarkIsNotNull() {
+            addCriterion("dictionary_remark is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDictionaryRemarkEqualTo(String value) {
+            addCriterion("dictionary_remark =", value, "dictionaryRemark");
+            return (Criteria) this;
+        }
+
+        public Criteria andDictionaryRemarkNotEqualTo(String value) {
+            addCriterion("dictionary_remark <>", value, "dictionaryRemark");
+            return (Criteria) this;
+        }
+
+        public Criteria andDictionaryRemarkGreaterThan(String value) {
+            addCriterion("dictionary_remark >", value, "dictionaryRemark");
+            return (Criteria) this;
+        }
+
+        public Criteria andDictionaryRemarkGreaterThanOrEqualTo(String value) {
+            addCriterion("dictionary_remark >=", value, "dictionaryRemark");
+            return (Criteria) this;
+        }
+
+        public Criteria andDictionaryRemarkLessThan(String value) {
+            addCriterion("dictionary_remark <", value, "dictionaryRemark");
+            return (Criteria) this;
+        }
+
+        public Criteria andDictionaryRemarkLessThanOrEqualTo(String value) {
+            addCriterion("dictionary_remark <=", value, "dictionaryRemark");
+            return (Criteria) this;
+        }
+
+        public Criteria andDictionaryRemarkLike(String value) {
+            addCriterion("dictionary_remark like", value, "dictionaryRemark");
+            return (Criteria) this;
+        }
+
+        public Criteria andDictionaryRemarkNotLike(String value) {
+            addCriterion("dictionary_remark not like", value, "dictionaryRemark");
+            return (Criteria) this;
+        }
+
+        public Criteria andDictionaryRemarkIn(List<String> values) {
+            addCriterion("dictionary_remark in", values, "dictionaryRemark");
+            return (Criteria) this;
+        }
+
+        public Criteria andDictionaryRemarkNotIn(List<String> values) {
+            addCriterion("dictionary_remark not in", values, "dictionaryRemark");
+            return (Criteria) this;
+        }
+
+        public Criteria andDictionaryRemarkBetween(String value1, String value2) {
+            addCriterion("dictionary_remark between", value1, value2, "dictionaryRemark");
+            return (Criteria) this;
+        }
+
+        public Criteria andDictionaryRemarkNotBetween(String value1, String value2) {
+            addCriterion("dictionary_remark not between", value1, value2, "dictionaryRemark");
+            return (Criteria) this;
+        }
+
         public Criteria andGmtCreateIsNull() {
             addCriterion("gmt_create is null");
             return (Criteria) this;
