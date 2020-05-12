@@ -22,7 +22,6 @@
 
 
 <script type="text/html" id="barDemo">
-    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
     <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
     <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
 </script>
@@ -62,6 +61,7 @@
                 ,{field: 'codeValue', title: '代码值', align:'center', width: 100}
                 ,{field: 'codeExplain', title: '代码说明',align:'center', width:100}
                 ,{field: 'parametersClassified', title: '参数归类',align:'center', width: 100  }
+                ,{field: 'dictionaryRemark', title: '备注',align:'center', width: 100  }
                 ,{field: 'gmtCreate', title: '创建时间', align:'center',width:200 ,templet : "<div>{{layui.util.toDateString(d.gmtCreate, 'yyyy-MM-dd HH:mm:ss')}}</div>"}
                 ,{field: 'gmtModified', title: '更新时间', align:'center', width: 200 ,templet : "<div>{{layui.util.toDateString(d.gmtModified, 'yyyy-MM-dd HH:mm:ss')}}</div>"}
                 ,{field: 'isSign', title: '有效标识', align:'center',width: 100,  totalRow: true}
@@ -83,9 +83,7 @@
         table.on('tool(test)', function(obj){ //注：tool 是工具条事件名，test 是 table 原始容器的属性 lay-filter="对应的值"
             var data = obj.data //获得当前行数据
                 ,layEvent = obj.event; //获得 lay-event 对应的值
-            if(layEvent === 'detail'){
-                layer.msg('查看操作');
-            } else if(layEvent === 'del'){
+          if(layEvent === 'del'){
                 layer.confirm('真的删除行么', function(index){
                     obj.del(); //删除对应行（tr）的DOM结构
                     layer.close(index);
@@ -97,14 +95,13 @@
                             alert(data.message);
                             openWindows('dictionaryAction');
                         }
-
                     });
 
                 });
             } else if(layEvent === 'edit'){
                 layer.msg('编辑操作');
                 $.ajax({
-                    type:'PUT',
+                    type:'GET',
                     url: '${pageContext.request.contextPath }/dictionaries/'+obj.data.id,
                     success:function(data) {
                         alert(data.message);

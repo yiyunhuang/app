@@ -138,7 +138,7 @@ public class DictionaryAction {
     }
 /**
  * @Author yiyun
- * @Description //TODO delete dictionary
+ * @Description // delete dictionary
  * @Date  2020/5/9 0009 11:12
  * @Param [id]
  * @return com.yiyun.application.common.dto.MessageResult
@@ -155,7 +155,7 @@ public class DictionaryAction {
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
             mr.setSuccess(false);
-            mr.setMessage("删除失败");
+            mr.setMessage("删除失败"+e.getMessage());
             e.printStackTrace();
         }
         return mr;

@@ -82,8 +82,8 @@ public class DictionaryServiceImpl implements DictionaryService{
     @Transactional
     @Override
     public Long deleteDictionary(String id) {
-        Integer update = DictionaryDao.deleteByPrimaryKey(id);
-        return Long.valueOf(update);
+        Integer delete = DictionaryDao.deleteByPrimaryKey(id);
+        return Long.valueOf(delete);
     }
 
 

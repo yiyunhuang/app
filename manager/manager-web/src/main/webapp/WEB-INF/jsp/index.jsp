@@ -79,7 +79,8 @@
 </div>
 
 <script src="${pageContext.request.contextPath }/js/jquery-1.10.2.js"></script>
-<script src="${pageContext.request.contextPath }/layui/layui.js"></script>
+<script src="${pageContext.request.contextPath }/layui/layui.all.js"></script>
+
 <script>
     //JavaScript代码区域
     layui.use('element', function(){

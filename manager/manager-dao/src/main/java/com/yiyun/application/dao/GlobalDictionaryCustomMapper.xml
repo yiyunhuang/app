@@ -4,7 +4,7 @@
 
   <sql id="Base_Column_List">
     t.id as id,t.code_type as codeType ,t.code_value as codeValue ,t.code_explain as codeExplain ,t.parameters_classified as parametersClassified ,
-    t.gmt_create as gmtCreate ,t.gmt_modified as gmtModified ,t.is_sign as isSign
+    t.dictionary_remark as dictionaryRemark,t.gmt_create as gmtCreate ,t.gmt_modified as gmtModified ,t.is_sign as isSign
   </sql>
 
   <sql id="Where_Clause" >
