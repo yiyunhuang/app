@@ -61,6 +61,7 @@
             ,layer = layui.layer
             ,layedit = layui.layedit
             ,laydate = layui.laydate;
+        form.render();  // 更新全部
 
         //创建一个编辑器
         var editIndex = layedit.build('LAY_demo_editor');

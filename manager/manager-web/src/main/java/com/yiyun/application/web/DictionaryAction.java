@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,8 +45,9 @@ public class DictionaryAction {
         return "dictionary/dictionary";
     }
     @RequestMapping("/dictionaryEditor")
-    public String  dictionaryEditor(){
+    public String  dictionaryEditor(HttpServletRequest request,String id){
         logger.info("DictionaryAction.dictionaryEditor");
+        request.setAttribute("id",id);
         return "dictionary/dictionaryEditor";
     }
 
@@ -80,19 +82,21 @@ public class DictionaryAction {
     }
 /**
  * @Author yiyun
- * @Description //TODO query dictionary
+ * @Description //query dictionary
  * @Date  2020/5/9 0009 11:26
  * @Param [id]
  * @return com.yiyun.application.common.dto.MessageResult
 **/
     @ResponseBody
     @RequestMapping(value="/dictionaries/{id}", method= RequestMethod.GET)
-    public MessageResult getDictionary(@PathVariable Long  id) {
+    public MessageResult getDictionary(@PathVariable String  id) {
         logger.info("DictionaryAction.getDictionary");
         MessageResult mr = new MessageResult();
+        Result<GlobalDictionary> list = null;
         try {
-            System.out.println(id);
-//            final Long dicLong = DictionaryService.saveDictionary(globalDictionary);
+
+            GlobalDictionary globalDictionary = dictionaryService.queryDictionary(id);
+            mr.setData(globalDictionary);
             mr.setSuccess(true);
             mr.setMessage("查询成功");
         } catch (Exception e) {

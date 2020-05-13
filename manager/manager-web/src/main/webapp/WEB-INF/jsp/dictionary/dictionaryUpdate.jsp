@@ -79,6 +79,7 @@
             ,layer = layui.layer
             ,layedit = layui.layedit
             ,laydate = layui.laydate;
+        form.render();  // 更新全部
 
         //监听提交
         form.on('submit(demo1)', function(data){

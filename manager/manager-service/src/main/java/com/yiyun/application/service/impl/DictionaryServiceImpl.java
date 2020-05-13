@@ -71,6 +71,7 @@ public class DictionaryServiceImpl implements DictionaryService{
         return Long.valueOf(insert);
     }
 
+
     @Transactional
     @Override
     public Long updateDictionary(String id, GlobalDictionary gd) {
@@ -86,6 +87,11 @@ public class DictionaryServiceImpl implements DictionaryService{
         return Long.valueOf(delete);
     }
 
+    @Override
+    public GlobalDictionary queryDictionary(String id) {
+        GlobalDictionary globalDictionary = DictionaryDao.selectByPrimaryKey(id);
+        return globalDictionary;
+    }
 
 
 }

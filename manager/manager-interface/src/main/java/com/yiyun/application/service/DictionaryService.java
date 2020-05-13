@@ -19,14 +19,14 @@ public interface DictionaryService {
      * @param page
      * @return
      */
-    public Result<GlobalDictionary> listDictionaryByPage(Page page, GlobalDictionary record);
+    Result<GlobalDictionary> listDictionaryByPage(Page page, GlobalDictionary record);
 
     /**
      * 新增
      * @param gd 实体类
      * @return 受到影响的行数
      */
-    public Long saveDictionary(GlobalDictionary gd);
+    Long saveDictionary(GlobalDictionary gd);
 
     /**
      * @Author yiyun
@@ -35,7 +35,7 @@ public interface DictionaryService {
      * @Param [id, gd]
      * @return java.lang.Long
     **/
-    public Long updateDictionary(String id ,GlobalDictionary gd);
+    Long updateDictionary(String id ,GlobalDictionary gd);
 
     /**
      * @Author yiyun
@@ -44,7 +44,16 @@ public interface DictionaryService {
      * @Param [id]
      * @return java.lang.Long
     **/
-    public Long deleteDictionary(String id);
+    Long deleteDictionary(String id);
+
+    /**
+     * @Author yiyun
+     * @Description // Retrieve dictionary
+     * @Date  2020/5/13 0013 15:27
+     * @Param [id]
+     * @return java.lang.Long
+    **/
+    GlobalDictionary queryDictionary(String id);
 
 
 }
