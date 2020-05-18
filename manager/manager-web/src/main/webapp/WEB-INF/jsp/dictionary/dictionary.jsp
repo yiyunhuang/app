@@ -99,15 +99,14 @@
 
                 });
             } else if(layEvent === 'edit'){
-                layer.msg('编辑操作');
+                // layer.msg('编辑操作');
                 $.ajax({
                     type:'GET',
-                    url: '${pageContext.request.contextPath }/dictionaries/'+obj.data.id,
+                    url: '${pageContext.request.contextPath }/dictionaryEditor',
+                    data:{'id':obj.data.id},
                     success:function(data) {
-                        alert(data.message);
-                        openWindows('dictionaryAction');
+                        $("#padding").html(data);
                     }
-
                 });
 
             }

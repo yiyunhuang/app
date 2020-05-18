@@ -9,6 +9,21 @@
 <html>
 <head>
     <title>字典表数据编辑</title>
+    <script type="text/javascript">
+        function initData(data){
+            alert(data);
+            if(data!=null&&data!=''){
+                $.ajax({
+                    url: '${pageContext.request.contextPath }/dictionaries',
+                    type:"GET",
+                    success:function(e){
+                        alert("servlet调用成功！");
+                    }
+                });
+            }
+        }
+    </script>
+
 </head>
 <body>
 
@@ -74,7 +89,8 @@
             });
             layer.tips('温馨提示：请注意开关状态的文字可以随意定义，而不仅仅是ON|OFF', data.othis)
         });
-
+        var id = '${id}';
+        initData(id);
         //监听提交
         form.on('submit(demo1)', function(data){
             var paramsJson = [];

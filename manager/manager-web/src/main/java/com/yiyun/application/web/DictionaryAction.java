@@ -51,6 +51,7 @@ public class DictionaryAction {
         return "dictionary/dictionaryEditor";
     }
 
+
     /**
      * get dictionaries list
      * @param page
