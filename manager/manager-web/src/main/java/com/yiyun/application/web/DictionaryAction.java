@@ -168,7 +168,7 @@ public class DictionaryAction {
 
     /**
      * @Author yiyun
-     * @Description //TODO update dictionary
+     * @Description //update dictionary
      * @Date  2020/5/9 0009 11:23
      * @Param [id]
      * @return com.yiyun.application.common.dto.MessageResult
@@ -179,7 +179,6 @@ public class DictionaryAction {
         logger.info("DictionaryAction.putDictionary");
         MessageResult mr = new MessageResult();
         try {
-            System.out.println(id);
             GlobalDictionary globalDictionary = new GlobalDictionary();
             List< GlobalDictionary > gdList = new ArrayList< GlobalDictionary >();
             if (StringUtils.isNotBlank(gd)) {

@@ -2159,7 +2159,7 @@ a cite {
     padding: 0 10px
 }
 
-.layui-form input[type=checkbox], .layui-form input[type=radio]{
+.layui-form input[type=checkbox], .layui-form input[type=radio], .layui-form select {
     display: none
 }
 

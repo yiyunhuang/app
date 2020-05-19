@@ -9,20 +9,6 @@
 <html>
 <head>
     <title>字典表数据编辑</title>
-    <script type="text/javascript">
-        function initData(data){
-            alert(data);
-            if(data!=null&&data!=''){
-                $.ajax({
-                    url: '${pageContext.request.contextPath }/dictionaries',
-                    type:"GET",
-                    success:function(e){
-                        alert("servlet调用成功！");
-                    }
-                });
-            }
-        }
-    </script>
 
 </head>
 <body>
@@ -33,30 +19,53 @@
 </fieldset>
 
 <div class="layui-form"  method="post" lay-filter="AddForm">
-    <div class="layui-form-item">
-        <label class="layui-form-label">代码类型</label>
+    <div class="layui-form-item" style="display:none;" >
+        <label class="layui-form-label" >id</label>
         <div class="layui-input-block">
-            <input type="text" name="codeType" lay-verify="required" lay-reqtext="代码类型是必填项，不能为空。" placeholder="请输入" autocomplete="off" class="layui-input">
+            <input type="text" name="id" type="hidden" class="layui-input">
         </div>
     </div>
+
     <div class="layui-form-item">
-        <label class="layui-form-label">代码值</label>
-        <div class="layui-input-block">
-            <input type="text" name="codeValue" lay-verify="required" lay-reqtext="代码值是必填项，不能为空。" placeholder="请输入" autocomplete="off" class="layui-input">
+            <label class="layui-form-label">代码类型</label>
+            <div class="layui-input-block">
+                <input type="text" name="codeType" lay-verify="required" lay-reqtext="代码类型是必填项，不能为空。" placeholder="请输入" autocomplete="off" class="layui-input">
+            </div>
         </div>
-    </div>
-    <div class="layui-form-item">
-        <label class="layui-form-label">代码说明</label>
-        <div class="layui-input-block">
-            <input type="text" name="codeExplain" lay-verify="required" lay-reqtext="代码说明是必填项，不能为空。" placeholder="请输入" autocomplete="off" class="layui-input">
+        <div class="layui-form-item">
+            <label class="layui-form-label">代码值</label>
+            <div class="layui-input-block">
+                <input type="text" name="codeValue" lay-verify="required" lay-reqtext="代码值是必填项，不能为空。" placeholder="请输入" autocomplete="off" class="layui-input">
+            </div>
         </div>
-    </div>
-    <div class="layui-form-item">
-        <label class="layui-form-label">参数归类</label>
-        <div class="layui-input-block">
-            <input type="text" name="parametersClassified" lay-verify="required" lay-reqtext="参数归类是必填项，不能为空。" placeholder="请输入" autocomplete="off" class="layui-input">
+        <div class="layui-form-item">
+            <label class="layui-form-label">代码说明</label>
+            <div class="layui-input-block">
+                <input type="text" name="codeExplain" lay-verify="required" lay-reqtext="代码说明是必填项，不能为空。" placeholder="请输入" autocomplete="off" class="layui-input">
+            </div>
         </div>
-    </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">参数归类</label>
+            <div class="layui-input-block" >
+                <input type="text" name="parametersClassified" lay-verify="required" lay-reqtext="参数归类是必填项，不能为空。" placeholder="请输入" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">请填写备注</label>
+            <div class="layui-input-block">
+                <textarea name="dictionaryRemark" placeholder="请输入内容" class="layui-textarea"></textarea>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">有效标识</label>
+            <div class="layui-input-block" >
+                <select name="isSign" >
+                    <option value="0">无效</option>
+                    <option value="1">有效</option>
+                </select>
+            </div>
+        </div>
 
     <div class="layui-form-item">
         <div class="layui-input-block">
@@ -70,6 +79,7 @@
 </body>
 
 <script>
+
 
     layui.use(['form', 'layedit', 'laydate'], function(){
         var form = layui.form
@@ -90,6 +100,19 @@
             layer.tips('温馨提示：请注意开关状态的文字可以随意定义，而不仅仅是ON|OFF', data.othis)
         });
         var id = '${id}';
+        function initData(id){
+            if(id!=null&&id!=''){
+                $.ajax({
+                    url: '${pageContext.request.contextPath }/dictionaries/'+id,
+                    type:"GET",
+                    success:function(data){
+                        // alert(data.message);
+                        form.val("AddForm", data.data);
+                    }
+                });
+            }
+        };
+
         initData(id);
         //监听提交
         form.on('submit(demo1)', function(data){
@@ -102,16 +125,30 @@
             gd = form.val("AddForm");
             paramsJson.push(gd);
             params.gd = JSON.stringify(paramsJson);
-            $.ajax({
-                type:'post',
-                url: '${pageContext.request.contextPath }/dictionaries',
-                data :params,
-                success:function(data) {
-                    alert(data.message);
-                    openWindows('dictionaryAction');
-                }
+            if(id!=null&&id!=''){
+                $.ajax({
+                    type:'put',
+                    url: '${pageContext.request.contextPath }/dictionaries/'+id,
+                    data :params,
+                    success:function(data) {
+                        alert(data.message);
+                        openWindows('dictionaryAction');
+                    }
 
-            });
+                });
+            }else{
+                $.ajax({
+                    type:'post',
+                    url: '${pageContext.request.contextPath }/dictionaries',
+                    data :params,
+                    success:function(data) {
+                        alert(data.message);
+                        openWindows('dictionaryAction');
+                    }
+
+                });
+            }
+
         });
 
 
