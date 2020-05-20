@@ -11,7 +11,6 @@
     <title>dictionary</title>
 </head>
 <body>
-
 <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
     <legend>参数录入</legend>
 </fieldset>
@@ -19,21 +18,16 @@
 <div class="layui-form">
      <table class="layui-hide" id="dictionary" lay-filter="test"></table>
 </div>
-
-
 <script type="text/html" id="barDemo">
     <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
     <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
 </script>
-
-
 <script type="text/html" id="toolbarDemo">
     <div class="layui-btn-container">
         <div class="layui-inline" lay-event="add"><i class="layui-icon layui-icon-add-1"></i></div>
         <div class="layui-inline" lay-event="update"><i class="layui-icon layui-icon-edit"></i></div>
     </div>
 </script>
-
 <script>
     layui.use('table', function(){
         var table = layui.table;
@@ -86,8 +80,6 @@
             }
 
         });
-
-
         //监听行工具事件
         table.on('tool(test)', function(obj){ //注：tool 是工具条事件名，test 是 table 原始容器的属性 lay-filter="对应的值"
             var data = obj.data //获得当前行数据
@@ -118,8 +110,6 @@
                 });
             }
         });
-
-
         //监听头工具栏事件
         table.on('toolbar(test)', function(obj){
             var checkStatus = table.checkStatus(obj.config.id)
@@ -144,32 +134,9 @@
                         });
                     }
                     break;
-                case 'delete':
-                    if(data.length === 0){
-                        layer.msg('请选择一行');
-                    } else {
-                        layer.confirm('真的删除行么', function(index){
-                            obj.del(); //删除对应行（tr）的DOM结构
-                            layer.close(index);
-                            //向服务端发送删除指令
-                            $.ajax({
-                                type:'delete',
-                                url: '${pageContext.request.contextPath }/dictionaries/'+obj.data.id,
-                                success:function(data) {
-                                    alert(data.message);
-                                    openWindows('dictionaryAction');
-                                }
-                            });
-                        });
-                    }
-                    break;
             };
         });
-
     });
-
 </script>
-
-
 </body>
 </html>

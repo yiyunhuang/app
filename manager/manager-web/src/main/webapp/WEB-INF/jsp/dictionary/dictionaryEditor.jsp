@@ -9,15 +9,11 @@
 <html>
 <head>
     <title>字典表数据编辑</title>
-
 </head>
 <body>
-
-
 <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
     <legend>表单集合演示--dictionaryEditor</legend>
 </fieldset>
-
 <div class="layui-form"  method="post" lay-filter="AddForm" id ="form">
     <div class="layui-form-item" style="display:none;" >
         <label class="layui-form-label" >id</label>
@@ -25,7 +21,6 @@
             <input type="text" name="id" type="hidden" class="layui-input">
         </div>
     </div>
-
     <div class="layui-form-item">
             <label class="layui-form-label">代码类型</label>
             <div class="layui-input-block">
@@ -56,7 +51,6 @@
                 <textarea name="dictionaryRemark" placeholder="请输入内容" class="layui-textarea"></textarea>
             </div>
         </div>
-
         <div class="layui-form-item">
             <label class="layui-form-label">有效标识</label>
             <div class="layui-input-block" >
@@ -73,7 +67,6 @@
             <button type="reset" class="layui-btn layui-btn-primary reset" onclick="reset()">重置</button>
         </div>
     </div>
-
 </div>
 </body>
 
@@ -84,14 +77,6 @@
             ,layedit = layui.layedit
             ,laydate = layui.laydate;
         form.render();  // 更新全部
-
-        //监听指定开关
-        form.on('switch(switchTest)', function(data){
-            layer.msg('开关checked：'+ (this.checked ? 'true' : 'false'), {
-                offset: '6px'
-            });
-            layer.tips('温馨提示：请注意开关状态的文字可以随意定义，而不仅仅是ON|OFF', data.othis)
-        });
         var id = '${id}';
         function initData(id){
             if(id!=null&&id!=''){
@@ -105,7 +90,6 @@
                 });
             }
         };
-
         initData(id);
         //监听提交
         form.on('submit(demo1)', function(data){
@@ -138,13 +122,9 @@
                         alert(data.message);
                         openWindows('dictionaryAction');
                     }
-
                 });
             }
-
         });
-
-
     });
 
 
