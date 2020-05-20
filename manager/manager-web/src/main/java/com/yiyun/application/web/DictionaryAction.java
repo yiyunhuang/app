@@ -1,6 +1,5 @@
 package com.yiyun.application.web;
 
-import com.alibaba.fastjson.JSON;
 import com.yiyun.application.common.dto.MessageResult;
 import com.yiyun.application.common.dto.Page;
 import com.yiyun.application.common.dto.Result;
@@ -71,7 +70,7 @@ public class DictionaryAction {
             GlobalDictionary globalDictionary = new GlobalDictionary();
             List< GlobalDictionary > gdList = new ArrayList< GlobalDictionary >();
             if (StringUtils.isNotBlank(gd)) {
-                gdList = JSON.parseArray(gd, GlobalDictionary.class);
+                gdList = JsonUtils.jsonToList(gd, GlobalDictionary.class);
             }
             if(gdList.size()>0){
                 globalDictionary=gdList.get(0);
@@ -130,7 +129,7 @@ public class DictionaryAction {
         GlobalDictionary globalDictionary = new GlobalDictionary();
         List< GlobalDictionary > gdList = new ArrayList< GlobalDictionary >();
         if (StringUtils.isNotBlank(gd)) {
-            gdList = JSON.parseArray(gd, GlobalDictionary.class);
+            gdList = JsonUtils.jsonToList(gd, GlobalDictionary.class);
         }
         if(gdList.size()>0){
             globalDictionary=gdList.get(0);
