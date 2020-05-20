@@ -55,7 +55,7 @@
                 <li class="layui-nav-item layui-nav-itemed">
                     <a class="" href="javascript:;">所有商品</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="javascript:;" onclick="openWindows('dictionaryAction')" name="padding">参数录入</a></dd>
+                        <dd><a href="javascript:;" onclick="openWindows('dictionaryAction')">参数录入</a></dd>
                         <dd><a href="javascript:;" onclick="openWindows('treeAction')" >树录入</a></dd>
                         <dd><a href="${pageContext.request.contextPath }/testModel">理财汇总</a></dd>
                         <dd><a href="">超链接</a></dd>

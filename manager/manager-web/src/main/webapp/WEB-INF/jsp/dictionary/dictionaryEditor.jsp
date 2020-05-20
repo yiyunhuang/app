@@ -18,7 +18,7 @@
     <legend>表单集合演示--dictionaryEditor</legend>
 </fieldset>
 
-<div class="layui-form"  method="post" lay-filter="AddForm">
+<div class="layui-form"  method="post" lay-filter="AddForm" id ="form">
     <div class="layui-form-item" style="display:none;" >
         <label class="layui-form-label" >id</label>
         <div class="layui-input-block">
@@ -61,8 +61,8 @@
             <label class="layui-form-label">有效标识</label>
             <div class="layui-input-block" >
                 <select name="isSign" >
-                    <option value="0">无效</option>
-                    <option value="1">有效</option>
+                    <option value="1" selected="" >有效</option>
+                    <option value="0" >无效</option>
                 </select>
             </div>
         </div>
@@ -70,27 +70,20 @@
     <div class="layui-form-item">
         <div class="layui-input-block">
             <button type="submit" class="layui-btn" lay-submit="" lay-filter="demo1" >立即提交</button>
-            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+            <button type="reset" class="layui-btn layui-btn-primary reset" onclick="reset()">重置</button>
         </div>
     </div>
 
 </div>
-
 </body>
 
 <script>
-
-
     layui.use(['form', 'layedit', 'laydate'], function(){
         var form = layui.form
             ,layer = layui.layer
             ,layedit = layui.layedit
             ,laydate = layui.laydate;
         form.render();  // 更新全部
-
-        //创建一个编辑器
-        var editIndex = layedit.build('LAY_demo_editor');
-
 
         //监听指定开关
         form.on('switch(switchTest)', function(data){

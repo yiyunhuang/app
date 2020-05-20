@@ -26,7 +26,7 @@ public class TreeAction {
 
         logger.info("TreeAction.index");
 
-        return "branchTree";
+        return "tree/branchTree";
     }
 
 }
