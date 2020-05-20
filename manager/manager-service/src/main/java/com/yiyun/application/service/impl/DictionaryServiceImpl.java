@@ -21,7 +21,7 @@ import java.util.Map;
  * @author 翼云
  * @version 1.0
  * @ClassName DictionaryServiceImpl
- * @Description TODO  字典接口实现类
+ * @Description  字典接口实现类
  * @program: application
  * @date 2020/4/27 0027 11:01
  **/

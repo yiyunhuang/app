@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.yiyun.application.common.dto.MessageResult;
 import com.yiyun.application.common.dto.Page;
 import com.yiyun.application.common.dto.Result;
+import com.yiyun.application.common.util.JsonUtils;
 import com.yiyun.application.pojo.po.GlobalDictionary;
 import com.yiyun.application.service.DictionaryService;
 import org.apache.commons.lang3.StringUtils;
@@ -44,6 +45,7 @@ public class DictionaryAction {
         logger.info("DictionaryAction.index");
         return "dictionary/dictionary";
     }
+
     @RequestMapping("/dictionaryEditor")
     public String  dictionaryEditor(HttpServletRequest request,String id){
         logger.info("DictionaryAction.dictionaryEditor");
@@ -52,12 +54,14 @@ public class DictionaryAction {
     }
 
 
+
     /**
-     * get dictionaries list
-     * @param page
-     * @param gd GlobalDictionary 实体类
-     * @return com.yiyun.application.common.dto.MessageResult
-     */
+     * @Author yiyun
+     * @Description //  get dictionaries list
+     * @Date  2020/5/20 0020 14:23
+     * @Param [page, gd]
+     * @return com.yiyun.application.common.dto.Result<com.yiyun.application.pojo.po.GlobalDictionary>
+    **/
     @ResponseBody
     @RequestMapping("/dictionaries")
     public Result<GlobalDictionary> listDictionariesByPage(Page page, String gd) {
@@ -81,6 +85,7 @@ public class DictionaryAction {
         list.setCode("0");
         return list;
     }
+
 /**
  * @Author yiyun
  * @Description //query dictionary
@@ -109,11 +114,12 @@ public class DictionaryAction {
         return mr;
     }
 
+
 /**
- * @Author 翼云
- * @Description // add dictionary
+ * @Author yiyun
+ * @Description //add dictionary
  * @Date  2020/5/6 0006 16:04
- * @Param [gd, code, mess]
+ * @Param [gd]
  * @return com.yiyun.application.common.dto.MessageResult
 **/
     @ResponseBody
@@ -180,12 +186,11 @@ public class DictionaryAction {
         MessageResult mr = new MessageResult();
         try {
             GlobalDictionary globalDictionary = new GlobalDictionary();
-            List< GlobalDictionary > gdList = new ArrayList< GlobalDictionary >();
             if (StringUtils.isNotBlank(gd)) {
-                gdList = JSON.parseArray(gd, GlobalDictionary.class);
-            }
-            if(gdList.size()>0){
-                globalDictionary=gdList.get(0);
+                List<GlobalDictionary> gdList = JsonUtils.jsonToList(gd, GlobalDictionary.class);
+                if(gdList.size()>0){
+                    globalDictionary=gdList.get(0);
+                }
             }
             Result<GlobalDictionary> list = null;
             final Long dicLong = dictionaryService.updateDictionary(id,globalDictionary);
