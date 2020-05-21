@@ -5,14 +5,14 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class FinancialTaskExample {
+public class UserAccountExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public FinancialTaskExample() {
+    public UserAccountExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
@@ -176,73 +176,73 @@ public class FinancialTaskExample {
             return (Criteria) this;
         }
 
-        public Criteria andFinancialTypeIsNull() {
-            addCriterion("financial_type is null");
+        public Criteria andAccountTypeIsNull() {
+            addCriterion("account_type is null");
             return (Criteria) this;
         }
 
-        public Criteria andFinancialTypeIsNotNull() {
-            addCriterion("financial_type is not null");
+        public Criteria andAccountTypeIsNotNull() {
+            addCriterion("account_type is not null");
             return (Criteria) this;
         }
 
-        public Criteria andFinancialTypeEqualTo(String value) {
-            addCriterion("financial_type =", value, "financialType");
+        public Criteria andAccountTypeEqualTo(String value) {
+            addCriterion("account_type =", value, "accountType");
             return (Criteria) this;
         }
 
-        public Criteria andFinancialTypeNotEqualTo(String value) {
-            addCriterion("financial_type <>", value, "financialType");
+        public Criteria andAccountTypeNotEqualTo(String value) {
+            addCriterion("account_type <>", value, "accountType");
             return (Criteria) this;
         }
 
-        public Criteria andFinancialTypeGreaterThan(String value) {
-            addCriterion("financial_type >", value, "financialType");
+        public Criteria andAccountTypeGreaterThan(String value) {
+            addCriterion("account_type >", value, "accountType");
             return (Criteria) this;
         }
 
-        public Criteria andFinancialTypeGreaterThanOrEqualTo(String value) {
-            addCriterion("financial_type >=", value, "financialType");
+        public Criteria andAccountTypeGreaterThanOrEqualTo(String value) {
+            addCriterion("account_type >=", value, "accountType");
             return (Criteria) this;
         }
 
-        public Criteria andFinancialTypeLessThan(String value) {
-            addCriterion("financial_type <", value, "financialType");
+        public Criteria andAccountTypeLessThan(String value) {
+            addCriterion("account_type <", value, "accountType");
             return (Criteria) this;
         }
 
-        public Criteria andFinancialTypeLessThanOrEqualTo(String value) {
-            addCriterion("financial_type <=", value, "financialType");
+        public Criteria andAccountTypeLessThanOrEqualTo(String value) {
+            addCriterion("account_type <=", value, "accountType");
             return (Criteria) this;
         }
 
-        public Criteria andFinancialTypeLike(String value) {
-            addCriterion("financial_type like", value, "financialType");
+        public Criteria andAccountTypeLike(String value) {
+            addCriterion("account_type like", value, "accountType");
             return (Criteria) this;
         }
 
-        public Criteria andFinancialTypeNotLike(String value) {
-            addCriterion("financial_type not like", value, "financialType");
+        public Criteria andAccountTypeNotLike(String value) {
+            addCriterion("account_type not like", value, "accountType");
             return (Criteria) this;
         }
 
-        public Criteria andFinancialTypeIn(List<String> values) {
-            addCriterion("financial_type in", values, "financialType");
+        public Criteria andAccountTypeIn(List<String> values) {
+            addCriterion("account_type in", values, "accountType");
             return (Criteria) this;
         }
 
-        public Criteria andFinancialTypeNotIn(List<String> values) {
-            addCriterion("financial_type not in", values, "financialType");
+        public Criteria andAccountTypeNotIn(List<String> values) {
+            addCriterion("account_type not in", values, "accountType");
             return (Criteria) this;
         }
 
-        public Criteria andFinancialTypeBetween(String value1, String value2) {
-            addCriterion("financial_type between", value1, value2, "financialType");
+        public Criteria andAccountTypeBetween(String value1, String value2) {
+            addCriterion("account_type between", value1, value2, "accountType");
             return (Criteria) this;
         }
 
-        public Criteria andFinancialTypeNotBetween(String value1, String value2) {
-            addCriterion("financial_type not between", value1, value2, "financialType");
+        public Criteria andAccountTypeNotBetween(String value1, String value2) {
+            addCriterion("account_type not between", value1, value2, "accountType");
             return (Criteria) this;
         }
 
@@ -306,323 +306,203 @@ public class FinancialTaskExample {
             return (Criteria) this;
         }
 
-        public Criteria andMoneyChangeIsNull() {
-            addCriterion("money_change is null");
+        public Criteria andAvailableAmountIsNull() {
+            addCriterion("available_amount is null");
             return (Criteria) this;
         }
 
-        public Criteria andMoneyChangeIsNotNull() {
-            addCriterion("money_change is not null");
+        public Criteria andAvailableAmountIsNotNull() {
+            addCriterion("available_amount is not null");
             return (Criteria) this;
         }
 
-        public Criteria andMoneyChangeEqualTo(BigDecimal value) {
-            addCriterion("money_change =", value, "moneyChange");
+        public Criteria andAvailableAmountEqualTo(BigDecimal value) {
+            addCriterion("available_amount =", value, "availableAmount");
             return (Criteria) this;
         }
 
-        public Criteria andMoneyChangeNotEqualTo(BigDecimal value) {
-            addCriterion("money_change <>", value, "moneyChange");
+        public Criteria andAvailableAmountNotEqualTo(BigDecimal value) {
+            addCriterion("available_amount <>", value, "availableAmount");
             return (Criteria) this;
         }
 
-        public Criteria andMoneyChangeGreaterThan(BigDecimal value) {
-            addCriterion("money_change >", value, "moneyChange");
+        public Criteria andAvailableAmountGreaterThan(BigDecimal value) {
+            addCriterion("available_amount >", value, "availableAmount");
             return (Criteria) this;
         }
 
-        public Criteria andMoneyChangeGreaterThanOrEqualTo(BigDecimal value) {
-            addCriterion("money_change >=", value, "moneyChange");
+        public Criteria andAvailableAmountGreaterThanOrEqualTo(BigDecimal value) {
+            addCriterion("available_amount >=", value, "availableAmount");
             return (Criteria) this;
         }
 
-        public Criteria andMoneyChangeLessThan(BigDecimal value) {
-            addCriterion("money_change <", value, "moneyChange");
+        public Criteria andAvailableAmountLessThan(BigDecimal value) {
+            addCriterion("available_amount <", value, "availableAmount");
             return (Criteria) this;
         }
 
-        public Criteria andMoneyChangeLessThanOrEqualTo(BigDecimal value) {
-            addCriterion("money_change <=", value, "moneyChange");
+        public Criteria andAvailableAmountLessThanOrEqualTo(BigDecimal value) {
+            addCriterion("available_amount <=", value, "availableAmount");
             return (Criteria) this;
         }
 
-        public Criteria andMoneyChangeIn(List<BigDecimal> values) {
-            addCriterion("money_change in", values, "moneyChange");
+        public Criteria andAvailableAmountIn(List<BigDecimal> values) {
+            addCriterion("available_amount in", values, "availableAmount");
             return (Criteria) this;
         }
 
-        public Criteria andMoneyChangeNotIn(List<BigDecimal> values) {
-            addCriterion("money_change not in", values, "moneyChange");
+        public Criteria andAvailableAmountNotIn(List<BigDecimal> values) {
+            addCriterion("available_amount not in", values, "availableAmount");
             return (Criteria) this;
         }
 
-        public Criteria andMoneyChangeBetween(BigDecimal value1, BigDecimal value2) {
-            addCriterion("money_change between", value1, value2, "moneyChange");
+        public Criteria andAvailableAmountBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("available_amount between", value1, value2, "availableAmount");
             return (Criteria) this;
         }
 
-        public Criteria andMoneyChangeNotBetween(BigDecimal value1, BigDecimal value2) {
-            addCriterion("money_change not between", value1, value2, "moneyChange");
+        public Criteria andAvailableAmountNotBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("available_amount not between", value1, value2, "availableAmount");
             return (Criteria) this;
         }
 
-        public Criteria andSharesChangeIsNull() {
-            addCriterion("shares_change is null");
+        public Criteria andUserIdIsNull() {
+            addCriterion("user_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andSharesChangeIsNotNull() {
-            addCriterion("shares_change is not null");
+        public Criteria andUserIdIsNotNull() {
+            addCriterion("user_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andSharesChangeEqualTo(Integer value) {
-            addCriterion("shares_change =", value, "sharesChange");
+        public Criteria andUserIdEqualTo(String value) {
+            addCriterion("user_id =", value, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andSharesChangeNotEqualTo(Integer value) {
-            addCriterion("shares_change <>", value, "sharesChange");
+        public Criteria andUserIdNotEqualTo(String value) {
+            addCriterion("user_id <>", value, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andSharesChangeGreaterThan(Integer value) {
-            addCriterion("shares_change >", value, "sharesChange");
+        public Criteria andUserIdGreaterThan(String value) {
+            addCriterion("user_id >", value, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andSharesChangeGreaterThanOrEqualTo(Integer value) {
-            addCriterion("shares_change >=", value, "sharesChange");
+        public Criteria andUserIdGreaterThanOrEqualTo(String value) {
+            addCriterion("user_id >=", value, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andSharesChangeLessThan(Integer value) {
-            addCriterion("shares_change <", value, "sharesChange");
+        public Criteria andUserIdLessThan(String value) {
+            addCriterion("user_id <", value, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andSharesChangeLessThanOrEqualTo(Integer value) {
-            addCriterion("shares_change <=", value, "sharesChange");
+        public Criteria andUserIdLessThanOrEqualTo(String value) {
+            addCriterion("user_id <=", value, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andSharesChangeIn(List<Integer> values) {
-            addCriterion("shares_change in", values, "sharesChange");
+        public Criteria andUserIdLike(String value) {
+            addCriterion("user_id like", value, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andSharesChangeNotIn(List<Integer> values) {
-            addCriterion("shares_change not in", values, "sharesChange");
+        public Criteria andUserIdNotLike(String value) {
+            addCriterion("user_id not like", value, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andSharesChangeBetween(Integer value1, Integer value2) {
-            addCriterion("shares_change between", value1, value2, "sharesChange");
+        public Criteria andUserIdIn(List<String> values) {
+            addCriterion("user_id in", values, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andSharesChangeNotBetween(Integer value1, Integer value2) {
-            addCriterion("shares_change not between", value1, value2, "sharesChange");
+        public Criteria andUserIdNotIn(List<String> values) {
+            addCriterion("user_id not in", values, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andStockPriceIsNull() {
-            addCriterion("stock_price is null");
+        public Criteria andUserIdBetween(String value1, String value2) {
+            addCriterion("user_id between", value1, value2, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andStockPriceIsNotNull() {
-            addCriterion("stock_price is not null");
+        public Criteria andUserIdNotBetween(String value1, String value2) {
+            addCriterion("user_id not between", value1, value2, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andStockPriceEqualTo(BigDecimal value) {
-            addCriterion("stock_price =", value, "stockPrice");
+        public Criteria andAccountRemarkIsNull() {
+            addCriterion("account_remark is null");
             return (Criteria) this;
         }
 
-        public Criteria andStockPriceNotEqualTo(BigDecimal value) {
-            addCriterion("stock_price <>", value, "stockPrice");
+        public Criteria andAccountRemarkIsNotNull() {
+            addCriterion("account_remark is not null");
             return (Criteria) this;
         }
 
-        public Criteria andStockPriceGreaterThan(BigDecimal value) {
-            addCriterion("stock_price >", value, "stockPrice");
+        public Criteria andAccountRemarkEqualTo(String value) {
+            addCriterion("account_remark =", value, "accountRemark");
             return (Criteria) this;
         }
 
-        public Criteria andStockPriceGreaterThanOrEqualTo(BigDecimal value) {
-            addCriterion("stock_price >=", value, "stockPrice");
+        public Criteria andAccountRemarkNotEqualTo(String value) {
+            addCriterion("account_remark <>", value, "accountRemark");
             return (Criteria) this;
         }
 
-        public Criteria andStockPriceLessThan(BigDecimal value) {
-            addCriterion("stock_price <", value, "stockPrice");
+        public Criteria andAccountRemarkGreaterThan(String value) {
+            addCriterion("account_remark >", value, "accountRemark");
             return (Criteria) this;
         }
 
-        public Criteria andStockPriceLessThanOrEqualTo(BigDecimal value) {
-            addCriterion("stock_price <=", value, "stockPrice");
+        public Criteria andAccountRemarkGreaterThanOrEqualTo(String value) {
+            addCriterion("account_remark >=", value, "accountRemark");
             return (Criteria) this;
         }
 
-        public Criteria andStockPriceIn(List<BigDecimal> values) {
-            addCriterion("stock_price in", values, "stockPrice");
+        public Criteria andAccountRemarkLessThan(String value) {
+            addCriterion("account_remark <", value, "accountRemark");
             return (Criteria) this;
         }
 
-        public Criteria andStockPriceNotIn(List<BigDecimal> values) {
-            addCriterion("stock_price not in", values, "stockPrice");
+        public Criteria andAccountRemarkLessThanOrEqualTo(String value) {
+            addCriterion("account_remark <=", value, "accountRemark");
             return (Criteria) this;
         }
 
-        public Criteria andStockPriceBetween(BigDecimal value1, BigDecimal value2) {
-            addCriterion("stock_price between", value1, value2, "stockPrice");
+        public Criteria andAccountRemarkLike(String value) {
+            addCriterion("account_remark like", value, "accountRemark");
             return (Criteria) this;
         }
 
-        public Criteria andStockPriceNotBetween(BigDecimal value1, BigDecimal value2) {
-            addCriterion("stock_price not between", value1, value2, "stockPrice");
+        public Criteria andAccountRemarkNotLike(String value) {
+            addCriterion("account_remark not like", value, "accountRemark");
             return (Criteria) this;
         }
 
-        public Criteria andAccountIdIsNull() {
-            addCriterion("account_id is null");
+        public Criteria andAccountRemarkIn(List<String> values) {
+            addCriterion("account_remark in", values, "accountRemark");
             return (Criteria) this;
         }
 
-        public Criteria andAccountIdIsNotNull() {
-            addCriterion("account_id is not null");
+        public Criteria andAccountRemarkNotIn(List<String> values) {
+            addCriterion("account_remark not in", values, "accountRemark");
             return (Criteria) this;
         }
 
-        public Criteria andAccountIdEqualTo(String value) {
-            addCriterion("account_id =", value, "accountId");
+        public Criteria andAccountRemarkBetween(String value1, String value2) {
+            addCriterion("account_remark between", value1, value2, "accountRemark");
             return (Criteria) this;
         }
 
-        public Criteria andAccountIdNotEqualTo(String value) {
-            addCriterion("account_id <>", value, "accountId");
-            return (Criteria) this;
-        }
-
-        public Criteria andAccountIdGreaterThan(String value) {
-            addCriterion("account_id >", value, "accountId");
-            return (Criteria) this;
-        }
-
-        public Criteria andAccountIdGreaterThanOrEqualTo(String value) {
-            addCriterion("account_id >=", value, "accountId");
-            return (Criteria) this;
-        }
-
-        public Criteria andAccountIdLessThan(String value) {
-            addCriterion("account_id <", value, "accountId");
-            return (Criteria) this;
-        }
-
-        public Criteria andAccountIdLessThanOrEqualTo(String value) {
-            addCriterion("account_id <=", value, "accountId");
-            return (Criteria) this;
-        }
-
-        public Criteria andAccountIdLike(String value) {
-            addCriterion("account_id like", value, "accountId");
-            return (Criteria) this;
-        }
-
-        public Criteria andAccountIdNotLike(String value) {
-            addCriterion("account_id not like", value, "accountId");
-            return (Criteria) this;
-        }
-
-        public Criteria andAccountIdIn(List<String> values) {
-            addCriterion("account_id in", values, "accountId");
-            return (Criteria) this;
-        }
-
-        public Criteria andAccountIdNotIn(List<String> values) {
-            addCriterion("account_id not in", values, "accountId");
-            return (Criteria) this;
-        }
-
-        public Criteria andAccountIdBetween(String value1, String value2) {
-            addCriterion("account_id between", value1, value2, "accountId");
-            return (Criteria) this;
-        }
-
-        public Criteria andAccountIdNotBetween(String value1, String value2) {
-            addCriterion("account_id not between", value1, value2, "accountId");
-            return (Criteria) this;
-        }
-
-        public Criteria andFinancialRemarkIsNull() {
-            addCriterion("financial_remark is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andFinancialRemarkIsNotNull() {
-            addCriterion("financial_remark is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andFinancialRemarkEqualTo(String value) {
-            addCriterion("financial_remark =", value, "financialRemark");
-            return (Criteria) this;
-        }
-
-        public Criteria andFinancialRemarkNotEqualTo(String value) {
-            addCriterion("financial_remark <>", value, "financialRemark");
-            return (Criteria) this;
-        }
-
-        public Criteria andFinancialRemarkGreaterThan(String value) {
-            addCriterion("financial_remark >", value, "financialRemark");
-            return (Criteria) this;
-        }
-
-        public Criteria andFinancialRemarkGreaterThanOrEqualTo(String value) {
-            addCriterion("financial_remark >=", value, "financialRemark");
-            return (Criteria) this;
-        }
-
-        public Criteria andFinancialRemarkLessThan(String value) {
-            addCriterion("financial_remark <", value, "financialRemark");
-            return (Criteria) this;
-        }
-
-        public Criteria andFinancialRemarkLessThanOrEqualTo(String value) {
-            addCriterion("financial_remark <=", value, "financialRemark");
-            return (Criteria) this;
-        }
-
-        public Criteria andFinancialRemarkLike(String value) {
-            addCriterion("financial_remark like", value, "financialRemark");
-            return (Criteria) this;
-        }
-
-        public Criteria andFinancialRemarkNotLike(String value) {
-            addCriterion("financial_remark not like", value, "financialRemark");
-            return (Criteria) this;
-        }
-
-        public Criteria andFinancialRemarkIn(List<String> values) {
-            addCriterion("financial_remark in", values, "financialRemark");
-            return (Criteria) this;
-        }
-
-        public Criteria andFinancialRemarkNotIn(List<String> values) {
-            addCriterion("financial_remark not in", values, "financialRemark");
-            return (Criteria) this;
-        }
-
-        public Criteria andFinancialRemarkBetween(String value1, String value2) {
-            addCriterion("financial_remark between", value1, value2, "financialRemark");
-            return (Criteria) this;
-        }
-
-        public Criteria andFinancialRemarkNotBetween(String value1, String value2) {
-            addCriterion("financial_remark not between", value1, value2, "financialRemark");
+        public Criteria andAccountRemarkNotBetween(String value1, String value2) {
+            addCriterion("account_remark not between", value1, value2, "accountRemark");
             return (Criteria) this;
         }
 

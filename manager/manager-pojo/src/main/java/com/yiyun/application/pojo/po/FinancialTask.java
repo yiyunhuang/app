@@ -12,7 +12,11 @@ public class FinancialTask {
 
     private BigDecimal moneyChange;
 
-    private String userId;
+    private Integer sharesChange;
+
+    private BigDecimal stockPrice;
+
+    private String accountId;
 
     private String financialRemark;
 
@@ -54,12 +58,28 @@ public class FinancialTask {
         this.moneyChange = moneyChange;
     }
 
-    public String getUserId() {
-        return userId;
+    public Integer getSharesChange() {
+        return sharesChange;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId == null ? null : userId.trim();
+    public void setSharesChange(Integer sharesChange) {
+        this.sharesChange = sharesChange;
+    }
+
+    public BigDecimal getStockPrice() {
+        return stockPrice;
+    }
+
+    public void setStockPrice(BigDecimal stockPrice) {
+        this.stockPrice = stockPrice;
+    }
+
+    public String getAccountId() {
+        return accountId;
+    }
+
+    public void setAccountId(String accountId) {
+        this.accountId = accountId == null ? null : accountId.trim();
     }
 
     public String getFinancialRemark() {

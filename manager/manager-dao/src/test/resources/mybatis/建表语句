@@ -36,8 +36,26 @@ CREATE TABLE `financial_task` (
   `financial_type` varchar(8) NOT NULL COMMENT '理财类型',
   `total_amount` decimal(16,2) NOT NULL COMMENT '总计金额',
   `money_change` decimal(16,2) NOT NULL COMMENT '金额变动',
-  `user_id` varchar(32) NOT NULL COMMENT '用户id',
+  `shares_change` int(8) unsigned NOT NULL COMMENT '变动数量',
+  `stock_price` decimal(16,2) NOT NULL COMMENT '价格',
+  `account_id` varchar(32) NOT NULL COMMENT '账户id',
   `financial_remark`  varchar(1024) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci  NULL DEFAULT NULL  COMMENT '备注' ,
+  `gmt_create`  timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间' ,
+  `gmt_modified`  timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间' ,
+  `is_sign` tinyint(4) unsigned NOT NULL  DEFAULT 1 COMMENT '有效标识 1 有效 0 无效',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+
+
+
+DROP TABLE IF EXISTS `user_account`;
+CREATE TABLE `user_account` (
+  `id` varchar(32) NOT NULL,
+  `account_type` varchar(32) NOT NULL COMMENT '账户类型',
+  `total_amount` decimal(16,2) NOT NULL COMMENT '总计金额',
+  `available_amount` decimal(16,2) NOT NULL COMMENT '可用金额',
+  `user_id` varchar(32) NOT NULL COMMENT '用户id',
+  `account_remark`  varchar(1024) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci  NULL DEFAULT NULL  COMMENT '备注' ,
   `gmt_create`  timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间' ,
   `gmt_modified`  timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间' ,
   `is_sign` tinyint(4) unsigned NOT NULL  DEFAULT 1 COMMENT '有效标识 1 有效 0 无效',
