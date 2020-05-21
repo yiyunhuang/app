@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.yiyun.application.dao.BranchTreeMapper" >
-  <resultMap id="BaseResultMap" type="com.yiyun.application.pojo.po.BranchTree" >
+<mapper namespace="com.yiyun.application.dao.ApplicationFinancialMapper" >
+  <resultMap id="BaseResultMap" type="com.yiyun.application.pojo.po.ApplicationFinancial" >
     <id column="id" property="id" jdbcType="VARCHAR" />
-    <result column="parents_id" property="parentsId" jdbcType="VARCHAR" />
-    <result column="tree_location" property="treeLocation" jdbcType="VARCHAR" />
-    <result column="tree_title" property="treeTitle" jdbcType="VARCHAR" />
-    <result column="tree_description" property="treeDescription" jdbcType="VARCHAR" />
-    <result column="tree_type" property="treeType" jdbcType="INTEGER" />
-    <result column="tree_remark" property="treeRemark" jdbcType="VARCHAR" />
+    <result column="financial_type" property="financialType" jdbcType="VARCHAR" />
+    <result column="total_amount" property="totalAmount" jdbcType="DECIMAL" />
+    <result column="money_change" property="moneyChange" jdbcType="DECIMAL" />
+    <result column="shares_change" property="sharesChange" jdbcType="INTEGER" />
+    <result column="stock_price" property="stockPrice" jdbcType="DECIMAL" />
+    <result column="account_id" property="accountId" jdbcType="VARCHAR" />
+    <result column="financial_remark" property="financialRemark" jdbcType="VARCHAR" />
     <result column="gmt_create" property="gmtCreate" jdbcType="TIMESTAMP" />
     <result column="gmt_modified" property="gmtModified" jdbcType="TIMESTAMP" />
     <result column="is_sign" property="isSign" jdbcType="TINYINT" />
@@ -72,16 +73,16 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, parents_id, tree_location, tree_title, tree_description, tree_type, tree_remark, 
-    gmt_create, gmt_modified, is_sign
+    id, financial_type, total_amount, money_change, shares_change, stock_price, account_id, 
+    financial_remark, gmt_create, gmt_modified, is_sign
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.yiyun.application.pojo.po.BranchTreeExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.yiyun.application.pojo.po.ApplicationFinancialExample" >
     select
     <if test="distinct" >
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from branch_tree
+    from application_financial
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -92,52 +93,55 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
-    from branch_tree
+    from application_financial
     where id = #{id,jdbcType=VARCHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
-    delete from branch_tree
+    delete from application_financial
     where id = #{id,jdbcType=VARCHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.yiyun.application.pojo.po.BranchTreeExample" >
-    delete from branch_tree
+  <delete id="deleteByExample" parameterType="com.yiyun.application.pojo.po.ApplicationFinancialExample" >
+    delete from application_financial
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.yiyun.application.pojo.po.BranchTree" >
-    insert into branch_tree (id, parents_id, tree_location, 
-      tree_title, tree_description, tree_type, 
-      tree_remark, gmt_create, gmt_modified, 
-      is_sign)
-    values (#{id,jdbcType=VARCHAR}, #{parentsId,jdbcType=VARCHAR}, #{treeLocation,jdbcType=VARCHAR}, 
-      #{treeTitle,jdbcType=VARCHAR}, #{treeDescription,jdbcType=VARCHAR}, #{treeType,jdbcType=INTEGER}, 
-      #{treeRemark,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP}, 
-      #{isSign,jdbcType=TINYINT})
+  <insert id="insert" parameterType="com.yiyun.application.pojo.po.ApplicationFinancial" >
+    insert into application_financial (id, financial_type, total_amount, 
+      money_change, shares_change, stock_price, 
+      account_id, financial_remark, gmt_create, 
+      gmt_modified, is_sign)
+    values (#{id,jdbcType=VARCHAR}, #{financialType,jdbcType=VARCHAR}, #{totalAmount,jdbcType=DECIMAL}, 
+      #{moneyChange,jdbcType=DECIMAL}, #{sharesChange,jdbcType=INTEGER}, #{stockPrice,jdbcType=DECIMAL}, 
+      #{accountId,jdbcType=VARCHAR}, #{financialRemark,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=TIMESTAMP}, 
+      #{gmtModified,jdbcType=TIMESTAMP}, #{isSign,jdbcType=TINYINT})
   </insert>
-  <insert id="insertSelective" parameterType="com.yiyun.application.pojo.po.BranchTree" >
-    insert into branch_tree
+  <insert id="insertSelective" parameterType="com.yiyun.application.pojo.po.ApplicationFinancial" >
+    insert into application_financial
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
       </if>
-      <if test="parentsId != null" >
-        parents_id,
+      <if test="financialType != null" >
+        financial_type,
       </if>
-      <if test="treeLocation != null" >
-        tree_location,
+      <if test="totalAmount != null" >
+        total_amount,
       </if>
-      <if test="treeTitle != null" >
-        tree_title,
+      <if test="moneyChange != null" >
+        money_change,
       </if>
-      <if test="treeDescription != null" >
-        tree_description,
+      <if test="sharesChange != null" >
+        shares_change,
       </if>
-      <if test="treeType != null" >
-        tree_type,
+      <if test="stockPrice != null" >
+        stock_price,
       </if>
-      <if test="treeRemark != null" >
-        tree_remark,
+      <if test="accountId != null" >
+        account_id,
+      </if>
+      <if test="financialRemark != null" >
+        financial_remark,
       </if>
       <if test="gmtCreate != null" >
         gmt_create,
@@ -153,23 +157,26 @@
       <if test="id != null" >
         #{id,jdbcType=VARCHAR},
       </if>
-      <if test="parentsId != null" >
-        #{parentsId,jdbcType=VARCHAR},
+      <if test="financialType != null" >
+        #{financialType,jdbcType=VARCHAR},
       </if>
-      <if test="treeLocation != null" >
-        #{treeLocation,jdbcType=VARCHAR},
+      <if test="totalAmount != null" >
+        #{totalAmount,jdbcType=DECIMAL},
       </if>
-      <if test="treeTitle != null" >
-        #{treeTitle,jdbcType=VARCHAR},
+      <if test="moneyChange != null" >
+        #{moneyChange,jdbcType=DECIMAL},
       </if>
-      <if test="treeDescription != null" >
-        #{treeDescription,jdbcType=VARCHAR},
+      <if test="sharesChange != null" >
+        #{sharesChange,jdbcType=INTEGER},
       </if>
-      <if test="treeType != null" >
-        #{treeType,jdbcType=INTEGER},
+      <if test="stockPrice != null" >
+        #{stockPrice,jdbcType=DECIMAL},
       </if>
-      <if test="treeRemark != null" >
-        #{treeRemark,jdbcType=VARCHAR},
+      <if test="accountId != null" >
+        #{accountId,jdbcType=VARCHAR},
+      </if>
+      <if test="financialRemark != null" >
+        #{financialRemark,jdbcType=VARCHAR},
       </if>
       <if test="gmtCreate != null" >
         #{gmtCreate,jdbcType=TIMESTAMP},
@@ -182,35 +189,38 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.yiyun.application.pojo.po.BranchTreeExample" resultType="java.lang.Integer" >
-    select count(*) from branch_tree
+  <select id="countByExample" parameterType="com.yiyun.application.pojo.po.ApplicationFinancialExample" resultType="java.lang.Integer" >
+    select count(*) from application_financial
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map" >
-    update branch_tree
+    update application_financial
     <set >
       <if test="record.id != null" >
         id = #{record.id,jdbcType=VARCHAR},
       </if>
-      <if test="record.parentsId != null" >
-        parents_id = #{record.parentsId,jdbcType=VARCHAR},
+      <if test="record.financialType != null" >
+        financial_type = #{record.financialType,jdbcType=VARCHAR},
       </if>
-      <if test="record.treeLocation != null" >
-        tree_location = #{record.treeLocation,jdbcType=VARCHAR},
+      <if test="record.totalAmount != null" >
+        total_amount = #{record.totalAmount,jdbcType=DECIMAL},
       </if>
-      <if test="record.treeTitle != null" >
-        tree_title = #{record.treeTitle,jdbcType=VARCHAR},
+      <if test="record.moneyChange != null" >
+        money_change = #{record.moneyChange,jdbcType=DECIMAL},
       </if>
-      <if test="record.treeDescription != null" >
-        tree_description = #{record.treeDescription,jdbcType=VARCHAR},
+      <if test="record.sharesChange != null" >
+        shares_change = #{record.sharesChange,jdbcType=INTEGER},
       </if>
-      <if test="record.treeType != null" >
-        tree_type = #{record.treeType,jdbcType=INTEGER},
+      <if test="record.stockPrice != null" >
+        stock_price = #{record.stockPrice,jdbcType=DECIMAL},
       </if>
-      <if test="record.treeRemark != null" >
-        tree_remark = #{record.treeRemark,jdbcType=VARCHAR},
+      <if test="record.accountId != null" >
+        account_id = #{record.accountId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.financialRemark != null" >
+        financial_remark = #{record.financialRemark,jdbcType=VARCHAR},
       </if>
       <if test="record.gmtCreate != null" >
         gmt_create = #{record.gmtCreate,jdbcType=TIMESTAMP},
@@ -227,14 +237,15 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map" >
-    update branch_tree
+    update application_financial
     set id = #{record.id,jdbcType=VARCHAR},
-      parents_id = #{record.parentsId,jdbcType=VARCHAR},
-      tree_location = #{record.treeLocation,jdbcType=VARCHAR},
-      tree_title = #{record.treeTitle,jdbcType=VARCHAR},
-      tree_description = #{record.treeDescription,jdbcType=VARCHAR},
-      tree_type = #{record.treeType,jdbcType=INTEGER},
-      tree_remark = #{record.treeRemark,jdbcType=VARCHAR},
+      financial_type = #{record.financialType,jdbcType=VARCHAR},
+      total_amount = #{record.totalAmount,jdbcType=DECIMAL},
+      money_change = #{record.moneyChange,jdbcType=DECIMAL},
+      shares_change = #{record.sharesChange,jdbcType=INTEGER},
+      stock_price = #{record.stockPrice,jdbcType=DECIMAL},
+      account_id = #{record.accountId,jdbcType=VARCHAR},
+      financial_remark = #{record.financialRemark,jdbcType=VARCHAR},
       gmt_create = #{record.gmtCreate,jdbcType=TIMESTAMP},
       gmt_modified = #{record.gmtModified,jdbcType=TIMESTAMP},
       is_sign = #{record.isSign,jdbcType=TINYINT}
@@ -242,26 +253,29 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yiyun.application.pojo.po.BranchTree" >
-    update branch_tree
+  <update id="updateByPrimaryKeySelective" parameterType="com.yiyun.application.pojo.po.ApplicationFinancial" >
+    update application_financial
     <set >
-      <if test="parentsId != null" >
-        parents_id = #{parentsId,jdbcType=VARCHAR},
+      <if test="financialType != null" >
+        financial_type = #{financialType,jdbcType=VARCHAR},
       </if>
-      <if test="treeLocation != null" >
-        tree_location = #{treeLocation,jdbcType=VARCHAR},
+      <if test="totalAmount != null" >
+        total_amount = #{totalAmount,jdbcType=DECIMAL},
       </if>
-      <if test="treeTitle != null" >
-        tree_title = #{treeTitle,jdbcType=VARCHAR},
+      <if test="moneyChange != null" >
+        money_change = #{moneyChange,jdbcType=DECIMAL},
       </if>
-      <if test="treeDescription != null" >
-        tree_description = #{treeDescription,jdbcType=VARCHAR},
+      <if test="sharesChange != null" >
+        shares_change = #{sharesChange,jdbcType=INTEGER},
       </if>
-      <if test="treeType != null" >
-        tree_type = #{treeType,jdbcType=INTEGER},
+      <if test="stockPrice != null" >
+        stock_price = #{stockPrice,jdbcType=DECIMAL},
       </if>
-      <if test="treeRemark != null" >
-        tree_remark = #{treeRemark,jdbcType=VARCHAR},
+      <if test="accountId != null" >
+        account_id = #{accountId,jdbcType=VARCHAR},
+      </if>
+      <if test="financialRemark != null" >
+        financial_remark = #{financialRemark,jdbcType=VARCHAR},
       </if>
       <if test="gmtCreate != null" >
         gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
@@ -275,14 +289,15 @@
     </set>
     where id = #{id,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yiyun.application.pojo.po.BranchTree" >
-    update branch_tree
-    set parents_id = #{parentsId,jdbcType=VARCHAR},
-      tree_location = #{treeLocation,jdbcType=VARCHAR},
-      tree_title = #{treeTitle,jdbcType=VARCHAR},
-      tree_description = #{treeDescription,jdbcType=VARCHAR},
-      tree_type = #{treeType,jdbcType=INTEGER},
-      tree_remark = #{treeRemark,jdbcType=VARCHAR},
+  <update id="updateByPrimaryKey" parameterType="com.yiyun.application.pojo.po.ApplicationFinancial" >
+    update application_financial
+    set financial_type = #{financialType,jdbcType=VARCHAR},
+      total_amount = #{totalAmount,jdbcType=DECIMAL},
+      money_change = #{moneyChange,jdbcType=DECIMAL},
+      shares_change = #{sharesChange,jdbcType=INTEGER},
+      stock_price = #{stockPrice,jdbcType=DECIMAL},
+      account_id = #{accountId,jdbcType=VARCHAR},
+      financial_remark = #{financialRemark,jdbcType=VARCHAR},
       gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
       gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
       is_sign = #{isSign,jdbcType=TINYINT}

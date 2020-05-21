@@ -3,7 +3,7 @@ package com.yiyun.application.pojo.po;
 import java.math.BigDecimal;
 import java.util.Date;
 
-public class UserAccount {
+public class ApplicationAccount {
     private String id;
 
     private String accountType;

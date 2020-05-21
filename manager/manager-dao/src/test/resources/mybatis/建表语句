@@ -15,6 +15,11 @@ CREATE TABLE `application_user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
+insert into `application_user` values(
+'183619279646756951','yiyun','yiyun','yiyun','',SYSDATE(),SYSDATE(),'1'
+)
+
+
 
 DROP TABLE IF EXISTS `global_dictionary`;
 CREATE TABLE `global_dictionary` (
@@ -30,8 +35,8 @@ CREATE TABLE `global_dictionary` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-DROP TABLE IF EXISTS `financial_task`;
-CREATE TABLE `financial_task` (
+DROP TABLE IF EXISTS `application_financial`;
+CREATE TABLE `application_financial` (
   `id` varchar(32) NOT NULL,
   `financial_type` varchar(8) NOT NULL COMMENT '理财类型',
   `total_amount` decimal(16,2) NOT NULL COMMENT '总计金额',
@@ -48,8 +53,8 @@ CREATE TABLE `financial_task` (
 
 
 
-DROP TABLE IF EXISTS `user_account`;
-CREATE TABLE `user_account` (
+DROP TABLE IF EXISTS `application_account`;
+CREATE TABLE `application_account` (
   `id` varchar(32) NOT NULL,
   `account_type` varchar(32) NOT NULL COMMENT '账户类型',
   `total_amount` decimal(16,2) NOT NULL COMMENT '总计金额',
@@ -63,8 +68,8 @@ CREATE TABLE `user_account` (
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 
 
-DROP TABLE IF EXISTS `branch_tree`;
-CREATE TABLE `branch_tree` (
+DROP TABLE IF EXISTS `application_tree`;
+CREATE TABLE `application_tree` (
   `id` varchar(32) NOT NULL,
   `parents_id`  varchar(32) NULL DEFAULT NULL COMMENT '父ID' ,
   `tree_location`  varchar(1024) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '地址' ,

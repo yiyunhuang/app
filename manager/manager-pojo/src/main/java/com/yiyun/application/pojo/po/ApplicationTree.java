@@ -2,7 +2,7 @@ package com.yiyun.application.pojo.po;
 
 import java.util.Date;
 
-public class BranchTree {
+public class ApplicationTree {
     private String id;
 
     private String parentsId;

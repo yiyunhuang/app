@@ -3,7 +3,7 @@ package com.yiyun.application.pojo.po;
 import java.math.BigDecimal;
 import java.util.Date;
 
-public class FinancialTask {
+public class ApplicationFinancial {
     private String id;
 
     private String financialType;

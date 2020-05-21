@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class BranchTreeExample {
+public class ApplicationTreeExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public BranchTreeExample() {
+    public ApplicationTreeExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 

@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.yiyun.application.dao.FinancialTaskMapper" >
-  <resultMap id="BaseResultMap" type="com.yiyun.application.pojo.po.FinancialTask" >
+<mapper namespace="com.yiyun.application.dao.ApplicationAccountMapper" >
+  <resultMap id="BaseResultMap" type="com.yiyun.application.pojo.po.ApplicationAccount" >
     <id column="id" property="id" jdbcType="VARCHAR" />
-    <result column="financial_type" property="financialType" jdbcType="VARCHAR" />
+    <result column="account_type" property="accountType" jdbcType="VARCHAR" />
     <result column="total_amount" property="totalAmount" jdbcType="DECIMAL" />
-    <result column="money_change" property="moneyChange" jdbcType="DECIMAL" />
-    <result column="shares_change" property="sharesChange" jdbcType="INTEGER" />
-    <result column="stock_price" property="stockPrice" jdbcType="DECIMAL" />
-    <result column="account_id" property="accountId" jdbcType="VARCHAR" />
-    <result column="financial_remark" property="financialRemark" jdbcType="VARCHAR" />
+    <result column="available_amount" property="availableAmount" jdbcType="DECIMAL" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="account_remark" property="accountRemark" jdbcType="VARCHAR" />
     <result column="gmt_create" property="gmtCreate" jdbcType="TIMESTAMP" />
     <result column="gmt_modified" property="gmtModified" jdbcType="TIMESTAMP" />
     <result column="is_sign" property="isSign" jdbcType="TINYINT" />
@@ -73,16 +71,16 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, financial_type, total_amount, money_change, shares_change, stock_price, account_id, 
-    financial_remark, gmt_create, gmt_modified, is_sign
+    id, account_type, total_amount, available_amount, user_id, account_remark, gmt_create, 
+    gmt_modified, is_sign
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.yiyun.application.pojo.po.FinancialTaskExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.yiyun.application.pojo.po.ApplicationAccountExample" >
     select
     <if test="distinct" >
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from financial_task
+    from application_account
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -93,55 +91,49 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
-    from financial_task
+    from application_account
     where id = #{id,jdbcType=VARCHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
-    delete from financial_task
+    delete from application_account
     where id = #{id,jdbcType=VARCHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.yiyun.application.pojo.po.FinancialTaskExample" >
-    delete from financial_task
+  <delete id="deleteByExample" parameterType="com.yiyun.application.pojo.po.ApplicationAccountExample" >
+    delete from application_account
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.yiyun.application.pojo.po.FinancialTask" >
-    insert into financial_task (id, financial_type, total_amount, 
-      money_change, shares_change, stock_price, 
-      account_id, financial_remark, gmt_create, 
-      gmt_modified, is_sign)
-    values (#{id,jdbcType=VARCHAR}, #{financialType,jdbcType=VARCHAR}, #{totalAmount,jdbcType=DECIMAL}, 
-      #{moneyChange,jdbcType=DECIMAL}, #{sharesChange,jdbcType=INTEGER}, #{stockPrice,jdbcType=DECIMAL}, 
-      #{accountId,jdbcType=VARCHAR}, #{financialRemark,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=TIMESTAMP}, 
-      #{gmtModified,jdbcType=TIMESTAMP}, #{isSign,jdbcType=TINYINT})
+  <insert id="insert" parameterType="com.yiyun.application.pojo.po.ApplicationAccount" >
+    insert into application_account (id, account_type, total_amount, 
+      available_amount, user_id, account_remark, 
+      gmt_create, gmt_modified, is_sign
+      )
+    values (#{id,jdbcType=VARCHAR}, #{accountType,jdbcType=VARCHAR}, #{totalAmount,jdbcType=DECIMAL}, 
+      #{availableAmount,jdbcType=DECIMAL}, #{userId,jdbcType=VARCHAR}, #{accountRemark,jdbcType=VARCHAR}, 
+      #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP}, #{isSign,jdbcType=TINYINT}
+      )
   </insert>
-  <insert id="insertSelective" parameterType="com.yiyun.application.pojo.po.FinancialTask" >
-    insert into financial_task
+  <insert id="insertSelective" parameterType="com.yiyun.application.pojo.po.ApplicationAccount" >
+    insert into application_account
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
       </if>
-      <if test="financialType != null" >
-        financial_type,
+      <if test="accountType != null" >
+        account_type,
       </if>
       <if test="totalAmount != null" >
         total_amount,
       </if>
-      <if test="moneyChange != null" >
-        money_change,
+      <if test="availableAmount != null" >
+        available_amount,
       </if>
-      <if test="sharesChange != null" >
-        shares_change,
+      <if test="userId != null" >
+        user_id,
       </if>
-      <if test="stockPrice != null" >
-        stock_price,
-      </if>
-      <if test="accountId != null" >
-        account_id,
-      </if>
-      <if test="financialRemark != null" >
-        financial_remark,
+      <if test="accountRemark != null" >
+        account_remark,
       </if>
       <if test="gmtCreate != null" >
         gmt_create,
@@ -157,26 +149,20 @@
       <if test="id != null" >
         #{id,jdbcType=VARCHAR},
       </if>
-      <if test="financialType != null" >
-        #{financialType,jdbcType=VARCHAR},
+      <if test="accountType != null" >
+        #{accountType,jdbcType=VARCHAR},
       </if>
       <if test="totalAmount != null" >
         #{totalAmount,jdbcType=DECIMAL},
       </if>
-      <if test="moneyChange != null" >
-        #{moneyChange,jdbcType=DECIMAL},
+      <if test="availableAmount != null" >
+        #{availableAmount,jdbcType=DECIMAL},
       </if>
-      <if test="sharesChange != null" >
-        #{sharesChange,jdbcType=INTEGER},
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
       </if>
-      <if test="stockPrice != null" >
-        #{stockPrice,jdbcType=DECIMAL},
-      </if>
-      <if test="accountId != null" >
-        #{accountId,jdbcType=VARCHAR},
-      </if>
-      <if test="financialRemark != null" >
-        #{financialRemark,jdbcType=VARCHAR},
+      <if test="accountRemark != null" >
+        #{accountRemark,jdbcType=VARCHAR},
       </if>
       <if test="gmtCreate != null" >
         #{gmtCreate,jdbcType=TIMESTAMP},
@@ -189,38 +175,32 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.yiyun.application.pojo.po.FinancialTaskExample" resultType="java.lang.Integer" >
-    select count(*) from financial_task
+  <select id="countByExample" parameterType="com.yiyun.application.pojo.po.ApplicationAccountExample" resultType="java.lang.Integer" >
+    select count(*) from application_account
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map" >
-    update financial_task
+    update application_account
     <set >
       <if test="record.id != null" >
         id = #{record.id,jdbcType=VARCHAR},
       </if>
-      <if test="record.financialType != null" >
-        financial_type = #{record.financialType,jdbcType=VARCHAR},
+      <if test="record.accountType != null" >
+        account_type = #{record.accountType,jdbcType=VARCHAR},
       </if>
       <if test="record.totalAmount != null" >
         total_amount = #{record.totalAmount,jdbcType=DECIMAL},
       </if>
-      <if test="record.moneyChange != null" >
-        money_change = #{record.moneyChange,jdbcType=DECIMAL},
+      <if test="record.availableAmount != null" >
+        available_amount = #{record.availableAmount,jdbcType=DECIMAL},
       </if>
-      <if test="record.sharesChange != null" >
-        shares_change = #{record.sharesChange,jdbcType=INTEGER},
+      <if test="record.userId != null" >
+        user_id = #{record.userId,jdbcType=VARCHAR},
       </if>
-      <if test="record.stockPrice != null" >
-        stock_price = #{record.stockPrice,jdbcType=DECIMAL},
-      </if>
-      <if test="record.accountId != null" >
-        account_id = #{record.accountId,jdbcType=VARCHAR},
-      </if>
-      <if test="record.financialRemark != null" >
-        financial_remark = #{record.financialRemark,jdbcType=VARCHAR},
+      <if test="record.accountRemark != null" >
+        account_remark = #{record.accountRemark,jdbcType=VARCHAR},
       </if>
       <if test="record.gmtCreate != null" >
         gmt_create = #{record.gmtCreate,jdbcType=TIMESTAMP},
@@ -237,15 +217,13 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map" >
-    update financial_task
+    update application_account
     set id = #{record.id,jdbcType=VARCHAR},
-      financial_type = #{record.financialType,jdbcType=VARCHAR},
+      account_type = #{record.accountType,jdbcType=VARCHAR},
       total_amount = #{record.totalAmount,jdbcType=DECIMAL},
-      money_change = #{record.moneyChange,jdbcType=DECIMAL},
-      shares_change = #{record.sharesChange,jdbcType=INTEGER},
-      stock_price = #{record.stockPrice,jdbcType=DECIMAL},
-      account_id = #{record.accountId,jdbcType=VARCHAR},
-      financial_remark = #{record.financialRemark,jdbcType=VARCHAR},
+      available_amount = #{record.availableAmount,jdbcType=DECIMAL},
+      user_id = #{record.userId,jdbcType=VARCHAR},
+      account_remark = #{record.accountRemark,jdbcType=VARCHAR},
       gmt_create = #{record.gmtCreate,jdbcType=TIMESTAMP},
       gmt_modified = #{record.gmtModified,jdbcType=TIMESTAMP},
       is_sign = #{record.isSign,jdbcType=TINYINT}
@@ -253,29 +231,23 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yiyun.application.pojo.po.FinancialTask" >
-    update financial_task
+  <update id="updateByPrimaryKeySelective" parameterType="com.yiyun.application.pojo.po.ApplicationAccount" >
+    update application_account
     <set >
-      <if test="financialType != null" >
-        financial_type = #{financialType,jdbcType=VARCHAR},
+      <if test="accountType != null" >
+        account_type = #{accountType,jdbcType=VARCHAR},
       </if>
       <if test="totalAmount != null" >
         total_amount = #{totalAmount,jdbcType=DECIMAL},
       </if>
-      <if test="moneyChange != null" >
-        money_change = #{moneyChange,jdbcType=DECIMAL},
+      <if test="availableAmount != null" >
+        available_amount = #{availableAmount,jdbcType=DECIMAL},
       </if>
-      <if test="sharesChange != null" >
-        shares_change = #{sharesChange,jdbcType=INTEGER},
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=VARCHAR},
       </if>
-      <if test="stockPrice != null" >
-        stock_price = #{stockPrice,jdbcType=DECIMAL},
-      </if>
-      <if test="accountId != null" >
-        account_id = #{accountId,jdbcType=VARCHAR},
-      </if>
-      <if test="financialRemark != null" >
-        financial_remark = #{financialRemark,jdbcType=VARCHAR},
+      <if test="accountRemark != null" >
+        account_remark = #{accountRemark,jdbcType=VARCHAR},
       </if>
       <if test="gmtCreate != null" >
         gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
@@ -289,15 +261,13 @@
     </set>
     where id = #{id,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yiyun.application.pojo.po.FinancialTask" >
-    update financial_task
-    set financial_type = #{financialType,jdbcType=VARCHAR},
+  <update id="updateByPrimaryKey" parameterType="com.yiyun.application.pojo.po.ApplicationAccount" >
+    update application_account
+    set account_type = #{accountType,jdbcType=VARCHAR},
       total_amount = #{totalAmount,jdbcType=DECIMAL},
-      money_change = #{moneyChange,jdbcType=DECIMAL},
-      shares_change = #{sharesChange,jdbcType=INTEGER},
-      stock_price = #{stockPrice,jdbcType=DECIMAL},
-      account_id = #{accountId,jdbcType=VARCHAR},
-      financial_remark = #{financialRemark,jdbcType=VARCHAR},
+      available_amount = #{availableAmount,jdbcType=DECIMAL},
+      user_id = #{userId,jdbcType=VARCHAR},
+      account_remark = #{accountRemark,jdbcType=VARCHAR},
       gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
       gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
       is_sign = #{isSign,jdbcType=TINYINT}
