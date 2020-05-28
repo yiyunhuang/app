@@ -44,6 +44,7 @@ CREATE TABLE `application_financial` (
   `shares_change` int(8) unsigned NOT NULL COMMENT '变动数量',
   `stock_price` decimal(16,2) NOT NULL COMMENT '价格',
   `account_id` varchar(32) NOT NULL COMMENT '账户id',
+  `fee`  text CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL COMMENT '手续费用明细' ,
   `financial_remark`  varchar(1024) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci  NULL DEFAULT NULL  COMMENT '备注' ,
   `gmt_create`  timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间' ,
   `gmt_modified`  timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间' ,
@@ -51,6 +52,7 @@ CREATE TABLE `application_financial` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 
+[{"type":"佣金","money":"5"},{"type":"印花","money":"0"},{"type":"过户","money":"0"}]
 
 
 DROP TABLE IF EXISTS `application_account`;
