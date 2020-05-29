@@ -26,6 +26,8 @@ public class ApplicationFinancial {
 
     private Byte isSign;
 
+    private String fee;
+
     public String getId() {
         return id;
     }
@@ -112,5 +114,13 @@ public class ApplicationFinancial {
 
     public void setIsSign(Byte isSign) {
         this.isSign = isSign;
+    }
+
+    public String getFee() {
+        return fee;
+    }
+
+    public void setFee(String fee) {
+        this.fee = fee == null ? null : fee.trim();
     }
 }

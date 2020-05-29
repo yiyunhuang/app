@@ -14,6 +14,9 @@
     <result column="gmt_modified" property="gmtModified" jdbcType="TIMESTAMP" />
     <result column="is_sign" property="isSign" jdbcType="TINYINT" />
   </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.yiyun.application.pojo.po.ApplicationFinancial" extends="BaseResultMap" >
+    <result column="fee" property="fee" jdbcType="LONGVARCHAR" />
+  </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
       <foreach collection="oredCriteria" item="criteria" separator="or" >
@@ -76,6 +79,25 @@
     id, financial_type, total_amount, money_change, shares_change, stock_price, account_id, 
     financial_remark, gmt_create, gmt_modified, is_sign
   </sql>
+  <sql id="Blob_Column_List" >
+    fee
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.yiyun.application.pojo.po.ApplicationFinancialExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from application_financial
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.yiyun.application.pojo.po.ApplicationFinancialExample" >
     select
     <if test="distinct" >
@@ -90,9 +112,11 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
     from application_financial
     where id = #{id,jdbcType=VARCHAR}
   </select>
@@ -110,11 +134,13 @@
     insert into application_financial (id, financial_type, total_amount, 
       money_change, shares_change, stock_price, 
       account_id, financial_remark, gmt_create, 
-      gmt_modified, is_sign)
+      gmt_modified, is_sign, fee
+      )
     values (#{id,jdbcType=VARCHAR}, #{financialType,jdbcType=VARCHAR}, #{totalAmount,jdbcType=DECIMAL}, 
       #{moneyChange,jdbcType=DECIMAL}, #{sharesChange,jdbcType=INTEGER}, #{stockPrice,jdbcType=DECIMAL}, 
       #{accountId,jdbcType=VARCHAR}, #{financialRemark,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=TIMESTAMP}, 
-      #{gmtModified,jdbcType=TIMESTAMP}, #{isSign,jdbcType=TINYINT})
+      #{gmtModified,jdbcType=TIMESTAMP}, #{isSign,jdbcType=TINYINT}, #{fee,jdbcType=LONGVARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.yiyun.application.pojo.po.ApplicationFinancial" >
     insert into application_financial
@@ -152,6 +178,9 @@
       <if test="isSign != null" >
         is_sign,
       </if>
+      <if test="fee != null" >
+        fee,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -186,6 +215,9 @@
       </if>
       <if test="isSign != null" >
         #{isSign,jdbcType=TINYINT},
+      </if>
+      <if test="fee != null" >
+        #{fee,jdbcType=LONGVARCHAR},
       </if>
     </trim>
   </insert>
@@ -231,7 +263,28 @@
       <if test="record.isSign != null" >
         is_sign = #{record.isSign,jdbcType=TINYINT},
       </if>
+      <if test="record.fee != null" >
+        fee = #{record.fee,jdbcType=LONGVARCHAR},
+      </if>
     </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update application_financial
+    set id = #{record.id,jdbcType=VARCHAR},
+      financial_type = #{record.financialType,jdbcType=VARCHAR},
+      total_amount = #{record.totalAmount,jdbcType=DECIMAL},
+      money_change = #{record.moneyChange,jdbcType=DECIMAL},
+      shares_change = #{record.sharesChange,jdbcType=INTEGER},
+      stock_price = #{record.stockPrice,jdbcType=DECIMAL},
+      account_id = #{record.accountId,jdbcType=VARCHAR},
+      financial_remark = #{record.financialRemark,jdbcType=VARCHAR},
+      gmt_create = #{record.gmtCreate,jdbcType=TIMESTAMP},
+      gmt_modified = #{record.gmtModified,jdbcType=TIMESTAMP},
+      is_sign = #{record.isSign,jdbcType=TINYINT},
+      fee = #{record.fee,jdbcType=LONGVARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -286,7 +339,25 @@
       <if test="isSign != null" >
         is_sign = #{isSign,jdbcType=TINYINT},
       </if>
+      <if test="fee != null" >
+        fee = #{fee,jdbcType=LONGVARCHAR},
+      </if>
     </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.yiyun.application.pojo.po.ApplicationFinancial" >
+    update application_financial
+    set financial_type = #{financialType,jdbcType=VARCHAR},
+      total_amount = #{totalAmount,jdbcType=DECIMAL},
+      money_change = #{moneyChange,jdbcType=DECIMAL},
+      shares_change = #{sharesChange,jdbcType=INTEGER},
+      stock_price = #{stockPrice,jdbcType=DECIMAL},
+      account_id = #{accountId,jdbcType=VARCHAR},
+      financial_remark = #{financialRemark,jdbcType=VARCHAR},
+      gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      is_sign = #{isSign,jdbcType=TINYINT},
+      fee = #{fee,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.yiyun.application.pojo.po.ApplicationFinancial" >
