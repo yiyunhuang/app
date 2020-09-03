@@ -5,14 +5,14 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class ApplicationFinancialExample {
+public class ApplicationFinanceExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public ApplicationFinancialExample() {
+    public ApplicationFinanceExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
@@ -176,73 +176,73 @@ public class ApplicationFinancialExample {
             return (Criteria) this;
         }
 
-        public Criteria andFinancialTypeIsNull() {
-            addCriterion("financial_type is null");
+        public Criteria andfinanceTypeIsNull() {
+            addCriterion("finance_type is null");
             return (Criteria) this;
         }
 
-        public Criteria andFinancialTypeIsNotNull() {
-            addCriterion("financial_type is not null");
+        public Criteria andfinanceTypeIsNotNull() {
+            addCriterion("finance_type is not null");
             return (Criteria) this;
         }
 
-        public Criteria andFinancialTypeEqualTo(String value) {
-            addCriterion("financial_type =", value, "financialType");
+        public Criteria andfinanceTypeEqualTo(String value) {
+            addCriterion("finance_type =", value, "financeType");
             return (Criteria) this;
         }
 
-        public Criteria andFinancialTypeNotEqualTo(String value) {
-            addCriterion("financial_type <>", value, "financialType");
+        public Criteria andfinanceTypeNotEqualTo(String value) {
+            addCriterion("finance_type <>", value, "financeType");
             return (Criteria) this;
         }
 
-        public Criteria andFinancialTypeGreaterThan(String value) {
-            addCriterion("financial_type >", value, "financialType");
+        public Criteria andfinanceTypeGreaterThan(String value) {
+            addCriterion("finance_type >", value, "financeType");
             return (Criteria) this;
         }
 
-        public Criteria andFinancialTypeGreaterThanOrEqualTo(String value) {
-            addCriterion("financial_type >=", value, "financialType");
+        public Criteria andfinanceTypeGreaterThanOrEqualTo(String value) {
+            addCriterion("finance_type >=", value, "financeType");
             return (Criteria) this;
         }
 
-        public Criteria andFinancialTypeLessThan(String value) {
-            addCriterion("financial_type <", value, "financialType");
+        public Criteria andfinanceTypeLessThan(String value) {
+            addCriterion("finance_type <", value, "financeType");
             return (Criteria) this;
         }
 
-        public Criteria andFinancialTypeLessThanOrEqualTo(String value) {
-            addCriterion("financial_type <=", value, "financialType");
+        public Criteria andfinanceTypeLessThanOrEqualTo(String value) {
+            addCriterion("finance_type <=", value, "financeType");
             return (Criteria) this;
         }
 
-        public Criteria andFinancialTypeLike(String value) {
-            addCriterion("financial_type like", value, "financialType");
+        public Criteria andfinanceTypeLike(String value) {
+            addCriterion("finance_type like", value, "financeType");
             return (Criteria) this;
         }
 
-        public Criteria andFinancialTypeNotLike(String value) {
-            addCriterion("financial_type not like", value, "financialType");
+        public Criteria andfinanceTypeNotLike(String value) {
+            addCriterion("finance_type not like", value, "financeType");
             return (Criteria) this;
         }
 
-        public Criteria andFinancialTypeIn(List<String> values) {
-            addCriterion("financial_type in", values, "financialType");
+        public Criteria andfinanceTypeIn(List<String> values) {
+            addCriterion("finance_type in", values, "financeType");
             return (Criteria) this;
         }
 
-        public Criteria andFinancialTypeNotIn(List<String> values) {
-            addCriterion("financial_type not in", values, "financialType");
+        public Criteria andfinanceTypeNotIn(List<String> values) {
+            addCriterion("finance_type not in", values, "financeType");
             return (Criteria) this;
         }
 
-        public Criteria andFinancialTypeBetween(String value1, String value2) {
-            addCriterion("financial_type between", value1, value2, "financialType");
+        public Criteria andfinanceTypeBetween(String value1, String value2) {
+            addCriterion("finance_type between", value1, value2, "financeType");
             return (Criteria) this;
         }
 
-        public Criteria andFinancialTypeNotBetween(String value1, String value2) {
-            addCriterion("financial_type not between", value1, value2, "financialType");
+        public Criteria andfinanceTypeNotBetween(String value1, String value2) {
+            addCriterion("finance_type not between", value1, value2, "financeType");
             return (Criteria) this;
         }
 
@@ -556,73 +556,73 @@ public class ApplicationFinancialExample {
             return (Criteria) this;
         }
 
-        public Criteria andFinancialRemarkIsNull() {
-            addCriterion("financial_remark is null");
+        public Criteria andfinanceRemarkIsNull() {
+            addCriterion("finance_remark is null");
             return (Criteria) this;
         }
 
-        public Criteria andFinancialRemarkIsNotNull() {
-            addCriterion("financial_remark is not null");
+        public Criteria andfinanceRemarkIsNotNull() {
+            addCriterion("finance_remark is not null");
             return (Criteria) this;
         }
 
-        public Criteria andFinancialRemarkEqualTo(String value) {
-            addCriterion("financial_remark =", value, "financialRemark");
+        public Criteria andfinanceRemarkEqualTo(String value) {
+            addCriterion("finance_remark =", value, "financeRemark");
             return (Criteria) this;
         }
 
-        public Criteria andFinancialRemarkNotEqualTo(String value) {
-            addCriterion("financial_remark <>", value, "financialRemark");
+        public Criteria andfinanceRemarkNotEqualTo(String value) {
+            addCriterion("finance_remark <>", value, "financeRemark");
             return (Criteria) this;
         }
 
-        public Criteria andFinancialRemarkGreaterThan(String value) {
-            addCriterion("financial_remark >", value, "financialRemark");
+        public Criteria andfinanceRemarkGreaterThan(String value) {
+            addCriterion("finance_remark >", value, "financeRemark");
             return (Criteria) this;
         }
 
-        public Criteria andFinancialRemarkGreaterThanOrEqualTo(String value) {
-            addCriterion("financial_remark >=", value, "financialRemark");
+        public Criteria andfinanceRemarkGreaterThanOrEqualTo(String value) {
+            addCriterion("finance_remark >=", value, "financeRemark");
             return (Criteria) this;
         }
 
-        public Criteria andFinancialRemarkLessThan(String value) {
-            addCriterion("financial_remark <", value, "financialRemark");
+        public Criteria andfinanceRemarkLessThan(String value) {
+            addCriterion("finance_remark <", value, "financeRemark");
             return (Criteria) this;
         }
 
-        public Criteria andFinancialRemarkLessThanOrEqualTo(String value) {
-            addCriterion("financial_remark <=", value, "financialRemark");
+        public Criteria andfinanceRemarkLessThanOrEqualTo(String value) {
+            addCriterion("finance_remark <=", value, "financeRemark");
             return (Criteria) this;
         }
 
-        public Criteria andFinancialRemarkLike(String value) {
-            addCriterion("financial_remark like", value, "financialRemark");
+        public Criteria andfinanceRemarkLike(String value) {
+            addCriterion("finance_remark like", value, "financeRemark");
             return (Criteria) this;
         }
 
-        public Criteria andFinancialRemarkNotLike(String value) {
-            addCriterion("financial_remark not like", value, "financialRemark");
+        public Criteria andfinanceRemarkNotLike(String value) {
+            addCriterion("finance_remark not like", value, "financeRemark");
             return (Criteria) this;
         }
 
-        public Criteria andFinancialRemarkIn(List<String> values) {
-            addCriterion("financial_remark in", values, "financialRemark");
+        public Criteria andfinanceRemarkIn(List<String> values) {
+            addCriterion("finance_remark in", values, "financeRemark");
             return (Criteria) this;
         }
 
-        public Criteria andFinancialRemarkNotIn(List<String> values) {
-            addCriterion("financial_remark not in", values, "financialRemark");
+        public Criteria andfinanceRemarkNotIn(List<String> values) {
+            addCriterion("finance_remark not in", values, "financeRemark");
             return (Criteria) this;
         }
 
-        public Criteria andFinancialRemarkBetween(String value1, String value2) {
-            addCriterion("financial_remark between", value1, value2, "financialRemark");
+        public Criteria andfinanceRemarkBetween(String value1, String value2) {
+            addCriterion("finance_remark between", value1, value2, "financeRemark");
             return (Criteria) this;
         }
 
-        public Criteria andFinancialRemarkNotBetween(String value1, String value2) {
-            addCriterion("financial_remark not between", value1, value2, "financialRemark");
+        public Criteria andfinanceRemarkNotBetween(String value1, String value2) {
+            addCriterion("finance_remark not between", value1, value2, "financeRemark");
             return (Criteria) this;
         }
 

@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>financial</title>
+    <title>finance</title>
 </head>
 <body>
 <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
@@ -33,9 +33,9 @@
         var table = layui.table;
         //执行一个 table 实例
         table.render({
-            elem: '#financial'
+            elem: '#finance'
             ,height: 420
-            ,url: '${pageContext.request.contextPath }/financial' //数据接口
+            ,url: '${pageContext.request.contextPath }/finance' //数据接口
             ,title: '字典表'
             ,even: true //开启隔行背景
             ,toolbar: '#toolbarDemo' //默认 default

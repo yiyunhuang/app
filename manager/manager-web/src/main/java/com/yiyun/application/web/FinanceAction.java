@@ -20,26 +20,26 @@ import java.util.List;
 /**
  * @author 翼云
  * @version 1.0
- * @ClassName FinancialAction
+ * @ClassName financeAction
  * @Description TODO 记账功能开发
  * @program: application
  * @date 2020/4/23 22:32
  **/
 @Controller
 @Scope("prototype")
-public class FinancialAction {
+public class FinanceAction {
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    @RequestMapping("/financialAction")
+    @RequestMapping("/financeAction")
     public String  index(){
-        logger.info("FinancialAction.index");
-        return "financial/financial.jsp";
+        logger.info("financeAction.index");
+        return "finance/finance.jsp";
     }
 
     @ResponseBody
-    @RequestMapping(value="/financial", method= RequestMethod.GET)
-    public Result<GlobalDictionary> getFinancialByPage(Page page, String aa) {
-        logger.info("FinancialAction.getFinancialByPage");
+    @RequestMapping(value="/finance", method= RequestMethod.GET)
+    public Result<GlobalDictionary> getfinanceByPage(Page page, String aa) {
+        logger.info("financeAction.getfinanceByPage");
         Result<GlobalDictionary> list = null;
         try {
             ApplicationAccount ApplicationAccount = new ApplicationAccount();

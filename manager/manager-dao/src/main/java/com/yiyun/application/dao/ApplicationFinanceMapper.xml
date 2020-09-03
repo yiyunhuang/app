@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.yiyun.application.dao.ApplicationFinancialMapper" >
-  <resultMap id="BaseResultMap" type="com.yiyun.application.pojo.po.ApplicationFinancial" >
+<mapper namespace="com.yiyun.application.dao.ApplicationFinanceMapper" >
+  <resultMap id="BaseResultMap" type="com.yiyun.application.pojo.po.ApplicationFinance" >
     <id column="id" property="id" jdbcType="VARCHAR" />
     <result column="financial_type" property="financialType" jdbcType="VARCHAR" />
     <result column="total_amount" property="totalAmount" jdbcType="DECIMAL" />
@@ -14,7 +14,7 @@
     <result column="gmt_modified" property="gmtModified" jdbcType="TIMESTAMP" />
     <result column="is_sign" property="isSign" jdbcType="TINYINT" />
   </resultMap>
-  <resultMap id="ResultMapWithBLOBs" type="com.yiyun.application.pojo.po.ApplicationFinancial" extends="BaseResultMap" >
+  <resultMap id="ResultMapWithBLOBs" type="com.yiyun.application.pojo.po.ApplicationFinance" extends="BaseResultMap" >
     <result column="fee" property="fee" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
@@ -82,7 +82,7 @@
   <sql id="Blob_Column_List" >
     fee
   </sql>
-  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.yiyun.application.pojo.po.ApplicationFinancialExample" >
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.yiyun.application.pojo.po.ApplicationFinanceExample" >
     select
     <if test="distinct" >
       distinct
@@ -98,7 +98,7 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.yiyun.application.pojo.po.ApplicationFinancialExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.yiyun.application.pojo.po.ApplicationFinanceExample" >
     select
     <if test="distinct" >
       distinct
@@ -124,13 +124,13 @@
     delete from application_financial
     where id = #{id,jdbcType=VARCHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.yiyun.application.pojo.po.ApplicationFinancialExample" >
+  <delete id="deleteByExample" parameterType="com.yiyun.application.pojo.po.ApplicationFinanceExample" >
     delete from application_financial
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.yiyun.application.pojo.po.ApplicationFinancial" >
+  <insert id="insert" parameterType="com.yiyun.application.pojo.po.ApplicationFinance" >
     insert into application_financial (id, financial_type, total_amount, 
       money_change, shares_change, stock_price, 
       account_id, financial_remark, gmt_create, 
@@ -142,7 +142,7 @@
       #{gmtModified,jdbcType=TIMESTAMP}, #{isSign,jdbcType=TINYINT}, #{fee,jdbcType=LONGVARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.yiyun.application.pojo.po.ApplicationFinancial" >
+  <insert id="insertSelective" parameterType="com.yiyun.application.pojo.po.ApplicationFinance" >
     insert into application_financial
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -221,7 +221,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.yiyun.application.pojo.po.ApplicationFinancialExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.yiyun.application.pojo.po.ApplicationFinanceExample" resultType="java.lang.Integer" >
     select count(*) from application_financial
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -306,7 +306,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yiyun.application.pojo.po.ApplicationFinancial" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.yiyun.application.pojo.po.ApplicationFinance" >
     update application_financial
     <set >
       <if test="financialType != null" >
@@ -345,7 +345,7 @@
     </set>
     where id = #{id,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.yiyun.application.pojo.po.ApplicationFinancial" >
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.yiyun.application.pojo.po.ApplicationFinance" >
     update application_financial
     set financial_type = #{financialType,jdbcType=VARCHAR},
       total_amount = #{totalAmount,jdbcType=DECIMAL},
@@ -360,7 +360,7 @@
       fee = #{fee,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yiyun.application.pojo.po.ApplicationFinancial" >
+  <update id="updateByPrimaryKey" parameterType="com.yiyun.application.pojo.po.ApplicationFinance" >
     update application_financial
     set financial_type = #{financialType,jdbcType=VARCHAR},
       total_amount = #{totalAmount,jdbcType=DECIMAL},

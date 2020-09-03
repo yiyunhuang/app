@@ -3,10 +3,10 @@ package com.yiyun.application.pojo.po;
 import java.math.BigDecimal;
 import java.util.Date;
 
-public class ApplicationFinancial {
+public class ApplicationFinance {
     private String id;
 
-    private String financialType;
+    private String financeType;
 
     private BigDecimal totalAmount;
 
@@ -18,7 +18,7 @@ public class ApplicationFinancial {
 
     private String accountId;
 
-    private String financialRemark;
+    private String financeRemark;
 
     private Date gmtCreate;
 
@@ -36,12 +36,12 @@ public class ApplicationFinancial {
         this.id = id == null ? null : id.trim();
     }
 
-    public String getFinancialType() {
-        return financialType;
+    public String getfinanceType() {
+        return financeType;
     }
 
-    public void setFinancialType(String financialType) {
-        this.financialType = financialType == null ? null : financialType.trim();
+    public void setfinanceType(String financeType) {
+        this.financeType = financeType == null ? null : financeType.trim();
     }
 
     public BigDecimal getTotalAmount() {
@@ -84,12 +84,12 @@ public class ApplicationFinancial {
         this.accountId = accountId == null ? null : accountId.trim();
     }
 
-    public String getFinancialRemark() {
-        return financialRemark;
+    public String getfinanceRemark() {
+        return financeRemark;
     }
 
-    public void setFinancialRemark(String financialRemark) {
-        this.financialRemark = financialRemark == null ? null : financialRemark.trim();
+    public void setfinanceRemark(String financeRemark) {
+        this.financeRemark = financeRemark == null ? null : financeRemark.trim();
     }
 
     public Date getGmtCreate() {
