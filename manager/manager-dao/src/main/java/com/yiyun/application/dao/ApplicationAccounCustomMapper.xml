@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 
-<mapper>
+<mapper namespace="com.yiyun.application.dao.ApplicationAccountCustomMapper">
   <sql id="Base_Column_List">
       t.id as id,t.account_type as accountType ,t.total_amount as totalAmount ,t.available_amount as availableAmount ,t.user_id as userId ,
       t.account_remark as accountRemark,t.gmt_create as gmtCreate ,t.gmt_modified as gmtModified ,t.is_sign as isSign
@@ -38,13 +38,13 @@
   </where>
   </sql>
 
-  <select id="countDictionaries" resultType="_int">
+  <select id="countUserAccount" resultType="_int">
   select count(1)
   from global_dictionary t
   <include refid="Where_Clause"/>
   </select>
 
-  <select id="lisDictionariesByPage" resultType="com.yiyun.application.pojo.vo.GlobalDictionaryCustom">
+  <select id="getUserAccountByPage" resultType="com.yiyun.application.pojo.vo.GlobalDictionaryCustom">
   SELECT
   <include refid="Base_Column_List"/>
   FROM global_dictionary t
