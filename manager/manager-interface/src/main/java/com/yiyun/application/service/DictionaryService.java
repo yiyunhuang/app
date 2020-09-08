@@ -14,10 +14,12 @@ import com.yiyun.application.pojo.po.GlobalDictionary;
  **/
 public interface DictionaryService {
 
+
     /**
      * 分页获得字典表的所有数据
-     * @param page
-     * @return
+     * @param page 分页页码
+     * @param record 条件
+     * @return 结果集
      */
     Result<GlobalDictionary> listDictionaryByPage(Page page, GlobalDictionary record);
 
@@ -28,31 +30,28 @@ public interface DictionaryService {
      */
     Long saveDictionary(GlobalDictionary gd);
 
-    /**
-     * @Author yiyun
-     * @Description // update dictionary
-     * @Date  2020/5/9 0009 14:22
-     * @Param [id, gd]
-     * @return java.lang.Long
-    **/
-    Long updateDictionary(String id ,GlobalDictionary gd);
 
     /**
-     * @Author yiyun
-     * @Description //delete dictionary
-     * @Date  2020/5/9 0009 14:51
-     * @Param [id]
-     * @return java.lang.Long
-    **/
+     *  update Dictionary
+     * @param id
+     * @param gd
+     * @return
+     */
+    Long updateDictionary(String id ,GlobalDictionary gd);
+
+
+    /**
+     * delete dictionary
+     * @param id
+     * @return 结果
+     */
     Long deleteDictionary(String id);
 
     /**
-     * @Author yiyun
-     * @Description // Retrieve dictionary
-     * @Date  2020/5/13 0013 15:27
-     * @Param [id]
-     * @return java.lang.Long
-    **/
+     *  依据id查找结果
+     * @param id  id
+     * @return 结果
+     */
     GlobalDictionary queryDictionary(String id);
 
 

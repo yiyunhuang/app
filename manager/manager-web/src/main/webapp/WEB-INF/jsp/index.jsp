@@ -53,7 +53,7 @@
                     <dl class="layui-nav-child">
                         <dd><a href="javascript:;" onclick="openWindows('dictionaryAction')">参数录入</a></dd>
                         <dd><a href="javascript:;" onclick="openWindows('treeAction')" >树录入</a></dd>
-                        <dd><a href="javascript:;" onclick="openWindows('financialAction')" >记账目录</a></dd>
+                        <dd><a href="javascript:;" onclick="openWindows('financeAction')" >记账目录</a></dd>
                         <dd><a href="">超链接</a></dd>
                     </dl>
                 </li>

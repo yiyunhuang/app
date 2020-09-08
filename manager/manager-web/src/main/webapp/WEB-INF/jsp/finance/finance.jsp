@@ -35,8 +35,8 @@
         table.render({
             elem: '#finance'
             ,height: 420
-            ,url: '${pageContext.request.contextPath }/finance' //数据接口
-            ,title: '字典表'
+            ,url: '${pageContext.request.contextPath }/finances' //数据接口
+            ,title: '记帐表'
             ,even: true //开启隔行背景
             ,toolbar: '#toolbarDemo' //默认 default
             ,defaultToolbar: ['filter', 'print', 'exports']
@@ -60,14 +60,16 @@
             ,cols: [[ //表头
                 {type: 'checkbox' ,align:'center' ,fixed: 'left'}
                 ,{field: 'id', title: 'ID', width:200, sort: true,align:'center',fixed: 'left'}
-                ,{field: 'codeType', title: '代码类型', align:'center',width:100 }
-                ,{field: 'codeValue', title: '代码值', align:'center', width: 100}
-                ,{field: 'codeExplain', title: '代码说明',align:'center', width:100}
-                ,{field: 'parametersClassified', title: '参数归类',align:'center', width: 100  }
-                ,{field: 'dictionaryRemark', title: '备注',align:'center', width: 100  }
+                ,{field: 'financeType', title: '理财类型', align:'center',width:100 }
+                ,{field: 'totalAmount', title: '总计金额', align:'center', width: 100}
+                ,{field: 'moneyChange', title: '金额变动',align:'center', width:100}
+                ,{field: 'sharesChange', title: '变动数量',align:'center', width: 100  }
+                ,{field: 'stockPrice', title: '价格',align:'center', width: 100  }
+                ,{field: 'accountId', title: '账户id', align:'center',width:200 }
+                ,{field: 'financeRemark', title: '备注', align:'center', width: 200 }
                 ,{field: 'gmtCreate', title: '创建时间', align:'center',width:200 ,templet : "<div>{{layui.util.toDateString(d.gmtCreate, 'yyyy-MM-dd HH:mm:ss')}}</div>"}
                 ,{field: 'gmtModified', title: '更新时间', align:'center', width: 200 ,templet : "<div>{{layui.util.toDateString(d.gmtModified, 'yyyy-MM-dd HH:mm:ss')}}</div>"}
-                ,{field: 'isSign', title: '有效标识', align:'center',width: 100,  totalRow: true}
+                ,{field: 'fee', title: '手续费用明细', align:'center',width: 100,  totalRow: true}
                 ,{fixed: 'right', width: 165, align:'center', toolbar: '#barDemo'}
             ]]
             ,parseData: function(res){ //res 即为原始返回的数据

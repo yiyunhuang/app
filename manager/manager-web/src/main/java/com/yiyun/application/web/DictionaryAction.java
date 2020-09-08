@@ -36,8 +36,11 @@ public class DictionaryAction {
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
+    final DictionaryService dictionaryService;
     @Autowired
-    private DictionaryService dictionaryService;
+    public DictionaryAction(DictionaryService dictionaryService) {
+        this.dictionaryService = dictionaryService;
+    }
 
     @RequestMapping("/dictionaryAction")
     public String  index(){

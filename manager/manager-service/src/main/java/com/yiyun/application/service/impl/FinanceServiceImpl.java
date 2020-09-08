@@ -7,6 +7,7 @@ import com.yiyun.application.dao.GlobalDictionaryCustomMapper;
 import com.yiyun.application.dao.GlobalDictionaryMapper;
 import com.yiyun.application.pojo.po.GlobalDictionary;
 import com.yiyun.application.service.DictionaryService;
+import com.yiyun.application.service.FinanceService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,19 +22,18 @@ import java.util.Map;
  * @author 翼云
  * @version 1.0
  * @ClassName DictionaryServiceImpl
- * @Description  字典接口实现类
+ * @Description  记账功能实现类
  * @program: application
  * @date 2020/4/27 0027 11:01
  **/
 @Service
-public class DictionaryServiceImpl implements DictionaryService{
+public class FinanceServiceImpl implements FinanceService {
     private Logger logger = LoggerFactory.getLogger(this.getClass());
-    public DictionaryServiceImpl(GlobalDictionaryMapper DictionaryDao,GlobalDictionaryCustomMapper DictionaryCustomDao){
-        this.        DictionaryDao =DictionaryDao;
-        this.DictionaryCustomDao=DictionaryCustomDao;
-    }
-    private final GlobalDictionaryMapper DictionaryDao;
-    private final GlobalDictionaryCustomMapper DictionaryCustomDao;
+
+    @Autowired
+    private GlobalDictionaryMapper DictionaryDao;
+    @Autowired
+    private GlobalDictionaryCustomMapper DictionaryCustomDao;
 
 
     @Override
@@ -61,19 +61,10 @@ public class DictionaryServiceImpl implements DictionaryService{
         return result;
     }
 
-    /**
-    //加上注解@Transactional之后，这个方法就变成了事务方法
-    //并不是事务方法越多越好，查询方法不需要添加为事务方法
-    */
-    @Transactional
     @Override
-    public Long saveDictionary(GlobalDictionary gd) throws IllegalArgumentException{
-        gd.setId(yiyun.getId(1L,1L));
-        gd.setIsSign((byte) 1);
-        Integer insert = DictionaryDao.insert(gd);
-        return Long.valueOf(insert);
+    public Long saveDictionary(GlobalDictionary gd) {
+        return null;
     }
-
 
     @Transactional
     @Override
