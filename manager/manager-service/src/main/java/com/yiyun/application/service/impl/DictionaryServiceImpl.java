@@ -28,13 +28,19 @@ import java.util.Map;
 @Service
 public class DictionaryServiceImpl implements DictionaryService{
     private Logger logger = LoggerFactory.getLogger(this.getClass());
-    public DictionaryServiceImpl(GlobalDictionaryMapper DictionaryDao,GlobalDictionaryCustomMapper DictionaryCustomDao){
-        this.        DictionaryDao =DictionaryDao;
-        this.DictionaryCustomDao=DictionaryCustomDao;
-    }
-    private final GlobalDictionaryMapper DictionaryDao;
-    private final GlobalDictionaryCustomMapper DictionaryCustomDao;
 
+    private GlobalDictionaryMapper DictionaryDao;
+    private GlobalDictionaryCustomMapper DictionaryCustomDao;
+
+    @Autowired
+    public void setDictionaryDao(GlobalDictionaryMapper dictionaryDao) {
+        DictionaryDao = dictionaryDao;
+    }
+
+    @Autowired
+    public void setDictionaryCustomDao(GlobalDictionaryCustomMapper dictionaryCustomDao) {
+        DictionaryCustomDao = dictionaryCustomDao;
+    }
 
     @Override
     public Result<GlobalDictionary> listDictionaryByPage(Page page, GlobalDictionary record) {

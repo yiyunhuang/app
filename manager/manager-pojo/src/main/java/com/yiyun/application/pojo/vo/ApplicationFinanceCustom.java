@@ -1,6 +1,8 @@
 package com.yiyun.application.pojo.vo;
 
-import com.yiyun.application.pojo.po.GlobalDictionary;
+import com.yiyun.application.pojo.po.ApplicationFinance;
+
+
 /**
  * @Author yiyun
  * @Description // 字典表自定义实体类
@@ -8,6 +10,6 @@ import com.yiyun.application.pojo.po.GlobalDictionary;
  * @Param
  * @return
 **/
-public class GlobalDictionaryCustom extends GlobalDictionary {
+public class ApplicationFinanceCustom extends ApplicationFinance {
 
 }

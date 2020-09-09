@@ -3,7 +3,7 @@ package com.yiyun.application.service;
 
 import com.yiyun.application.common.dto.Page;
 import com.yiyun.application.common.dto.Result;
-import com.yiyun.application.pojo.po.GlobalDictionary;
+import com.yiyun.application.pojo.po.ApplicationFinance;
 
 /**
  * @Author 翼云
@@ -21,7 +21,7 @@ public interface FinanceService {
      * @param record
      * @return
      */
-    Result<GlobalDictionary> listFinanceServiceByPage(Page page, FinanceService record);
+    Result<ApplicationFinance> listFinanceServiceByPage(Page page, ApplicationFinance record);
 
 
 }

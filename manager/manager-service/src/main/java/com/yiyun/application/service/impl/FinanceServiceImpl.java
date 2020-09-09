@@ -3,8 +3,11 @@ package com.yiyun.application.service.impl;
 import com.yiyun.application.common.dto.Page;
 import com.yiyun.application.common.dto.Result;
 import com.yiyun.application.common.util.yiyun;
+import com.yiyun.application.dao.ApplicationFinanceCustomMapper;
+import com.yiyun.application.dao.ApplicationFinanceMapper;
 import com.yiyun.application.dao.GlobalDictionaryCustomMapper;
 import com.yiyun.application.dao.GlobalDictionaryMapper;
+import com.yiyun.application.pojo.po.ApplicationFinance;
 import com.yiyun.application.pojo.po.GlobalDictionary;
 import com.yiyun.application.service.DictionaryService;
 import com.yiyun.application.service.FinanceService;
@@ -30,29 +33,37 @@ import java.util.Map;
 public class FinanceServiceImpl implements FinanceService {
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
+    private ApplicationFinanceMapper financeDao;
+    private ApplicationFinanceCustomMapper financeCustomDao;
+
     @Autowired
-    private GlobalDictionaryMapper DictionaryDao;
+    public void setFinanceDao(ApplicationFinanceMapper financeDao) {
+        this.financeDao = financeDao;
+    }
     @Autowired
-    private GlobalDictionaryCustomMapper DictionaryCustomDao;
+    public void setFinanceCustomDao(ApplicationFinanceCustomMapper financeCustomDao) {
+        this.financeCustomDao = financeCustomDao;
+    }
+
 
 
     @Override
-    public Result<GlobalDictionary> listDictionaryByPage(Page page, GlobalDictionary record) {
+    public Result<ApplicationFinance> listFinanceServiceByPage(Page page, ApplicationFinance record) {
         logger.info("DictionaryServiceImpl.listDictionaryByPage");
-        GlobalDictionary gd = new GlobalDictionary();
-        Result<GlobalDictionary> result = null;
+        ApplicationFinance af = new ApplicationFinance();
+        Result<ApplicationFinance> result = null;
         try {
             //0 创建一个Map封装前台传递过来的参数
             Map<String, Object> map = new HashMap<String, Object>();
             map.put("page", page);
             map.put("record", record);
             //1 创建一个响应参数实体类
-            result = new Result<GlobalDictionary>();
+            result = new Result<ApplicationFinance>();
             //2 对total进行设值(符合条件的总记录数)
-            int count = DictionaryCustomDao.countDictionaries(map);
+            int count = financeCustomDao.countFinance(map);
             result.setCount(count);
             //3 对 data 进行设值(指定页码显示记录集合)
-            List<GlobalDictionary> list = DictionaryCustomDao.lisDictionariesByPage(map);
+            List<ApplicationFinance> list = financeCustomDao.listFinancesByPage(map);
             result.setData(list);
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
@@ -61,31 +72,7 @@ public class FinanceServiceImpl implements FinanceService {
         return result;
     }
 
-    @Override
-    public Long saveDictionary(GlobalDictionary gd) {
-        return null;
-    }
 
-    @Transactional
-    @Override
-    public Long updateDictionary(String id, GlobalDictionary gd) {
-        Integer update = DictionaryDao.updateByPrimaryKeySelective(gd);
-        return Long.valueOf(update);
-    }
-
-
-    @Transactional
-    @Override
-    public Long deleteDictionary(String id) {
-        Integer delete = DictionaryDao.deleteByPrimaryKey(id);
-        return Long.valueOf(delete);
-    }
-
-    @Override
-    public GlobalDictionary queryDictionary(String id) {
-        GlobalDictionary globalDictionary = DictionaryDao.selectByPrimaryKey(id);
-        return globalDictionary;
-    }
 
 
 }
