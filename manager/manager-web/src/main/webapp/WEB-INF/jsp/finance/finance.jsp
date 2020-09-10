@@ -16,7 +16,7 @@
 </fieldset>
 
 <div class="layui-form">
-    <table class="layui-hide" id="dictionary" lay-filter="test"></table>
+    <table class="layui-hide" id="finances" lay-filter="test"></table>
 </div>
 <script type="text/html" id="barDemo">
     <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
@@ -33,7 +33,7 @@
         var table = layui.table;
         //执行一个 table 实例
         table.render({
-            elem: '#finance'
+            elem: '#finances'
             ,height: 420
             ,url: '${pageContext.request.contextPath }/finances' //数据接口
             ,title: '记帐表'

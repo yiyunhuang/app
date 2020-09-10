@@ -2,20 +2,14 @@ package com.yiyun.application.service.impl;
 
 import com.yiyun.application.common.dto.Page;
 import com.yiyun.application.common.dto.Result;
-import com.yiyun.application.common.util.yiyun;
 import com.yiyun.application.dao.ApplicationFinanceCustomMapper;
 import com.yiyun.application.dao.ApplicationFinanceMapper;
-import com.yiyun.application.dao.GlobalDictionaryCustomMapper;
-import com.yiyun.application.dao.GlobalDictionaryMapper;
 import com.yiyun.application.pojo.po.ApplicationFinance;
-import com.yiyun.application.pojo.po.GlobalDictionary;
-import com.yiyun.application.service.DictionaryService;
 import com.yiyun.application.service.FinanceService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashMap;
 import java.util.List;
@@ -49,7 +43,7 @@ public class FinanceServiceImpl implements FinanceService {
 
     @Override
     public Result<ApplicationFinance> listFinanceServiceByPage(Page page, ApplicationFinance record) {
-        logger.info("DictionaryServiceImpl.listDictionaryByPage");
+        logger.info("FinanceServiceImpl.listFinanceServiceByPage");
         ApplicationFinance af = new ApplicationFinance();
         Result<ApplicationFinance> result = null;
         try {

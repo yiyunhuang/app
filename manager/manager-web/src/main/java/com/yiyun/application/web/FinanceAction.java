@@ -3,8 +3,7 @@ package com.yiyun.application.web;
 import com.yiyun.application.common.dto.Page;
 import com.yiyun.application.common.dto.Result;
 import com.yiyun.application.common.util.JsonUtils;
-import com.yiyun.application.pojo.po.ApplicationAccount;
-import com.yiyun.application.pojo.po.GlobalDictionary;
+import com.yiyun.application.pojo.po.ApplicationFinance;
 import com.yiyun.application.service.FinanceService;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -46,19 +45,19 @@ public class FinanceAction {
 
     @ResponseBody
     @RequestMapping(value="/finances", method= RequestMethod.GET)
-    public Result<GlobalDictionary> getFinancesByPage(Page page, String fa) {
+    public Result<ApplicationFinance> getFinancesByPage(Page page, String fa) {
         logger.info("financeAction.getFinancesByPage");
-        Result<GlobalDictionary> list = null;
+        Result<ApplicationFinance> list = null;
         try {
-            ApplicationAccount ApplicationAccount = new ApplicationAccount();
-            List< ApplicationAccount > gdList = new ArrayList< ApplicationAccount >();
+            ApplicationFinance applicationFinance = new ApplicationFinance();
+            List< ApplicationFinance > aflist = new ArrayList< ApplicationFinance >();
             if (StringUtils.isNotBlank(fa)) {
-                gdList = JsonUtils.jsonToList(fa, ApplicationAccount.class);
+                aflist = JsonUtils.jsonToList(fa, ApplicationFinance.class);
             }
-            if(gdList.size()>0){
-                ApplicationAccount=gdList.get(0);
+            if(aflist.size()>0){
+                applicationFinance=aflist.get(0);
             }
-//            list = financeService.listDictionaryByPage(page,userAccount);
+            list = financeService.listFinanceServiceByPage(page, applicationFinance);
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
             list.setCode("1");
