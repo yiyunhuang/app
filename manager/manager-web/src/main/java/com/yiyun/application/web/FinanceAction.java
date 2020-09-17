@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,6 +44,15 @@ public class FinanceAction {
         return "finance/finance";
     }
 
+
+    @RequestMapping(value="/financeEditor", method= RequestMethod.GET)
+    public String  financeEditor(HttpServletRequest request, String id){
+        logger.info("financeAction.financeEditor");
+        request.setAttribute("id",id);
+        return "finance/financeEditor";
+    }
+
+
     @ResponseBody
     @RequestMapping(value="/finances", method= RequestMethod.GET)
     public Result<ApplicationFinance> getFinancesByPage(Page page, String fa) {
@@ -66,6 +76,8 @@ public class FinanceAction {
         list.setCode("0");
         return list;
     }
+
+
 
 
 }

@@ -93,10 +93,10 @@
                     //向服务端发送删除指令
                     $.ajax({
                         type:'delete',
-                        url: '${pageContext.request.contextPath }/dictionaries/'+obj.data.id,
+                        url: '${pageContext.request.contextPath }/finances/'+obj.data.id,
                         success:function(data) {
                             alert(data.message);
-                            openWindows('dictionaryAction');
+                            openWindows('financeAction');
                         }
                     });
                 });
@@ -104,7 +104,7 @@
                 // layer.msg('编辑操作');
                 $.ajax({
                     type:'GET',
-                    url: '${pageContext.request.contextPath }/dictionaryEditor',
+                    url: '${pageContext.request.contextPath }/financeEditor',
                     data:{'id':obj.data.id},
                     success:function(data) {
                         $("#padding").html(data);
@@ -118,7 +118,7 @@
                 ,data = checkStatus.data; //获取选中的数据
             switch(obj.event){
                 case 'add':
-                    openWindows('dictionaryEditor');
+                    openWindows('financeEditor');
                     break;
                 case 'update':
                     if(data.length === 0){
@@ -128,7 +128,7 @@
                     } else {
                         $.ajax({
                             type:'GET',
-                            url: '${pageContext.request.contextPath }/dictionaryEditor',
+                            url: '${pageContext.request.contextPath }/financeEditor',
                             data:{'id':checkStatus.data[0].id},
                             success:function(data) {
                                 $("#padding").html(data);
