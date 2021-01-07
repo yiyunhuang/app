@@ -48,7 +48,7 @@
 
         <div class="layui-form-item">
             <div class="layui-input-block">
-                <button class="layui-btn" lay-submit lay-filter="formDemo">登陆</button>
+                <button class="layui-btn" lay-submit lay-filter="formDemo" onclick="openWindows('loginAction')">登陆</button>
             </div>
         </div>
         <a href="" class="font-set">忘记密码?</a>  <a href="" class="font-set">立即注册</a>
