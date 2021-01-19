@@ -25,7 +25,7 @@ public class LoginAction {
     @RequestMapping("/")
     public String  index(){
         logger.info("LoginAction.index");
-        return "login";
+        return "login1";
     }
 
 }
