@@ -1,126 +1,134 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: huangyifan
-  Date: 2021/1/7
-  Time: 22:25
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8" %>
+
+
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>后台登入界面</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/layui/css/layui.css">
 </head>
-<body>
+<script src="${pageContext.request.contextPath }/layui/layui.all.js"></script>
 
-<form class="layui-form" action="" method="post">
-    <div class="container">
-        <button class="close" title="关闭">X</button>
-        <div class="layui-form-mid layui-word-aux">
-            <img id="logoid" src="${pageContext.request.contextPath }/images/login/yiyun.jpg" height="35"/>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">用户名</label>
-            <div class="layui-input-block">
-                <input type="text" name="title" required  lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input">
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">密 &nbsp;&nbsp;码</label>
-            <div class="layui-input-inline">
-                <input type="password" name="password" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
-            </div>
-            <!-- <div class="layui-form-mid layui-word-aux">辅助文字</div> -->
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">验证码</label>
-            <div class="layui-input-inline">
-                <input type="text" name="title" required  lay-verify="required" placeholder="请输入验证码" autocomplete="off" class="layui-input verity">
-            </div>
-            <!-- <div class="layui-form-mid layui-word-aux">辅助文字</div> -->
 
-        </div>
-        <!-- 			  <div class="layui-form-item">
-                            <label class="layui-form-label">记住密码</label>
-                            <div class="layui-input-block">
-                              <input type="checkbox" name="close" lay-skin="switch" lay-text="ON|OFF">
-                            </div>
-                      </div> -->
 
-        <div class="layui-form-item">
-            <div class="layui-input-block">
-                <button class="layui-btn" lay-submit lay-filter="formDemo" onclick="openWindows('loginAction')">登陆</button>
-            </div>
-        </div>
-        <a href="" class="font-set">忘记密码?</a>  <a href="" class="font-set">立即注册</a>
+
+
+<div class="login bg-black  layui-col-md-offset4" >
+
+    <div  class="layui-form-mid layui-word-aux layui-col-md-offset1"    >
+        <img id="logoid" src="${pageContext.request.contextPath }/images/login/login.png" height="50"/>
     </div>
-</form>
 
-<script type="text/javascript" src="layui/layui.js"></script>
+    <form class="layui-form bg-blue" action="" >
+        <div class="layui-form-item margin-top-10">
+            <label class="layui-form-label">用户名
+                <i class="layui-icon">&#xe66f;</i>
+            </label>
+            <div class="layui-input-inline">
+
+                <input type="username" name="username" required lay-verify="username" placeholder="请输入密码" autocomplete="off" class="layui-input" lay-verType="msg">
+            </div>
+
+            <!-- <div class="layui-form-mid layui-word-aux"></div> -->
+        </div>
+        <div class="layui-form-item" >
+            <label class="layui-form-label">密码
+                <i class="layui-icon"> &#xe672;</i>
+            </label>
+            <div class="layui-input-inline">
+                <input type="password" name="password" required lay-verify="password" placeholder="请输入密码" autocomplete="off" class="layui-input">
+            </div>
+
+        </div>
+        
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn" lay-submit lay-filter="login">立即提交</button>
+                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+            </div>
+        </div>
+    </form>
+</div>
+
 <script>
-    layui.use(['form', 'layedit', 'laydate'], function(){
-        var form = layui.form
-            ,layer = layui.layer
-            ,layedit = layui.layedit
-            ,laydate = layui.laydate;
+    //Demo 拿到你所需要用的layui已经封装好的代码
+    layui.use(['jquery','form','layer'], function(){
+        var $ =layui.jquery;
+        var form = layui.form;//表单验证
+        var layer= layui.layer;
+        //表单验证（页面自动关联,验证结果绑定在表单）
+        form.verify({
+            username: function(value, item){ //value：表单的值、item：表单的DOM对象 自定义验证规则
+                if(!new RegExp("^[a-zA-Z0-9_\u4e00-\u9fa5\\s·]+$").test(value)){
+                    return '用户名不能有特殊字符';
+                }
+                if(/^\d+\d+\d$/.test(value)){
+                    return '用户名不能全为数字';
+                }
 
-        //日期
-        /* laydate.render({
-           elem: '#date'
-         });
-         laydate.render({
-           elem: '#date1'
-         });
-
-         //创建一个编辑器
-         var editIndex = layedit.build('LAY_demo_editor');
-
-         //自定义验证规则
-         form.verify({
-           title: function(value){
-             if(value.length < 5){
-               return '标题至少得5个字符啊';
-             }
-           }
-           ,pass: [
-             /^[\S]{6,12}$/
-             ,'密码必须6到12位，且不能出现空格'
-           ]
-           ,content: function(value){
-             layedit.sync(editIndex);
-           }
-         });
-
-         //监听指定开关
-         form.on('switch(switchTest)', function(data){
-           layer.msg('开关checked：'+ (this.checked ? 'true' : 'false'), {
-             offset: '6px'
-           });
-           layer.tips('温馨提示：请注意开关状态的文字可以随意定义，而不仅仅是ON|OFF', data.othis)
-         });*/
-
-        //监听提交
-        form.on('submit(demo1)', function(data){
-            layer.alert(JSON.stringify(data.field), {
-                title: '最终的提交信息'
-            })
-            return false;
+            } ,
+            password:function(value,item){
+                if(!/^.{6,12}$/img.test(value)){
+                    return"密码必须位6~12位"
+                }
+            },
         });
-
-        //表单初始赋值
-        /* form.val('example', {
-           "username": "贤心" // "name": "value"
-           ,"password": "123456"
-           ,"interest": 1
-           ,"like[write]": true //复选框选中状态
-           ,"close": true //开关状态
-           ,"sex": "女"
-           ,"desc": "我爱 layui"
-         })*/
-
-
+        //不想提交，可以监听，使用form.on
+        form.on('submit(login)', function(data){
+            //用ajax时需要注意你的url接口、采用哪一种方式type获取，它的使用的哪种数据类型datatype
+            $.ajax({
+                url:'${pageContext.request.contextPath }/',
+                type:'get',
+                dataType:'json',
+                data:{
+                    //监听的内容有哪些,你的登陆界面上用户输入的有哪些，就监听那些
+                    username:$('input[name="username"]').val(),
+                    password:$('input[name="password"]').val()
+                },
+                beforeSend:function(){
+                    //弹出的lodinng层
+                    layer.load(2,{
+                        shade:[0.5,"#333"]
+                    });
+                },
+                success:function(res){
+                    if(res.code == 0){
+                        //res.code == 0,表示用户输入成功，1表示失败
+                        //获取用户输入的内容，存到本地存储，采用sessionStorage是因为用户只需输入一次，不需要保存，用户的体验感较好，也比较安全
+                        sessionStorage.setItem('admin',JSON.stringify(res.data.admindata));
+                        //获取用户数据，并存储在本地。
+                        sessionStorage.setItem('role',JSON.stringify(res.data.roledata));
+                        sessionStorage.setItem('module',JSON.stringify(res.data.moduledata));
+                        layer.msg("登陆成功",{icon:1})
+                        setTimeout(function(){
+                            //如果输入成功，可以跳到另一个你需要的界面
+                            location.href="./index.html";
+                        },2000)
+                    }else{
+                        //不等于0时填出的内容
+                        layer.msg(res.msg)
+                    }
+                },
+                error:function(){
+                    //用户输入与接口内容不对应，显示文字
+                    layer.msg("网络繁忙，访问失败")
+                },
+                complete:function(){
+                    //关掉loading
+                    layer.closeAll("loading")
+                }
+            })
+            return false;//不会跳转到网址栏，只会跳转到你要的界面 一定要写。
+        });
     });
 </script>
-
-
 </body>
+
 </html>

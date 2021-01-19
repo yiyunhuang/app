@@ -18,14 +18,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @Scope("prototype")
-public class IndexAction {
+public class LoginAction {
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
 
     @RequestMapping("/")
     public String  index(){
-        logger.info("IndexAction.index");
-        return "index";
+        logger.info("LoginAction.index");
+        return "login";
     }
 
 }
