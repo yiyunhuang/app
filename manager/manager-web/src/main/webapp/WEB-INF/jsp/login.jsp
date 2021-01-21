@@ -17,13 +17,27 @@
 <script src="${pageContext.request.contextPath }/layui/layui.all.js"></script>
 
 
+<div class="layui-header header header-undefined" style="background-color: #007DDB;">
+    <div style=" width: 1350px "
+            class="layui-container"> <img id="logo"  src="${pageContext.request.contextPath }/images/login/yiyun.jpg" height="35" alt="yiyun">
+    </div>
+</div>
+
+<%--style ="background-color: #0C0C0C;  left:50%;top:50%"--%>
 
 
 
-<div class="login bg-black  layui-col-md-offset4" >
+<div style ="  width:400px;
+     height:400px;
+     background-color: #00FF00;
+     position: relative;
+     top: 50%;
+     left: 50%;
+     margin-top: -100px;
+margin-left: -100px;" >
 
-    <div  class="layui-form-mid layui-word-aux layui-col-md-offset1"    >
-        <img id="logoid" src="${pageContext.request.contextPath }/images/login/login.png" height="50"/>
+    <div  class="layui-form-mid layui-word-aux layui-col-md-offset1" >
+        <img id="logoId" src="${pageContext.request.contextPath }/images/login/login.png" height="50"/>
     </div>
 
     <form class="layui-form bg-blue" action="" >
@@ -47,7 +61,7 @@
             </div>
 
         </div>
-        
+
         <div class="layui-form-item">
             <div class="layui-input-block">
                 <button class="layui-btn" lay-submit lay-filter="login">立即提交</button>
