@@ -23,8 +23,10 @@
 <link rel="stylesheet" href="//res.layui.com/layui/dist/css/layui.css?t=1610462525588">
 <link rel="stylesheet" href="//res.layui.com/static/css/fly/global.css?t=16104625255886" charset="utf-8">
 <link rel="stylesheet" href="//res.layui.com/static/css/global.css?t=1610462525588" charset="utf-8">
-</head><body><div class="layui-header header header-undefined" style="background-color: #24262F;">
-<div class="layui-container"> <img id="logoid"  src="${pageContext.request.contextPath }/images/login/yiyun.jpg" height="35" alt="yiyun">
+</head><body>
+
+<div class="layui-header header header-undefined" style="background-color: #24262F;">
+<div class="layui-container"> <img id="logoId"  src="${pageContext.request.contextPath }/images/login/yiyun.jpg" height="35" alt="yiyun">
 </div>
 </div>
 
@@ -42,7 +44,7 @@
                         <form method="post">
                             <div class="layui-form-item"><input type="hidden" name="secret"
                                                                 value="%E9%98%B2%E6%AD%A2%E5%B9%BF%E5%91%8A%E7%8B%97459540">
-                                <label for="L_email" class="layui-form-label">用户名</label>
+                                <label class="layui-form-label">用户名</label>
                                 <div class="layui-input-inline"><input type="text" id="L_loginName" name="loginName"
                                                                        required lay-verify="required" autocomplete="off"
                                                                        class="layui-input"></div>
@@ -53,7 +55,7 @@
                                                                        lay-verify="required" autocomplete="off"
                                                                        class="layui-input"></div>
                             </div>
-                            <div class="layui-form-item"><label for="L_vercode" class="layui-form-label">图形码</label>
+                            <div class="layui-form-item"><label class="layui-form-label">图形码</label>
                                 <div class="layui-input-inline"><input type="text" id="L_imagecode" name="imagecode"
                                                                        required lay-verify="required" autocomplete="off"
                                                                        class="layui-input"></div>

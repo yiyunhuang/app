@@ -22,8 +22,13 @@ public class LoginAction {
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
 
-    @RequestMapping("/")
-    public String  index(){
+    @RequestMapping("/login")
+    public String  login(){
+        logger.info("LoginAction.index");
+        return "login";
+    }
+    @RequestMapping("/login1")
+    public String  login1(){
         logger.info("LoginAction.index");
         return "login1";
     }
