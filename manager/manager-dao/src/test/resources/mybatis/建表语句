@@ -85,6 +85,72 @@ CREATE TABLE `application_tree` (
   PRIMARY KEY (`id`)
 )ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 
+// 账单
+
+DROP TABLE IF EXISTS `application_bill`;
+CREATE TABLE `application_bill` (
+`id`  int(11) NOT NULL AUTO_INCREMENT ,
+`类型`  varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL ,
+`货币`  varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '' ,
+`金额`  decimal(16,2) NOT NULL ,
+`汇率`  decimal(16,2) NOT NULL ,
+`项目`  varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '' ,
+`分类`  varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '' ,
+`父类`  varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '' ,
+`账户`  varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '' ,
+`付款`  varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '' ,
+`收款`  varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '' ,
+`商家`  varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '' ,
+`地址`  varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '' ,
+`日期`  timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ,
+`备注`  varchar(1024) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL ,
+`gmt_create`  timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP ,
+`gmt_modified`  timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP ,
+`is_sign`  tinyint(4) UNSIGNED NOT NULL DEFAULT 1 COMMENT '有效标识 1 有效 0 无效' ,
+PRIMARY KEY (`id`)
+)
+ENGINE=InnoDB
+DEFAULT CHARACTER SET=utf8mb4 COLLATE=utf8mb4_general_ci
+AUTO_INCREMENT=1
+ROW_FORMAT=DYNAMIC
+;
+
+
+insert into  application_bill (
+类型,
+货币,
+金额,
+汇率,
+项目,
+分类,
+父类,
+账户,
+付款,
+收款,
+商家,
+地址,
+日期,
+备注 )
+select
+类型,
+货币,
+-金额,
+汇率,
+项目,
+分类,
+父类,
+账户,
+付款,
+收款,
+商家,
+地址,
+日期,
+备注
+ from  application_bill t where t.类型 = '转账' ;
+
+update application_bill t set t.`账户` = t.`收款` , t.类型 = '收入'  where t.类型 = '转账' and t.`金额` > 0;
+update application_bill t set t.`账户` = t.`付款` , t.类型 = '支出'   where t.类型 = '转账' and t.`金额` < 0;
+
 
 
 
