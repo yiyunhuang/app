@@ -28,7 +28,7 @@
         <project.build.jdk>1.8</project.build.jdk>
 
         <junit.version>4.13.1</junit.version>
-        <spring.version>5.2.5.RELEASE</spring.version>
+        <spring.version>5.2.22.RELEASE</spring.version>
         <mybatis.version>3.4.4</mybatis.version>
         <mybatis.spring.version>1.3.1</mybatis.spring.version>
         <mybatis.paginator.version>1.2.17</mybatis.paginator.version>
